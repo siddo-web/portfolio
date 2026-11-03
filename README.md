@@ -1,3 +1,5 @@
+> **Phase 2 (Supabase):** See [PHASE-2-SETUP.md](PHASE-2-SETUP.md) for database SQL, admin email/password, migration, Vercel settings and rollback. The original GitHub CMS remains available while `CMS_BACKEND` is `github` (default).
+
 # Muhammad Siddique — Portfolio / GitHub + Vercel Edition
 
 A static HTML/CSS/JS portfolio with **Jotform** project enquiries and a **GitHub-backed admin dashboard** implemented with Vercel Node.js Functions.

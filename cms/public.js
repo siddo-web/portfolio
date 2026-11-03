@@ -12,7 +12,11 @@
   section.hidden=true;
   const create=(tag,cls,text)=>{const x=document.createElement(tag);if(cls)x.className=cls;if(text!==undefined)x.textContent=text;return x;};
   const linkSafe=(url)=>{try{const u=new URL(url);return ['http:','https:'].includes(u.protocol)?u.href:null;}catch{return null;}};
-  const imgSafe=(s)=>{if(!/^assets\/uploads\/[a-zA-Z0-9_.-]+\.(?:jpg|png|webp)$/.test(s||''))return null;return new URL(s,siteBase).href;};
+  const imgSafe=(s)=>{
+    if(/^assets\/uploads\/[a-zA-Z0-9_.-]+\.(?:jpg|png|webp)$/.test(s||''))return new URL(s,siteBase).href;
+    try{const u=new URL(s);if(u.protocol==='https:'&&/^[a-z0-9-]+\.supabase\.co$/i.test(u.hostname)&&/^\/storage\/v1\/object\/public\/portfolio-media\/uploads\/[0-9a-f-]+\.(?:jpg|png|webp)$/i.test(u.pathname)&&!u.search&&!u.hash)return u.href;}catch{}
+    return null;
+  };
   let all=[];let filtered=[];let active=chosen;
   const shell=create('div','ms-cms-shell');section.append(shell);
   const top=create('div','ms-cms-top');shell.append(top);
@@ -65,7 +69,7 @@
     else document.body.append(section);
   }
   mount();filters();
-  fetch(new URL('content/projects.json',siteBase),{headers:{'Accept':'application/json'},cache:'no-cache'})
+  fetch(new URL('api/projects',siteBase),{headers:{'Accept':'application/json'},cache:'no-cache'})
     .then(r=>r.ok?r.json():Promise.reject(new Error('CMS unavailable')))
     .then(d=>{
       // Feature priority, preserving the original editorial order within each group.

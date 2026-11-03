@@ -62,6 +62,9 @@ function sanitize(p,prev){if(!p||typeof p!=='object')throw badRequest('Project d
  const u=valStr(p.url,500);if(u){let parsed;try{parsed=new URL(u)}catch{throw badRequest('Enter a complete https:// project URL.')}if(!['https:','http:'].includes(parsed.protocol))throw badRequest('Only http and https project URLs are supported.')}
  return {id:prev?.id||crypto.randomUUID(),title,category,year:valStr(p.year,25),tags:valStr(p.tags,220),summary:valStr(p.summary,600),description:valStr(p.description,8000),url:u,image:imgPath(p.image),gallery:Array.isArray(p.gallery)?p.gallery.slice(0,10).map(imgPath).filter(Boolean):[],featured:p.featured===true,published:p.published===true,createdAt:prev?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
 module.exports=async function handler(req,res){
+ if(process.env.CMS_BACKEND==='supabase')return require('./supabase-admin')(req,res);
+ if(process.env.CMS_BACKEND && process.env.CMS_BACKEND!=='github')return res.status(503).json({ok:false,message:'Invalid CMS_BACKEND setting.'});
+ if(req.method==='GET' && req.query?.action==='config')return res.json({ok:true,backend:'github'});
  res.setHeader('Cache-Control','private, no-store, max-age=0');res.setHeader('X-Content-Type-Options','nosniff');
  if(!envReady())return reject(res,503,'CMS is not configured. Set the required Vercel environment variables.');
  const method=req.method;const action=String(req.query?.action||'status');
