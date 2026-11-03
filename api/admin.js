@@ -27,10 +27,30 @@ async function github(file,options={}){
 }
 async function readProjects(){try{const r=await github('content/projects.json');const content=Buffer.from((r.content||'').replace(/\s/g,''),'base64').toString('utf8');const d=JSON.parse(content);return {projects:Array.isArray(d.projects)?d.projects:[],sha:r.sha};}catch(e){if(e.status===404)return{projects:[],sha:null};throw e;}}
 async function writeProjects(projects,sha){const body={message:'CMS: update portfolio projects',branch:process.env.GITHUB_BRANCH||'main',content:Buffer.from(JSON.stringify({projects},null,2)+'\n').toString('base64')};if(sha)body.sha=sha;await github('content/projects.json',{method:'PUT',json:body});}
+// For distributed login throttling on Vercel, configure Upstash Redis REST.
+// Without it this falls back to the existing per-instance counter and Vercel Firewall is essential.
+function redisConfigured(){return !!(process.env.UPSTASH_REDIS_REST_URL&&process.env.UPSTASH_REDIS_REST_TOKEN);}
+async function redisCommand(command){
+  const url=process.env.UPSTASH_REDIS_REST_URL.replace(/\/$/,'');
+  const r=await fetch(url,{method:'POST',headers:{'Authorization':'Bearer '+process.env.UPSTASH_REDIS_REST_TOKEN,'Content-Type':'application/json'},body:JSON.stringify(command),signal:AbortSignal.timeout(4000)});
+  if(!r.ok)throw new Error('Rate limiting service unavailable');
+  const d=await r.json();if(d.error)throw new Error('Rate limiting service unavailable');return d.result;
+}
+function throttleKey(ip){return 'portfolio:login:'+crypto.createHmac('sha256',process.env.SESSION_SECRET).update(ip).digest('hex');}
+async function tooManyLogins(ip){
+ if(redisConfigured())return Number(await redisCommand(['GET',throttleKey(ip)]))>=LOGIN_MAX;
+ const now=Date.now(),a=attempts.get(ip)||{n:0,until:now+600000};return now<=a.until&&a.n>=LOGIN_MAX;
+}
+async function recordFailedLogin(ip){
+ if(redisConfigured()){const key=throttleKey(ip);const n=Number(await redisCommand(['INCR',key]));if(n===1)await redisCommand(['EXPIRE',key,600]);return;}
+ const now=Date.now(),a=attempts.get(ip)||{n:0,until:now+600000};if(now>a.until){a.n=0;a.until=now+600000;}a.n++;attempts.set(ip,a);
+}
+async function clearFailedLogin(ip){if(redisConfigured())await redisCommand(['DEL',throttleKey(ip)]);else attempts.delete(ip);}
+function badRequest(message){const e=new Error(message);e.status=400;return e;}
 function valStr(x,max=240){return typeof x==='string'?x.trim().slice(0,max):'';}
 function imgPath(s){return /^assets\/uploads\/[a-zA-Z0-9_.-]+\.(webp|png|jpg)$/.test(s||'')?s:'';}
-function sanitize(p,prev){if(!p||typeof p!=='object')throw new Error('Project details missing.');const title=valStr(p.title,130),category=valStr(p.category,50);if(!title||!cat.has(category))throw new Error('Project title and a valid category are required.');const u=valStr(p.url,500);if(u){let parsed;try{parsed=new URL(u)}catch{throw new Error('Enter a complete https:// project URL.')}if(!['https:','http:'].includes(parsed.protocol))throw new Error('Only http and https project URLs are supported.')}
- return {id:prev?.id||crypto.randomUUID(),title,category,year:valStr(p.year,25),tags:valStr(p.tags,220),summary:valStr(p.summary,600),description:valStr(p.description,8000),url:u,image:imgPath(p.image),gallery:Array.isArray(p.gallery)?p.gallery.slice(0,10).map(imgPath).filter(Boolean):[],featured:p.featured===true,published:p.published===true,createdAt:prev?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
+function sanitize(p,prev){if(!p||typeof p!=='object')throw badRequest('Project details missing.');const title=valStr(p.title,130),category=valStr(p.category,50);if(!title||!cat.has(category))throw badRequest('Project title and a valid category are required.');const u=valStr(p.url,500);if(u){let parsed;try{parsed=new URL(u)}catch{throw badRequest('Enter a complete https:// project URL.')}if(!['https:','http:'].includes(parsed.protocol))throw badRequest('Only http and https project URLs are supported.')}
+ return {id:prev?.id||crypto.randomUUID(),title,category,year:valStr(p.year,25),tags:valStr(p.tags,220),summary:valStr(p.summary,600),description:valStr(p.description,8000),url:u,image:imgPath(p.image),gallery:Array.isArray(p.gallery)?p.gallery.slice(0,10).map(imgPath).filter(Boolean):[],featured:p.featured===true,replaceLegacy:p.replaceLegacy===true,published:p.published===true,createdAt:prev?.createdAt||new Date().toISOString(),updatedAt:new Date().toISOString()};}
 module.exports=async function handler(req,res){
  res.setHeader('Cache-Control','private, no-store, max-age=0');res.setHeader('X-Content-Type-Options','nosniff');
  if(!envReady())return reject(res,503,'CMS is not configured. Set the required Vercel environment variables.');
@@ -40,12 +60,12 @@ module.exports=async function handler(req,res){
  try{
    if(method==='POST'&&action==='login'){
     const ip=String(req.headers['x-forwarded-for']||req.socket?.remoteAddress||'unknown').split(',')[0].trim().slice(0,90);
-    const now=Date.now();const a=attempts.get(ip)||{n:0,until:now+600000};if(now>a.until){a.n=0;a.until=now+600000;}if(a.n>=LOGIN_MAX)return reject(res,429,'Too many attempts. Please try again later.');
+    if(await tooManyLogins(ip))return reject(res,429,'Too many attempts. Please try again later.');
     const candidate=String(input(req).password||'');const correct=process.env.ADMIN_PASSWORD;
     // Comparing hashed values with constant-time primitives avoids timing leaks.
     const x=crypto.createHash('sha256').update(candidate).digest(),y=crypto.createHash('sha256').update(correct).digest();
-    if(!crypto.timingSafeEqual(x,y)){a.n++;attempts.set(ip,a);return reject(res,401,'Incorrect password.');}
-    attempts.delete(ip);setSession(req,res);return res.json({ok:true});
+    if(!crypto.timingSafeEqual(x,y)){await recordFailedLogin(ip);return reject(res,401,'Incorrect password.');}
+    await clearFailedLogin(ip);setSession(req,res);return res.json({ok:true});
    }
    if(method==='POST'&&action==='logout'){res.setHeader('Set-Cookie',cookieHeaders(req,'',0));return res.json({ok:true});}
    if(!validSession(req))return reject(res,401,'Please sign in to the CMS.');
@@ -75,5 +95,5 @@ module.exports=async function handler(req,res){
     return res.json({ok:true,path,message:'Image committed to GitHub. It will be visible after Vercel deploys.'});
    }
    return reject(res,404,'Unknown CMS action.');
- }catch(e){console.error('Portfolio CMS:',e.message);if(e.status===409)return reject(res,409,'GitHub content changed; reload and retry.');return reject(res,500,e.message||'Unexpected CMS error.');}
+ }catch(e){console.error('Portfolio CMS:',e.message);if(e.status===400)return reject(res,400,e.message);if(e.status===409)return reject(res,409,'GitHub content changed; reload and retry.');if(e.message==='Rate limiting service unavailable')return reject(res,503,'Login temporarily unavailable; please try again.');return reject(res,500,e.message||'Unexpected CMS error.');}
 };

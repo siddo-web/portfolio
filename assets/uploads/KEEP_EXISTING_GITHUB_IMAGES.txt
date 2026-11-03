@@ -1,0 +1,7 @@
+The supplied ZIP predates two images now present in the GitHub repo.
+Preserve these existing repo files when deploying this update:
+1793743026151-d9e3b1e9ff9544fb.webp
+1793743028726-f1a5ddd138435ace.webp
+The images are not contained in the supplied ZIP. Admin previews fall back to the originals
+in siddo-web/portfolio/main if the local file is absent. For a new unrelated repo, download
+these images from GitHub before publishing the preserved draft project.
