@@ -1,3 +1,5 @@
+> **Updated release:** See [DEPLOY_UPDATED.md](DEPLOY_UPDATED.md) for changes, safety notes and exact GitHub/Vercel deployment instructions.
+
 # Muhammad Siddique — Portfolio / GitHub + Vercel Edition
 
 A static HTML/CSS/JS portfolio with **Jotform** project enquiries and a **GitHub-backed admin dashboard** implemented with Vercel Node.js Functions.
@@ -10,7 +12,7 @@ A static HTML/CSS/JS portfolio with **Jotform** project enquiries and a **GitHub
 - `webdev_portfolio/`, `UIUX_portfolio/`, `graphic/`, `appdev_portfolio/`, `digital-marketing/`: five service portfolios.
 - `admin/`: responsive project management dashboard at `/admin/`.
 - `api/admin.js`: Vercel serverless admin API for authentication and GitHub project updates.
-- `content/projects.json`: public portfolio projects (initially empty).
+- `content/projects.json`: public portfolio projects (includes a preserved draft test project from the live repo).
 - `assets/uploads/`: images uploaded by the dashboard are committed here in GitHub.
 - `cms/public.js`, `cms/public.css`: the public Selected Work section and modal.
 - `vercel.json`: static deployment and no-index headers for the admin page.
