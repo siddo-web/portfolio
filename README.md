@@ -67,7 +67,3 @@ Your Jotform form may be edited at any time in Jotform; the iframe will show the
 ## Notes on privacy and ownership
 
 The form is hosted by Jotform, subject to their applicable privacy policy; privacy disclosures have been updated accordingly. Portfolio demo media included from the supplied original reference archive may have independent rights/restrictions and should be replaced by your own work before public use.
-
-## Phase 1 stabilization update — November 2026
-
-This package includes fixes to the original GitHub-backed CMS. Please read `PHASE-1-DEPLOY.md` for what changed, Vercel configuration, post-deployment smoke tests and known limitations. To run local serverless API regression tests: `node --test tests/admin-api.test.js` (Node 20+). No npm install is required.
