@@ -67,6 +67,12 @@
   mount();filters();
   fetch(new URL('content/projects.json',siteBase),{headers:{'Accept':'application/json'},cache:'no-cache'})
     .then(r=>r.ok?r.json():Promise.reject(new Error('CMS unavailable')))
-    .then(d=>{all=(Array.isArray(d.projects)?d.projects:[]).filter(p=>p.published===true);render();})
+    .then(d=>{
+      // Feature priority, preserving the original editorial order within each group.
+      all=(Array.isArray(d.projects)?d.projects:[])
+        .filter(p=>p&&p.published===true)
+        .sort((a,b)=>Number(b.featured===true)-Number(a.featured===true));
+      render();
+    })
     .catch(()=>{section.hidden=true;});
 })();
