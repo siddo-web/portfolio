@@ -1,3 +1,22 @@
 {
-  "projects": []
+  "projects": [
+    {
+      "id": "05df65d2-2e18-4516-8091-1ffa780b15e4",
+      "title": "SXS Performance Part",
+      "category": "web-development",
+      "year": "2026",
+      "tags": "wordpress",
+      "summary": "Test Project",
+      "description": "Test Project",
+      "url": "https://sxspartsusa.com/",
+      "image": "assets/uploads/1793743026151-d9e3b1e9ff9544fb.webp",
+      "gallery": [
+        "assets/uploads/1793743028726-f1a5ddd138435ace.webp"
+      ],
+      "featured": false,
+      "published": true,
+      "createdAt": "2026-11-03T21:57:10.635Z",
+      "updatedAt": "2026-11-03T21:57:10.636Z"
+    }
+  ]
 }
