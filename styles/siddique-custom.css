@@ -1,0 +1,449 @@
+/* MUHAMMAD SIDDIQUE — careful, editorial re-skin layered over the source build.
+   Midnight navy, porcelain, and champagne tones; original animation systems remain intact. */
+/* PREMIUM NAVY / CHAMPAGNE DESIGN TOKENS */
+:root{
+  --background:#F8F6F1;--foreground:#171515;--ink:#171515;
+  --muted:#6D6661;--subtle:#A39B92;--line:#E2DDD6;
+  --surface:#EEEBE6;--surface-2:#E9E6E0;
+  --accent:#8F6B45;--accent-from:#D1B894;--accent-to:#89643E;
+  --hero-from:#F9F6F0;--hero-mid:#F2F0EA;--hero-to:#E9E4DD;
+  --fg-rgb:23,21,21;--chip-line:rgba(23,21,21,.14);
+  --chip-bg:rgba(255,255,255,.65);--chip-bg-h:rgba(250,249,247,.95);
+  --btn-bg:#171515;--btn-fg:#F9F6F0;--btn-badge-bg:#DCC5A3;--btn-badge-fg:#171515;
+  --outline-h:rgba(143,107,69,.12);--panel:#F9F8F4;--field:rgba(48,43,39,.045);
+  --vig:rgba(221,228,238,.22);
+}
+html[data-mode="dark"]{
+  --background:#171515;--foreground:#F5F2EC;--ink:#F5F2EC;
+  --muted:#B5ACA1;--subtle:#978E86;--line:rgba(215,220,231,.17);
+  --surface:#252120;--surface-2:#35302D;
+  --accent:#D7BB91;--accent-from:#E9D8BD;--accent-to:#B4946D;
+  --hero-from:#252120;--hero-mid:#1D1A19;--hero-to:#171515;
+  --fg-rgb:245,242,236;--chip-bg:rgba(228,216,198,.055);--chip-bg-h:rgba(228,216,198,.12);
+  --chip-line:rgba(222,201,170,.19);--btn-bg:#E4D5C0;--btn-fg:#171515;
+  --btn-badge-bg:#35302D;--btn-badge-fg:#E9D8BD;
+  --outline-h:rgba(222,201,170,.095);--panel:#252120;--field:rgba(233,216,189,.06);
+  --vig:rgba(23,21,21,.23);
+}
+html[data-mode="dark"]{background:#171515}
+html:not([data-mode="dark"]){background:#F2F1ED}
+.hero{background:radial-gradient(105% 80% at 64% 36%,var(--hero-from) 0%,var(--hero-mid) 50%,var(--hero-to) 100%)}
+.hero::before{background:radial-gradient(120% 90% at 63% 29%,#302C2A 0%,#25211F 49%,#171515 100%)}
+/* Preserve the original portrait photograph; soft framing makes its room backdrop intentional. */
+.fig{isolation:isolate;overflow:visible}
+.fig::before{content:"";position:absolute;inset:6% 2% 0;z-index:-1;border-radius:49% 49% 13% 13% / 38% 38% 10% 10%;background:linear-gradient(140deg,rgba(196,168,129,.20),rgba(73,62,52,.26));filter:blur(16px);transform:translateY(12px)}
+.fig #figBase,.fig #figCanvas{border-radius:47% 47% 13% 13%/32% 32% 9% 9%;overflow:hidden;object-fit:cover;object-position:50% 30%;-webkit-mask-image:linear-gradient(to bottom,black 0%,black 79%,transparent 100%);mask-image:linear-gradient(to bottom,black 0%,black 79%,transparent 100%)}
+.fig #figBase{filter:grayscale(.22) saturate(.92) contrast(1.03)}
+.fig:hover #figBase{filter:grayscale(0) saturate(1.04);transition:filter .55s ease}
+.fig #figCanvas{opacity:.84}
+.fig__card{left:4%;bottom:9%;background:rgba(23,21,21,.88);border-color:rgba(217,195,162,.36)}
+.hero__bar{position:relative;z-index:4}
+.hero__left{z-index:5}
+.h1{letter-spacing:-.055em}
+.hdr .nav button>span:hover{color:var(--accent)}
+/* Source has dark rust doors. Retune two for a more cohesive pine/sand palette. */
+.doors .unit:nth-child(1){--door:#292523!important;--door-dk:#171515!important}
+.doors .unit:nth-child(2){--door:#716A65!important;--door-dk:#514A45!important}
+.doors .unit:nth-child(3){--door:#9B826D!important;--door-dk:#78634F!important}
+.doors .unit:nth-child(4){--door:#9B6870!important;--door-dk:#784E58!important}
+/* Additional homepage blocks */
+.ms-about,.ms-expertise,.ms-faq{position:relative;padding:clamp(70px,8.3vw,150px) 0;overflow:hidden}
+.ms-about{background:var(--background);color:var(--foreground)}
+.ms-about__inner{display:grid;grid-template-columns:minmax(0,1.22fr) minmax(320px,.78fr);gap:clamp(45px,7vw,145px);align-items:center}
+.ms-kicker{font-size:clamp(12px,.86vw,15px);letter-spacing:.13em;text-transform:uppercase;font-weight:650;display:inline-flex;align-items:center;gap:12px;color:var(--accent)}
+.ms-kicker__dot{width:9px;height:9px;border-radius:99px;background:var(--accent)}
+.ms-about h2,.ms-expertise h2,.ms-faq h2{font-size:clamp(52px,6.6vw,120px);line-height:.98;letter-spacing:-.078em;font-weight:510;margin:24px 0 32px}
+.ms-about h2 em,.ms-expertise h2 em,.ms-faq h2 em{font-family:Georgia,serif;letter-spacing:-.058em;font-weight:400;color:var(--accent)}
+.ms-about p,.ms-faq>div>div>p{max-width:690px;color:rgba(var(--fg-rgb),.72);font-size:clamp(16px,1.14vw,20px);line-height:1.7;margin:0 0 18px}
+.ms-about p strong{color:var(--foreground)}
+.ms-text-link{font-size:clamp(15px,1.1vw,20px);display:inline-flex;align-items:center;gap:22px;padding:13px 1px;border-bottom:1px solid var(--accent);color:var(--foreground);margin-top:18px;font-weight:600;transition:gap .3s ease,color .3s}
+.ms-text-link:hover{gap:32px;color:var(--accent)}
+.ms-about__note{min-height:480px;background:radial-gradient(circle at 75% 75%,rgba(215,182,137,.11),transparent 35%),#262321;border-radius:clamp(26px,2.1vw,42px);padding:clamp(30px,3vw,55px);color:#F8F4ED;position:relative;display:flex;flex-direction:column;align-items:flex-start;justify-content:flex-start;box-shadow:0 32px 75px -55px rgba(23,21,21,.45)}
+.ms-note-number{font-size:clamp(42px,4.3vw,76px);font-weight:520;line-height:1;letter-spacing:-.07em}
+.ms-note-line{height:1px;width:100%;background:rgba(201,230,218,.25);margin:38px 0 22px}
+.ms-note-label{letter-spacing:.22em;font-size:12px;color:#DAC3A2;font-weight:650}
+.ms-about__note p{color:#E8E2D8;font-size:clamp(19px,1.7vw,28px);line-height:1.45;font-weight:430;margin:48px 0 0;max-width:410px}
+.ms-note-sun{position:absolute;bottom:20px;right:40px;font-size:130px;line-height:1;opacity:.2;font-weight:400;transform:rotate(12deg)}
+.ms-expertise{background:var(--surface);color:var(--foreground)}
+.ms-section-head{display:flex;align-items:end;justify-content:space-between;gap:32px}
+.ms-section-head h2{margin-bottom:clamp(30px,4vw,70px)}
+.ms-section-number{margin-bottom:clamp(30px,4vw,70px);font-size:13px;letter-spacing:.14em;color:var(--accent);white-space:nowrap}
+.ms-expertise__grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ms-service{padding:clamp(23px,2vw,38px);min-height:clamp(350px,28vw,470px);display:flex;flex-direction:column;align-items:flex-start;background:var(--background);border:1px solid rgba(120,110,99,.18);border-radius:clamp(20px,1.5vw,29px);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}
+.ms-service:hover{transform:translateY(-10px);box-shadow:0 25px 46px -34px rgba(23,21,21,.24);border-color:rgba(167,131,86,.48)}
+.ms-service__top{display:flex;align-items:start;justify-content:space-between;width:100%;color:var(--accent);font-size:14px;font-weight:600}
+.ms-service__symbol{font-size:clamp(38px,4vw,68px);line-height:1;font-weight:300;opacity:.7}
+.ms-service h3{font-size:clamp(24px,2.1vw,37px);line-height:1.12;letter-spacing:-.055em;margin:auto 0 18px;font-weight:550}
+.ms-service p{font-size:clamp(15px,1.03vw,18px);line-height:1.6;color:rgba(var(--fg-rgb),.64);margin:0 0 32px}
+.ms-service button{display:flex;align-items:center;justify-content:space-between;width:100%;gap:12px;padding:16px 0 0;border-top:1px solid var(--line);font-size:clamp(13px,.9vw,16px);font-weight:650;text-align:left}
+.ms-service button span{font-size:23px;color:var(--accent);transition:transform .3s}
+.ms-service button:hover span{transform:translate(4px,-3px)}
+.ms-expertise__disclaimer{font-size:13px;max-width:850px;margin:25px 0 0;color:rgba(var(--fg-rgb),.49);line-height:1.65}
+.ms-faq{background:var(--background);color:var(--foreground)}
+.ms-faq__wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:clamp(30px,7.5vw,142px);align-items:start}
+.ms-faq h2{margin-bottom:28px}
+.ms-faq__items details{border-bottom:1px solid var(--line)}
+.ms-faq__items details:first-child{border-top:1px solid var(--line)}
+.ms-faq__items summary{padding:29px 0;list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:22px;font-size:clamp(17px,1.15vw,23px);font-weight:550;letter-spacing:-.025em}
+.ms-faq__items summary::-webkit-details-marker{display:none}
+.ms-faq__items summary span{flex:none;width:33px;height:33px;border-radius:50%;display:grid;place-items:center;background:var(--surface);color:var(--accent);font-size:26px;font-weight:400;transition:transform .32s}
+.ms-faq__items details[open] summary span{transform:rotate(45deg)}
+.ms-faq__items details p{max-width:670px;font-size:clamp(15px,1.1vw,19px);line-height:1.65;color:rgba(var(--fg-rgb),.66);padding:0 24px 28px 0}
+.form-notice{font-size:14px;color:#bc7249;line-height:1.6;margin-top:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+/* Fix source's hidden last timeline stage; all four step identifiers remain visible */
+.story[data-ch="3"] .story__yr{visibility:visible!important}
+/* subtle new section reveal, disabled for motion sensitivity */
+@media(prefers-reduced-motion:no-preference){.ms-js .ms-about .ms-about__copy,.ms-js .ms-about .ms-about__note,.ms-js .ms-service,.ms-js .ms-faq__wrap>*{opacity:0;transform:translateY(30px);transition:opacity .7s ease,transform .85s cubic-bezier(.16,1,.3,1),box-shadow .4s,border-color .4s}.ms-visible,.ms-service.ms-visible,.ms-about .ms-about__copy.ms-visible,.ms-about .ms-about__note.ms-visible,.ms-faq__wrap>.ms-visible{opacity:1;transform:none}}
+@media(max-width:1200px){.ms-expertise__grid{grid-template-columns:repeat(2,minmax(0,1fr))}.ms-service{min-height:320px}}
+@media(max-width:850px){.ms-about__inner,.ms-faq__wrap{grid-template-columns:1fr;gap:35px}.ms-about__note{min-height:350px}.ms-faq h2,.ms-about h2,.ms-expertise h2{font-size:clamp(47px,11vw,76px)}.ms-section-head{align-items:start}}
+@media(max-width:640px){.fig{height:clamp(290px,84vw,440px);bottom:var(--bar-h);width:clamp(235px,70vw,360px);aspect-ratio:auto;left:52%}.fig__card{bottom:7%;left:-3%;font-size:.7rem;min-height:38px}.hero__content{padding-bottom:calc(var(--fig-h) + 2rem)}.ms-about,.ms-expertise,.ms-faq{padding:72px 0}.ms-about__inner,.ms-faq__wrap{gap:35px}.ms-about h2,.ms-expertise h2,.ms-faq h2{font-size:clamp(48px,13vw,70px)}.ms-about__note{min-height:320px;padding:27px}.ms-note-number{font-size:51px}.ms-about__note p{font-size:21px;margin-top:30px}.ms-expertise__grid{grid-template-columns:1fr}.ms-service{min-height:275px}.ms-service h3{font-size:30px}.ms-section-number{display:none}.ms-faq__items summary{font-size:18px;padding:24px 0}.ms-expertise__disclaimer{font-size:12px}}
+
+/* Five services update — 3 November 2026 */
+.doors__row{--gap:clamp(.65rem,1.6vw,1.6rem);grid-template-columns:repeat(5,minmax(0,1fr))}
+@media (min-width:1024px){.doors__row{--gap:clamp(1rem,1.9vw,2rem)}}
+.doors .unit:nth-child(1){--door:#292523!important;--door-dk:#171515!important}
+.doors .unit:nth-child(2){--door:#4B4642!important;--door-dk:#2A2725!important}
+.doors .unit:nth-child(3){--door:#987A79!important;--door-dk:#735B5D!important}
+.doors .unit:nth-child(4){--door:#9B826D!important;--door-dk:#78634F!important}
+.doors .unit:nth-child(5){--door:#8C7595!important;--door-dk:#665672!important}
+.unit .plate{font-size:clamp(.55rem,.84vw,.8rem);white-space:normal;text-wrap:balance;text-align:center;max-width:88%;line-height:1.17}
+.doors__row .unit{min-width:0}
+@media(max-width:639.98px){
+  .doors{height:calc(100svh + 4 * 55svh)}
+  .doors__row{display:flex;grid-template-columns:none;--gap:var(--ug)}
+  .unit .plate{font-size:clamp(.8rem,3vw,1.05rem)}
+}
+@media(min-width:640px) and (max-width:1350px){.hdr .nav{gap:clamp(.25rem,.65vw,.75rem)}.hdr .nav button{font-size:clamp(.63rem,.74vw,.86rem)}}
+@media(min-width:640px) and (max-width:1180px){.hdr nav[aria-label="Primary"]{display:none}}
+.ms-expertise__grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+.ms-service{min-height:clamp(340px,26vw,450px)}
+.ms-service h3{font-size:clamp(24px,1.8vw,34px)}
+@media(max-width:1300px){.ms-expertise__grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:980px){.ms-expertise__grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:640px){.ms-expertise__grid{grid-template-columns:1fr}}
+/* The expanded nine-item overlay menu remains scrollable on shorter screens. */
+.navm{overflow-y:auto;overscroll-behavior:contain}
+.navm__nav{flex:1 0 auto;min-height:0;justify-content:center;padding-block:12px}
+.navm__item{padding-block:clamp(.24rem,.7vh,.5rem)}
+@media(min-width:640px){.navm__item{font-size:clamp(2rem,4vh,3.25rem)}}
+@media(max-height:700px){.navm__item{font-size:clamp(1.45rem,4.2vh,2.6rem)}}
+
+/* ============================================
+   LAYOUT PATCH 03 — HEADER + EXPERTISE
+   Prevent navigation/clock collisions and give each of the five
+   disciplines enough room for readable typography on desktop.
+   ============================================ */
+.hdr__in {gap:clamp(12px,1.15vw,22px)}
+.hdr nav[aria-label="Primary"] {min-width:0}
+.hdr .nav {align-items:center;min-width:0}
+.hdr .nav li {flex:none}
+.hdr__right {flex:none;min-width:0}
+.clock {max-width:100%}
+
+/* The complete nine-link navigation only fits on extra-wide displays. */
+@media (min-width:1200px) and (max-width:1699.98px) {
+  .hdr .nav {gap:clamp(10px,.86vw,16px)}
+  .hdr .nav li:nth-child(n+7) {display:none}
+  .hdr .nav button {font-size:clamp(13px,.97vw,15px);letter-spacing:-.018em}
+  .hdr .menu-btn {display:block;flex:none}
+  .hdr .menu-btn .word {display:none}
+  .hdr .menu-btn>span {padding:.63rem .76rem}
+  .hdr .clock {gap:.52rem;padding:.59rem .75rem;font-size:clamp(12px,.9vw,14px)}
+  .hdr .clock__date,.hdr .clock__sep {display:none}
+  .hdr .clock__ds {display:inline}
+  .hdr .clock__time {min-width:0}
+}
+@media (min-width:1200px) and (max-width:1399.98px) {
+  /* Keep the complete services list inside the accessible Menu rather than
+     placing links beneath the fixed clock badge. */
+  .hdr .nav li:nth-child(n+6) {display:none}
+}
+@media (min-width:1200px) and (max-width:1279.98px) {
+  .hdr .nav li:nth-child(n+5) {display:none}
+}
+@media (max-width:1199.98px) {
+  .hdr__right {min-width:0;width:100%}
+  .hdr .clock {margin-left:auto}
+}
+@media (max-width:420px) {
+  .hdr .clock__lbl,.hdr .clock__date,.hdr .clock__sep {display:none}
+  .hdr .clock__ds {display:inline}
+  .hdr .clock {gap:.4rem;padding:.52rem .6rem;font-size:.73rem}
+  .hdr .clock__time {min-width:0}
+  .hdr__in {gap:8px}
+}
+
+/* Five service cards: 3 on the first row, 2 balanced below at ordinary
+   desktop widths; all five stay in one row only on large wide displays. */
+.ms-expertise__grid {
+  display:grid;
+  grid-template-columns:repeat(6,minmax(0,1fr));
+  gap:clamp(16px,1.4vw,24px);
+  align-items:stretch;
+}
+.ms-expertise__grid > .ms-service {
+  min-width:0;
+  grid-column:span 2;
+  min-height:390px;
+  padding:clamp(26px,2.2vw,38px);
+  border-radius:clamp(20px,1.6vw,28px);
+}
+.ms-expertise__grid > .ms-service:nth-child(4),
+.ms-expertise__grid > .ms-service:nth-child(5) {grid-column:span 3}
+.ms-expertise__grid .ms-service__top {
+  min-height:112px;
+  align-items:flex-start;
+  margin-bottom:10px;
+  gap:18px;
+}
+.ms-expertise__grid .ms-service__symbol {
+  font-size:clamp(45px,3.5vw,63px);
+  line-height:1;
+  overflow-wrap:normal;
+  flex:none;
+}
+.ms-expertise__grid .ms-service h3 {
+  font-size:clamp(29px,2.25vw,37px);
+  font-weight:540;
+  line-height:1.12;
+  letter-spacing:-.05em;
+  margin:0 0 17px;
+  overflow-wrap:normal;
+}
+.ms-expertise__grid .ms-service p {
+  font-size:clamp(15px,1.04vw,18px);
+  line-height:1.58;
+  margin:0;
+  max-width:39ch;
+  flex:1 1 auto;
+}
+.ms-expertise__grid .ms-service button {
+  margin-top:29px;
+  min-height:45px;
+  align-self:stretch;
+}
+.ms-expertise__grid .ms-service button span {flex:none}
+.ms-expertise__disclaimer {display:none}
+@media (min-width:1750px) {
+  .ms-expertise__grid {grid-template-columns:repeat(5,minmax(0,1fr))}
+  .ms-expertise__grid > .ms-service,
+  .ms-expertise__grid > .ms-service:nth-child(4),
+  .ms-expertise__grid > .ms-service:nth-child(5) {grid-column:span 1}
+  .ms-expertise__grid .ms-service h3 {font-size:clamp(26px,1.72vw,34px)}
+}
+@media (min-width:680px) and (max-width:1049.98px) {
+  .ms-expertise__grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ms-expertise__grid > .ms-service,
+  .ms-expertise__grid > .ms-service:nth-child(4) {grid-column:span 1}
+  .ms-expertise__grid > .ms-service:nth-child(5) {grid-column:span 2}
+  .ms-expertise__grid > .ms-service {min-height:350px}
+}
+@media (max-width:679.98px) {
+  .ms-expertise__grid {grid-template-columns:minmax(0,1fr);gap:16px}
+  .ms-expertise__grid > .ms-service,
+  .ms-expertise__grid > .ms-service:nth-child(4),
+  .ms-expertise__grid > .ms-service:nth-child(5) {grid-column:span 1;min-height:305px;padding:27px}
+  .ms-expertise__grid .ms-service__top {min-height:85px}
+  .ms-expertise__grid .ms-service h3 {font-size:clamp(27px,7vw,34px)}
+  .ms-expertise__grid .ms-service p {font-size:16px}
+  .ms-expertise__grid .ms-service button {margin-top:25px}
+}
+
+/* The 88rem site-wide content width is intentionally kept for body text,
+   but the large-screen header / five-card gallery need more room. */
+@media (min-width:1700px) {
+  .hdr .shell {padding-inline:clamp(36px,3vw,58px)}
+  .hdr .nav {gap:clamp(12px,.85vw,18px)}
+}
+@media (min-width:1750px) {
+  .ms-expertise .shell {max-width:1800px;padding-inline:clamp(48px,4vw,76px)}
+}
+@media (min-width:1200px) and (max-width:1399.98px) {
+  .hdr .nav li:nth-child(5),.hdr .nav li:nth-child(6) {display:list-item}
+}
+@media (hover:hover) and (prefers-reduced-motion:no-preference) {
+  .ms-js .ms-expertise__grid .ms-service.ms-visible:hover {
+    transform:translateY(-8px);
+  }
+}
+
+/* ============================================
+   PREMIUM SVG SERVICE SYSTEM — NOV 2026
+   Editorial spacing, equal CTA baseline, actual scalable vector icons.
+   ============================================ */
+.ms-expertise{background:linear-gradient(135deg,#EEF0F4 0%,#E7EBF1 55%,#F0EFEA 100%)}
+html[data-mode="dark"] .ms-expertise{background:linear-gradient(145deg,#282422,#201D1C 60%,#302B29)}
+.ms-expertise .ms-section-head{align-items:end;gap:38px;margin-bottom:38px}
+.ms-expertise .ms-section-head h2{margin-bottom:0;font-size:clamp(50px,6.3vw,104px)}
+.ms-expertise .ms-section-number{margin:0 0 8px;color:var(--accent);font-weight:600}
+.ms-expertise__grid{column-gap:clamp(16px,1.4vw,23px);row-gap:clamp(16px,1.4vw,23px)}
+.ms-expertise__grid>.ms-service{
+  display:grid;grid-template-rows:108px minmax(0,1fr) auto;
+  min-width:0;min-height:405px;
+  padding:clamp(27px,2.3vw,38px);
+  background:#FCFBF8;border:1px solid #DEE0E4;border-radius:22px;
+  box-shadow:0 2px 2px rgba(23,21,21,.015);
+  position:relative;overflow:hidden;
+  transition:transform .42s cubic-bezier(.16,1,.3,1),border-color .3s ease,box-shadow .4s ease,background .3s;
+}
+.ms-expertise__grid>.ms-service::before{
+  content:"";position:absolute;top:0;left:26px;right:26px;height:2px;
+  background:linear-gradient(90deg,transparent,#B69B76,transparent);
+  transform:scaleX(0);opacity:0;transition:transform .4s ease,opacity .3s ease;
+}
+.ms-expertise__grid>.ms-service:hover{border-color:rgba(161,127,86,.55);box-shadow:0 26px 55px -40px rgba(30,43,67,.38)}
+.ms-expertise__grid>.ms-service:hover::before{transform:scaleX(1);opacity:1}
+.ms-expertise__grid .ms-service__top{min-height:0;height:100%;display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin:0}
+.ms-expertise__grid .ms-service__top>span:first-child{
+  padding-top:3px;font-size:12px;letter-spacing:.13em;font-weight:720;color:#876B4D;font-variant-numeric:tabular-nums
+}
+.ms-expertise__grid .ms-service__symbol{
+  flex:none;display:grid;place-items:center;width:76px;height:76px;
+  border-radius:17px;background:#F1F2F3;border:1px solid #E2E4E8;
+  box-shadow:inset 0 1px 0 #FFFFFF;
+  opacity:1;font-size:unset;line-height:1;
+  transition:transform .45s cubic-bezier(.16,1,.3,1),background .3s ease,border-color .3s ease;
+}
+.ms-expertise__grid .ms-service__symbol img{display:block;width:51px;height:51px;max-width:none;object-fit:contain}
+.ms-expertise__grid .ms-service:hover .ms-service__symbol{transform:translateY(-3px);background:#F2EDE6;border-color:#E4D7C6}
+.ms-expertise__grid .ms-service__copy{display:flex;flex-direction:column;align-self:stretch;min-width:0}
+.ms-expertise__grid .ms-service h3{
+  color:#1D2B3F;font-size:clamp(27px,2.07vw,36px);line-height:1.13;
+  letter-spacing:-.053em;font-weight:570;margin:0 0 19px;
+  min-height:2.26em;max-width:100%;text-wrap:balance;
+}
+.ms-expertise__grid .ms-service p{
+  font-size:clamp(15px,1.06vw,17px);line-height:1.63;letter-spacing:-.005em;
+  color:#626D7C;max-width:37ch;margin:0 0 14px;flex:none;
+}
+.ms-expertise__grid .ms-service button{
+  color:#243248;display:flex;align-items:center;justify-content:space-between;
+  margin:0;border-top:1px solid #DCE0E5;padding:21px 0 0;min-height:48px;
+  font-size:clamp(13px,.97vw,15px);letter-spacing:-.018em;font-weight:650;
+  gap:15px;line-height:1.35;
+}
+.ms-expertise__grid .ms-service__arrow{width:20px;height:20px;flex:none;color:#95734D;transition:transform .3s ease}
+.ms-expertise__grid .ms-service button:hover .ms-service__arrow{transform:translate(3px,-3px)}
+html[data-mode="dark"] .ms-expertise__grid>.ms-service{background:#25211F;border-color:#34435A}
+html[data-mode="dark"] .ms-expertise__grid .ms-service__symbol{background:#2E3A4C;border-color:#455269;box-shadow:none}
+html[data-mode="dark"] .ms-expertise__grid .ms-service h3{color:#F5F1EA}
+html[data-mode="dark"] .ms-expertise__grid .ms-service p{color:#B5C0CE}
+html[data-mode="dark"] .ms-expertise__grid .ms-service button{color:#EEE8DE;border-color:#425067}
+html[data-mode="dark"] .ms-expertise__grid .ms-service__top>span:first-child{color:#E1C7A3}
+html[data-mode="dark"] .ms-expertise__grid .ms-service__arrow{color:#D8BB91}
+@media(min-width:680px) and (max-width:1749.98px){
+  .ms-expertise__grid{grid-template-columns:repeat(6,minmax(0,1fr))}
+  .ms-expertise__grid>.ms-service{grid-column:span 2}
+  .ms-expertise__grid>.ms-service:nth-child(4){grid-column:2 / span 2}
+  .ms-expertise__grid>.ms-service:nth-child(5){grid-column:4 / span 2}
+}
+@media(min-width:680px) and (max-width:1049.98px){
+  .ms-expertise__grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .ms-expertise__grid>.ms-service,.ms-expertise__grid>.ms-service:nth-child(4){grid-column:span 1}
+  .ms-expertise__grid>.ms-service:nth-child(5){grid-column:1 / -1;max-width:calc(50% - 9px);width:100%;justify-self:center}
+}
+@media(min-width:1750px){
+  .ms-expertise__grid{grid-template-columns:repeat(5,minmax(0,1fr))}
+  .ms-expertise__grid>.ms-service,.ms-expertise__grid>.ms-service:nth-child(4),.ms-expertise__grid>.ms-service:nth-child(5){grid-column:span 1}
+  .ms-expertise__grid .ms-service h3{font-size:clamp(25px,1.65vw,33px)}
+}
+@media(max-width:679.98px){
+  .ms-expertise .ms-section-head{gap:14px;margin-bottom:29px}
+  .ms-expertise__grid{grid-template-columns:1fr}
+  .ms-expertise__grid>.ms-service,.ms-expertise__grid>.ms-service:nth-child(4),.ms-expertise__grid>.ms-service:nth-child(5){grid-column:1;min-height:320px;padding:26px;grid-template-rows:92px 1fr auto}
+  .ms-expertise__grid .ms-service__symbol{width:65px;height:65px;border-radius:14px}
+  .ms-expertise__grid .ms-service__symbol img{width:43px;height:43px}
+  .ms-expertise__grid .ms-service h3{font-size:clamp(27px,8.5vw,34px);min-height:0;margin-bottom:13px}
+  .ms-expertise__grid .ms-service p{font-size:15px}
+  .ms-expertise__grid .ms-service button{padding-top:17px}
+}
+@media(prefers-reduced-motion:reduce){.ms-expertise__grid>.ms-service,.ms-expertise__grid .ms-service__symbol{transition:none}}
+
+/* Contrast-safe porcelain SVG tiles in dark mode. */
+html[data-mode="dark"] .ms-expertise__grid .ms-service__symbol{background:#E9E8E5;border-color:#D4D6DA;box-shadow:inset 0 1px 0 #FFFFFF}
+html[data-mode="dark"] .ms-expertise__grid .ms-service:hover .ms-service__symbol{background:#F4EEE6;border-color:#E1C9AC}
+.hdr.stuck{background:color-mix(in srgb,var(--background) 94%,transparent);-webkit-backdrop-filter:blur(16px);backdrop-filter:blur(16px)}
+
+
+/* =========================================================
+   UPDATE 04 — Compact Services menu and contrast-safe About
+   ========================================================= */
+/* The previous five direct nav links were competing with the clock.
+   The five services now live in a properly aligned popover. */
+@media (min-width:1200px){
+  .hdr .nav{gap:clamp(21px,2.15vw,40px);align-items:center}
+  .hdr .nav>li{display:list-item!important}
+  .hdr .nav>li>button,.hdr .nav-services>summary{font-size:clamp(14px,1.03vw,17px);font-weight:510;letter-spacing:-.025em;color:var(--foreground);white-space:nowrap}
+  .hdr .nav>li>button>span{opacity:.9}
+  .hdr .nav-services>summary{display:flex;align-items:center;gap:7px}
+  .hdr .nav-services>summary svg{height:16px;width:16px;transition:transform .22s ease}
+  .hdr .nav-services[open]>summary svg{transform:rotate(180deg)}
+  .hdr .menu-btn{display:none!important}
+  .hdr__in{gap:clamp(16px,2.5vw,45px)}
+  .hdr .clock{font-size:clamp(12px,.85vw,14px);gap:.5rem;padding:.65rem .85rem}
+}
+.nav-services{position:relative}
+.nav-services>summary{cursor:pointer;list-style:none;min-height:44px;outline-offset:5px}
+.nav-services>summary::-webkit-details-marker{display:none}
+.nav-services__panel{position:absolute;left:-28px;top:calc(100% + 15px);width:min(370px,85vw);padding:17px 14px 14px;background:#FFFEFB;border:1px solid #D8DCE2;border-radius:19px;box-shadow:0 24px 62px rgba(17,27,44,.18),0 4px 14px rgba(17,27,44,.06);z-index:100;animation:msMenuIn .2s ease both}
+.nav-services__panel:before{content:"";position:absolute;left:20px;right:20px;top:-16px;height:17px}
+@keyframes msMenuIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.nav-services__intro{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:4px 15px 11px;font-size:10px;letter-spacing:.14em;font-weight:700;color:#90724E}
+.nav-services__panel button{width:100%;display:grid;grid-template-columns:32px 1fr 20px;gap:13px;align-items:center;padding:14px 15px;text-align:left;color:#171515;font-weight:570;font-size:15px;border-radius:11px;transition:background .16s ease,color .16s ease}
+.nav-services__panel button:hover,.nav-services__panel button:focus-visible{background:#F0EAE0;color:#17253A}
+.nav-services__num{font-size:11px;letter-spacing:.08em;color:#947553;font-weight:700}
+.nav-services__arrow{text-align:right;color:#947553;font-size:18px;transition:transform .2s ease}
+.nav-services__panel button:hover .nav-services__arrow{transform:translate(2px,-2px)}
+html[data-mode="dark"] .nav-services__panel{background:#25211F;border-color:#3A4B62;box-shadow:0 24px 65px rgba(0,0,0,.4)}
+html[data-mode="dark"] .nav-services__panel button{color:#F4F1EB}
+html[data-mode="dark"] .nav-services__panel button:hover,html[data-mode="dark"] .nav-services__panel button:focus-visible{background:#34445A}
+html[data-mode="dark"] .nav-services__intro,html[data-mode="dark"] .nav-services__num,html[data-mode="dark"] .nav-services__arrow{color:#DEC6A2}
+@media (min-width:1200px) and (max-width:1439.98px){
+  .hdr .nav{gap:clamp(13px,1.65vw,25px)}
+  .hdr .nav>li>button,.hdr .nav-services>summary{font-size:clamp(13px,1.06vw,15px)}
+  .hdr .clock__date,.hdr .clock__sep{display:none}
+  .hdr .clock__ds{display:inline}
+  .hdr .clock__time{min-width:0}
+}
+/* Full-screen menu: Services accordion containing the five disciplines. */
+.navm__services>summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:14px;justify-content:initial}
+.navm__services>summary::-webkit-details-marker{display:none}
+.navm__services>summary .navm__chevron{margin-left:auto;font-size:.7em;transition:transform .2s ease}
+.navm__services[open] .navm__chevron{transform:rotate(180deg)}
+.navm__sublist{padding:8px 0 16px clamp(18px,4vw,55px);display:grid;gap:4px}
+.navm__subitem{display:flex;align-items:center;gap:16px;width:100%;max-width:690px;padding:11px 14px;text-align:left;border-radius:9px;font-size:clamp(15px,1.6vw,23px);color:var(--foreground);transition:background .2s,color .2s}
+.navm__subitem span:nth-child(2){flex:1}
+.navm__subitem small{font-size:11px;font-weight:650;color:var(--accent)}
+.navm__subitem:hover,.navm__subitem:focus-visible{background:var(--surface);color:var(--accent)}
+@media (max-width:639.98px){.navm__sublist{padding-left:0}.navm__subitem{font-size:16px;padding:9px 8px}.navm__services>summary{gap:10px}}
+
+/* Root cause of the screenshot's washed-out colors: the sticky My Process
+   ambient light layer was painted above the following section (story z-index:1).
+   New blocks get their own stacking context, above the story glow. */
+.ms-about,.ms-expertise,.ms-faq{z-index:2;isolation:isolate}
+.ms-about{background:#F8F6F2;color:#171515}
+.ms-about .ms-about__copy h2{color:#171515}
+.ms-about .ms-about__copy h2 em{color:#9A7854}
+.ms-about .ms-about__copy p{color:#4D5868}
+.ms-about .ms-about__copy p strong{color:#171515}
+.ms-about .ms-kicker{color:#90704B}
+.ms-about .ms-about__note{background:linear-gradient(145deg,#293C58 0%,#1E2F48 55%,#152238 100%);color:#F8F5EF;box-shadow:0 25px 55px -38px rgba(20,31,51,.45)}
+.ms-about .ms-about__note p{color:#F1EAE0}
+.ms-about .ms-note-number{color:#F8F3E9}
+.ms-about .ms-note-label{color:#E4C99F}
+.ms-about .ms-text-link{color:#22324A;border-color:#9A7854}
+html[data-mode="dark"] .ms-about{background:#121F30;color:#F3EDE4}
+html[data-mode="dark"] .ms-about .ms-about__copy h2{color:#F3EDE4}
+html[data-mode="dark"] .ms-about .ms-about__copy h2 em{color:#D6B88A}
+html[data-mode="dark"] .ms-about .ms-about__copy p{color:#C7D0DD}
+html[data-mode="dark"] .ms-about .ms-about__copy p strong{color:#FFF9F1}
+html[data-mode="dark"] .ms-about .ms-kicker{color:#D9BA8B}
+html[data-mode="dark"] .ms-about .ms-about__note{background:linear-gradient(145deg,#4A4038,#342D29 58%,#25211F);border:1px solid rgba(220,192,151,.16)}
+html[data-mode="dark"] .ms-about .ms-text-link{color:#F4EDE4;border-color:#D4B384}
+/* Keep the ornamental sun behind the statement, especially on phones. */
+.ms-about__note p{position:relative;z-index:1}
+.ms-about .ms-note-sun{pointer-events:none;opacity:.11}
+@media(max-width:640px){
+  .ms-about .ms-note-sun{font-size:88px;right:19px;bottom:12px;opacity:.10}
+  .ms-about{scroll-margin-top:86px}
+}

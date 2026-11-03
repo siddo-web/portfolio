@@ -1,0 +1,37 @@
+/* Muhammad Siddique V5: fixed hero layers, consistently colour portrait, spacing */
+#figBase{filter:none!important;opacity:1!important;visibility:visible!important}
+#figCanvas{display:none!important}
+.fig img{object-fit:cover;object-position:center 32%;border-radius:46% 46% 7% 7% / 33% 33% 8% 8%;}
+/* Keep the moving paper pad in its own row; never on top of the preceding text. */
+.hero .h1{overflow:visible;text-wrap:initial}
+.hero .h1 .cal-line{display:block;position:relative;z-index:1;line-height:1;min-height:2.20em;padding-top:.44em;padding-bottom:.16em;margin-top:.17em;margin-bottom:.08em;overflow:visible}
+.hero .h1 .cal{font-size:.71em;max-width:100%;isolation:isolate;vertical-align:top}
+.hero .hero__left{position:relative;z-index:4;min-width:0}
+.hero .ctas{position:relative;z-index:5}
+.hero .fig{isolation:isolate;overflow:hidden;border-radius:46% 46% 7% 7% / 33% 33% 8% 8%}
+.hero .fig__card{z-index:8}
+@media(min-width:1024px){
+ .hero .hero__content{grid-template-columns:repeat(12,minmax(0,1fr));align-content:center;padding-top:7.7rem;padding-bottom:5.2rem}
+ .hero .hero__left{grid-column:1/span 7;max-width:52rem;gap:1.35rem;padding-right:1.8rem}
+ .hero .h1{font-size:clamp(3.8rem,4.35vw,4.75rem)}
+ .hero .fig{right:calc(max(0px,(100% - var(--container-shell))/2) + var(--gut-lg));}
+}
+@media(min-width:1024px) and (max-width:1280px){
+ .hero .hero__left{grid-column:1/span 7;padding-right:1rem}
+ .hero .h1{font-size:3.65rem}
+ .hero .cal{font-size:.67em}
+ .hero .fig{height:min(calc(100% - var(--bar-h) - 9rem),44rem)}
+}
+@media (max-width:1023.98px){
+ .hero .h1 .cal-line{min-height:2.20em;margin-top:.13em;padding-top:.4em}
+ .hero .h1 .cal{font-size:.72em}
+ .hero .fig{height:var(--fig-h);bottom:var(--bar-h)}
+}
+@media (max-width:639.98px){
+ .hero .hero__content{padding-top:8.1rem;gap:1rem}
+ .hero .hero__left{gap:1.2rem}
+ .hero .h1{font-size:clamp(2.15rem,10.2vw,3.1rem)}
+ .hero .h1 .cal-line{min-height:2.25em;padding-top:.42em;margin-bottom:.12em}
+ .hero .ctas{margin-top:.15rem}
+ .hero .fig{max-height:26rem}
+}

@@ -1,0 +1,17 @@
+/* Muhammad Siddique · final charcoal / champagne palette · primary #171515 */
+:root{--background:#F8F6F1;--foreground:#171515;--ink:#171515;--fg-rgb:23,21,21;--muted:#6F6862;--surface:#EFECE6;--surface-2:#E8E2DA;--accent:#9C7C57;--line:#DED8D0;--btn-bg:#171515;--btn-fg:#FBF8F3;--btn-badge-bg:#D8BA92;--btn-badge-fg:#171515;--hero-from:#F9F7F2;--hero-mid:#F3F1EC;--hero-to:#E7E2DC;--panel:#F9F6F0;--field:rgba(23,21,21,.05);color-scheme:light}
+html[data-mode="dark"]{--background:#171515;--foreground:#F6F3EC;--ink:#F6F3EC;--fg-rgb:246,243,236;--surface:#24211F;--surface-2:#302B28;--accent:#D7B990;--muted:#B8ADA1;--line:rgba(240,226,209,.16);--btn-bg:#E8D5BC;--btn-fg:#171515;--btn-badge-bg:#171515;--btn-badge-fg:#E8D5BC;--hero-from:#292422;--hero-mid:#211D1B;--hero-to:#171515;--panel:#24211F;--field:rgba(240,226,209,.07);color-scheme:dark;background:#171515!important}
+html:not([data-mode="dark"]){background:#F8F6F1!important}
+.hero{background:radial-gradient(105% 80% at 64% 36%,var(--hero-from),var(--hero-mid) 48%,var(--hero-to))!important}
+.hero::before{background:radial-gradient(120% 90% at 63% 29%,#34302B 0%,#24201E 49%,#171515 100%)!important}
+.ms-about__note{background:linear-gradient(142deg,#3D3732,#24211F 61%,#171515)!important;color:#F6F1E9}
+.ms-about .ms-about__copy h2,.ms-about .ms-about__copy p strong{color:var(--foreground)!important}
+.ms-expertise .ms-service h3{color:var(--foreground)!important}
+html[data-mode="dark"] .ms-expertise{background:linear-gradient(140deg,#211E1C,#171515)!important}
+html[data-mode="dark"] .ms-about__note{background:linear-gradient(142deg,#39312B,#171515)!important}
+.doors .unit:nth-child(1){--door:#332E29!important;--door-dk:#171515!important}
+.doors .unit:nth-child(2){--door:#6E655C!important;--door-dk:#48413A!important}
+.fig__card{background:rgba(23,21,21,.88)!important}
+.pill--dark,.ms-contact-submit{background:#171515;color:#fff}
+.ms-hero-tags,.ms-inner-cta{border-color:rgba(23,21,21,.12)}
+html[data-mode="dark"] .pill--dark{background:#E8D5BC!important;color:#171515!important}

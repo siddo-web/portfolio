@@ -1,0 +1,25 @@
+/* Shared inner navigation — same five-service grouping as homepage */
+.rn{overflow:visible!important}
+.rn__in{position:relative;min-width:0}
+.rn nav{flex:1;min-width:0}
+.ms-nav-services{position:relative;list-style:none}
+.ms-services-dd{position:relative}
+.ms-services-dd summary{list-style:none;display:flex;align-items:center;gap:.3rem;cursor:pointer;white-space:nowrap;font:500 .98rem/1.5 'Onest',sans-serif;opacity:.83;color:var(--fg);}
+.ms-services-dd summary::-webkit-details-marker{display:none}
+.ms-services-dd summary svg{height:15px;width:15px;transition:transform .22s}
+.ms-services-dd[open] summary svg{transform:rotate(180deg)}
+.ms-services-dd:hover summary,.ms-services-dd[open] summary{opacity:1}
+.ms-services-pop{position:absolute;left:50%;top:calc(100% + 17px);transform:translateX(-50%);width:310px;max-width:min(90vw,310px);padding:14px;border:1px solid rgba(var(--fg-rgb),.15);border-radius:18px;background:var(--bg);color:var(--fg);box-shadow:0 23px 55px rgba(0,0,0,.16);z-index:200;white-space:normal}
+.ms-services-pop::before{content:'';position:absolute;left:0;right:0;top:-22px;height:22px}
+.ms-services-cap{display:flex;justify-content:space-between;padding:7px 9px 13px;font-size:10px;letter-spacing:.12em;opacity:.55;font-weight:650}
+.ms-services-cap small{font-size:10px;opacity:1}
+.rn nav .ms-services-pop button{width:100%;display:flex;align-items:center;gap:12px;padding:12px 10px;font-size:14px;font-weight:500;text-align:left;border-radius:9px;opacity:1;white-space:nowrap}
+.ms-services-pop button small{color:#B18D5D;font-size:10px;letter-spacing:.04em}
+.ms-services-pop button span{margin-left:auto;color:#B18D5D}
+.rn nav .ms-services-pop button:hover{background:rgba(var(--fg-rgb),.06);text-decoration:none}
+.rn__clock{flex-shrink:0}
+@media(min-width:1200px){.rn__in{gap:1.5rem}.rn nav ul{gap:clamp(.8rem,1.35vw,1.5rem);justify-content:center}.rn nav button{font-size:.98rem}.rn__clock{font-size:.82rem}}
+@media(min-width:1200px) and (max-width:1430px){.rn__clock .d{display:none}.rn__clock{gap:.4rem;padding:.55rem .65rem}.rn__in{gap:.6rem}.rn nav ul{gap:1rem}}
+@media(min-width:1200px) and (max-width:1300px){.rn__clock{display:none}.rn nav ul{justify-content:flex-end}}
+@media(max-width:1199.98px){.rn__panel{overflow-y:auto;overscroll-behavior:contain}.rn__plist{flex:none;justify-content:center;gap:.13rem;margin:auto 0;padding:3rem 0}.ms-mobile-services{color:var(--fg);width:100%}.ms-mobile-services summary{list-style:none;display:flex;align-items:center;justify-content:space-between;gap:.8rem;font:inherit;font-size:clamp(1.75rem,5vw,3.2rem);letter-spacing:-.04em;cursor:pointer;padding:.45rem 0}.ms-mobile-services summary::-webkit-details-marker{display:none}.ms-mobile-services summary{counter-increment:rnc}.ms-mobile-services summary::before{content:counter(rnc,decimal-leading-zero);font:600 11px/1 ui-monospace,monospace;color:#B18D5D;letter-spacing:0;margin-right:.15rem}.ms-mobile-services summary span{margin-left:auto;font-size:1.2rem;opacity:.5;transition:transform .2s}.ms-mobile-services[open] summary span{transform:rotate(180deg)}.ms-mobile-options{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.2rem .8rem;padding:.65rem .2rem 1rem 2.4rem}.rn__plist .ms-mobile-options button{font-size:clamp(.86rem,2.4vw,1rem);text-align:left;line-height:1.35;letter-spacing:0;transform:none!important;opacity:1!important;border-bottom:1px solid rgba(var(--fg-rgb),.1);min-width:0}.rn__plist .ms-mobile-options button::before{display:none}}
+@media(max-width:530px){.ms-mobile-options{grid-template-columns:1fr;padding-left:1.8rem}.ms-mobile-services summary{font-size:1.75rem}}

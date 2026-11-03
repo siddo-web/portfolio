@@ -1,0 +1,5 @@
+/* Light personalization over the original captured portfolio gallery styles. */
+:root{--accent:#98754C;--background:#F7F5F0;--foreground:#1C293D}
+html[data-mode=dark]{--accent:#D7BB91}
+.ms-inner-demo{display:block;position:relative;z-index:10;max-width:1150px;margin:80px auto 0;padding:12px 18px;font-family:'Onest',sans-serif;background:rgba(160,129,90,.07);border:1px solid rgba(160,129,90,.26);border-radius:12px;color:inherit;font-size:12px;line-height:1.5;letter-spacing:.01em}
+@media(max-width:750px){.ms-inner-demo{margin:78px 18px 0;padding:12px;font-size:11px}}
