@@ -14,7 +14,8 @@
         "assets/uploads/1793743028726-f1a5ddd138435ace.webp"
       ],
       "featured": false,
-      "published": true,
+      "replaceLegacy": false,
+      "published": false,
       "createdAt": "2026-11-03T21:57:10.635Z",
       "updatedAt": "2026-11-03T21:57:10.636Z"
     }

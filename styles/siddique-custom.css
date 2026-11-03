@@ -106,7 +106,7 @@ html:not([data-mode="dark"]){background:#F2F1ED}
 .doors .unit:nth-child(3){--door:#987A79!important;--door-dk:#735B5D!important}
 .doors .unit:nth-child(4){--door:#9B826D!important;--door-dk:#78634F!important}
 .doors .unit:nth-child(5){--door:#8C7595!important;--door-dk:#665672!important}
-.unit .plate{font-size:clamp(.55rem,.84vw,.8rem);white-space:normal;text-wrap:balance;text-align:center;max-width:88%;line-height:1.17}
+.unit .plate{font-size:clamp(.55rem,.84vw,.92rem);white-space:normal;text-wrap:balance;text-align:center;max-width:88%;line-height:1.17}
 .doors__row .unit{min-width:0}
 @media(max-width:639.98px){
   .doors{height:calc(100svh + 4 * 55svh)}
