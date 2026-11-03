@@ -2,10 +2,3 @@
 
 /* Phase 1: featured flag visibility in the project library */
 .status.featured{margin-left:7px;border-color:#b69c72;background:#eee4d4;color:#55432c}
-
-/* Phase 2: single-admin Supabase email authentication and import controls */
-[hidden]{display:none!important}
-#emailGroup{display:grid;gap:8px}
-.forgot-link{display:inline-block;color:#765940;font-size:13px;text-decoration:underline;text-underline-offset:4px;margin-top:14px}
-.side-bottom small{display:block;overflow-wrap:anywhere;font-size:11px;opacity:.72;margin-top:8px}
-#importBtn{font-size:12px}
