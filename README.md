@@ -1,3 +1,7 @@
+## Project images (current build)
+
+Every project card now displays a bundled local WebP image. Missing captures have title-specific, replacement-ready placeholders; actual user-provided screenshots remain unchanged. See **`PROJECT_IMAGE_REPLACEMENT_GUIDE.md`** and **`PROJECT_IMAGE_MAP.json`** to find filenames and update screenshots. The old remote screenshot loader has been disabled.
+
 ## Latest update — screenshots and capture cleanup
 
 See `SCREENSHOTS_AND_CLEANUP.md` for the exact list of 14 real attached screenshots, site screenshot fallbacks, and instructions for capturing remaining live screenshots locally. The obsolete capture-generated source metadata and old sample video artwork were removed.

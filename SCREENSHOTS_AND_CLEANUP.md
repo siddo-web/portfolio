@@ -1,3 +1,5 @@
+> **Updated 5 Nov 2026:** All project cards now have local screenshots or individual named WebP placeholders. The older third-party screenshot service described below is disabled. Refer to `PROJECT_IMAGE_REPLACEMENT_GUIDE.md` for current instructions.
+
 # Portfolio cleanup and screenshot update
 
 ## What was changed

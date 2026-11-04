@@ -1,0 +1,1 @@
+The previous screenshot capture script has been retired. Every active project card is now backed by a local WebP image; see PROJECT_IMAGE_REPLACEMENT_GUIDE.md.
