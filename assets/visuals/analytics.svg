@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="1680" viewBox="0 0 1120 1680" role="img" aria-label="Digital marketing analytics illustrative concept"><rect width="1120" height="1680" fill="#F1F3F2"/>
+<rect x="0" y="0" width="1120" height="95" rx="0" fill="#FFFFFF" />
+<circle cx="65" cy="47" r="16" fill="#152934" opacity="1"/>
+<circle cx="65" cy="47" r="6" fill="#FFFFFF" opacity="1"/>
+<text x="100" y="56" font-family="Arial,Helvetica,sans-serif" font-size="22" font-weight="700" fill="#152934" letter-spacing="1.3">STUDIO / DIGITAL</text>
+<text x="1060" y="54" font-family="Arial,Helvetica,sans-serif" font-size="15" font-weight="700" fill="#667C86" letter-spacing="2.2" text-anchor="end">CONCEPT PREVIEW</text>
+<text x="65" y="147" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="700" fill="#8FA8B7" letter-spacing="2">06 / MEASUREMENT</text>
+<text x="65" y="252" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700" fill="#152934" >Better questions.</text>
+<text x="65" y="340" font-family="Arial,Helvetica,sans-serif" font-size="78" font-weight="700" fill="#152934" >Better decisions.</text>
+<text x="65" y="399" font-family="Arial,Helvetica,sans-serif" font-size="25" font-weight="400" fill="#667C86" >Look at useful signals, not vanity charts.</text>
+<rect x="65" y="451" width="990" height="890" rx="20" fill="#FFFFFF" />
+<text x="100" y="513" font-family="Arial,Helvetica,sans-serif" font-size="21" font-weight="700" fill="#152934" letter-spacing="2">ANALYTICS WORKSPACE</text>
+<text x="100" y="552" font-family="Arial,Helvetica,sans-serif" font-size="19" font-weight="400" fill="#667C86" >Sample dashboard • Illustrative data</text>
+<rect x="100" y="605" width="276" height="147" rx="13" fill="#F1F3F2" />
+<text x="120" y="653" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#667C86" >TRAFFIC SOURCES</text>
+<text x="120" y="716" font-family="Arial,Helvetica,sans-serif" font-size="35" font-weight="700" fill="#152934" >5 channels</text>
+<rect x="404" y="605" width="276" height="147" rx="13" fill="#F1F3F2" />
+<text x="424" y="653" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#667C86" >TOP CONTENT</text>
+<text x="424" y="716" font-family="Arial,Helvetica,sans-serif" font-size="35" font-weight="700" fill="#152934" >12 pages</text>
+<rect x="708" y="605" width="276" height="147" rx="13" fill="#F1F3F2" />
+<text x="728" y="653" font-family="Arial,Helvetica,sans-serif" font-size="16" font-weight="700" fill="#667C86" >GOALS TRACKED</text>
+<text x="728" y="716" font-family="Arial,Helvetica,sans-serif" font-size="35" font-weight="700" fill="#152934" >3 events</text>
+<text x="100" y="834" font-family="Arial,Helvetica,sans-serif" font-size="26" font-weight="700" fill="#152934" >How a signal changes over time</text>
+<line x1="118" y1="912" x2="997" y2="912" stroke="#CDD7D7" stroke-width="2" />
+<line x1="118" y1="974" x2="997" y2="974" stroke="#CDD7D7" stroke-width="2" />
+<line x1="118" y1="1036" x2="997" y2="1036" stroke="#CDD7D7" stroke-width="2" />
+<line x1="118" y1="1098" x2="997" y2="1098" stroke="#CDD7D7" stroke-width="2" />
+<line x1="118" y1="1160" x2="997" y2="1160" stroke="#CDD7D7" stroke-width="2" />
+<path d="M118 1135 C240 1120 240 1020 347 1036 S498 934 610 965 S758 882 846 907 S943 843 997 857" fill="none" stroke="#5C8B91" stroke-width="8" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M118 1192 C250 1171 260 1166 347 1139 S520 1135 620 1087 S790 1048 895 1065 S950 1035 997 1012" fill="none" stroke="#D1A97E" stroke-width="5" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="100" y="1235" width="220" height="38" rx="18" fill="#E2EBEA" />
+<circle cx="124" cy="1254" r="7" fill="#5C8B91" opacity="1"/>
+<text x="145" y="1261" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#152934" >Example series A</text>
+<rect x="346" y="1235" width="220" height="38" rx="18" fill="#EFE7DE" />
+<circle cx="370" cy="1254" r="7" fill="#D1A97E" opacity="1"/>
+<text x="391" y="1261" font-family="Arial,Helvetica,sans-serif" font-size="17" font-weight="400" fill="#152934" >Example series B</text>
+<text x="65" y="1435" font-family="Arial,Helvetica,sans-serif" font-size="44" font-weight="700" fill="#152934" >Measure what supports the goal.</text>
+<text x="65" y="1486" font-family="Arial,Helvetica,sans-serif" font-size="23" font-weight="400" fill="#667C86" >Understand the outcome and decide what to change.</text>
+<line x1="65" y1="1580" x2="1055" y2="1580" stroke="#667C86" stroke-width="2" />
+<text x="65" y="1625" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#667C86" letter-spacing="1.2">DESIGN EXPLORATION   /   NOT CLIENT PERFORMANCE DATA</text>
+<text x="1055" y="1625" font-family="Arial,Helvetica,sans-serif" font-size="18" font-weight="700" fill="#152934" letter-spacing="1" text-anchor="end">MS / STUDIO</text>
+</svg>
