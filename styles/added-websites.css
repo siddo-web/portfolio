@@ -1,0 +1,5 @@
+/* Additional website gallery — mirrors the existing site’s restrained editorial language. */
+.ms-additional-projects{padding:clamp(4rem,9vw,8rem) max(24px,calc((100vw - 1180px)/2));background:#e8e4e0;color:#1a1818;border-top:1px solid rgba(26,24,24,.12)}
+.ms-additional-inner{max-width:950px}.ms-additional-kicker{font:600 .76rem/1.3 'Onest',sans-serif;letter-spacing:.17em;color:#93705b;margin-bottom:1.4rem}
+.ms-additional-projects h2{font:600 clamp(2.4rem,6vw,5rem)/1.04 'Onest',sans-serif;letter-spacing:-.045em;max-width:14ch}.ms-additional-projects em{font-weight:450;color:#827d79;font-style:normal}
+.ms-additional-projects p:not(.ms-additional-kicker){font:450 clamp(1rem,1.65vw,1.25rem)/1.65 'Onest',sans-serif;max-width:62ch;margin:1.35rem 0 2rem;color:#5c5551}.ms-additional-projects a{display:inline-flex;align-items:center;gap:.9rem;padding:.9rem 1.3rem;border:1px solid #3e3633;border-radius:999px;font:600 1rem 'Onest',sans-serif;text-decoration:none;color:inherit;transition:transform .2s,background .2s}.ms-additional-projects a:hover{background:rgba(0,0,0,.06);transform:translateY(-2px)}

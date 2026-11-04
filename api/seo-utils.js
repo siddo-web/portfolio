@@ -1,5 +1,5 @@
 'use strict';
-const ROUTES=["/", "/wordpress/", "/shopify/", "/webflow/", "/wix/", "/other-cms/", "/explorer.html", "/privacy.html"];
+const ROUTES=["/", "/wordpress/", "/shopify/", "/webflow/", "/wix/", "/other-cms/", "/selected-sites/", "/explorer.html", "/privacy.html"];
 function siteUrl(req){
   const configured=String(process.env.SITE_URL||'').trim();
   if(configured){try{const u=new URL(configured);if(u.protocol==='https:'||u.hostname==='localhost')return u.origin;}catch{}}

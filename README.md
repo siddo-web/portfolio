@@ -1,3 +1,5 @@
+> **Newest update:** See `RELEASE_NOTES_25_WEBSITES.md` and `USER_PROJECTS_25_SITES.md` for the 25 added website references, six published work categories, and media replacement instructions. Older change notes document prior revisions.
+
 # Muhammad Siddique — CMS Developer Portfolio (November 2026 revision)
 
 **Latest release:** Separate WordPress, Shopify, Webflow, Wix and Other CMS categories; original interactive layered profile card and bounded loader restored; Webflow hanging-frame gallery enlarged with an additional true sticky-card stack; 10+ documented entries or clearly labelled service briefs per category; SEO canonicals, sitemap and permanent redirects updated.

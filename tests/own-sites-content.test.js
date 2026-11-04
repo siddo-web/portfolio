@@ -5,7 +5,7 @@ test('user supplied websites and work descriptions are present on matching servi
 test('10+ honest, individually described entries per service without invented linked client projects',()=>{
  for(const slug of Object.keys(expected)){
   const txt=read(slug+'/index.html');
-  const count=slug==='webflow'?(txt.match(/<article class="vnext-work__card"/g)||[]).length:(txt.match(/<article class="card(?: flip)?"/g)||[]).length;
+  const count=slug==='webflow'?(txt.match(/<article\b[^>]*class="vnext-work__card"/g)||[]).length:(txt.match(/<article class="card(?: flip)?"/g)||[]).length;
   assert(count>=10,slug+' '+count);assert(txt.includes('Media to be added')||txt.includes('Project media can be added'),slug);
  }
  for(const slug of ['webflow','wix'])assert(read(slug+'/index.html').includes('not a completed client'),slug);
