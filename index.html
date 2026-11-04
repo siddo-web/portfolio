@@ -920,6 +920,33 @@ body{margin:0}
 .sf__legal a{color:inherit;text-decoration:underline;text-underline-offset:.2em;text-decoration-color:rgba(var(--sf-rgb),.35)}.sf__legal a:hover{color:var(--sf-fg)}
 @media (pointer:coarse),(max-width:767.98px){.sf__legal a{min-height:44px;display:inline-flex;align-items:center}}
 @media (prefers-reduced-motion:reduce){.sf__eye i{animation:none}}
+
+/* Premium profile card — present immediately; do not rely on the removed 3D iframe. */
+.holo[hidden],.holo__lite[hidden],.holo__ld[hidden]{display:none!important}
+.hc__back{background:#132b29;color:#f6f1e9}
+.hc__back-panel{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;gap:1.7rem;
+ padding:clamp(1.6rem,5%,2.6rem);background:radial-gradient(105% 75% at 90% 0,rgba(95,179,156,.26),transparent 64%),
+ repeating-linear-gradient(105deg,transparent,transparent 38px,rgba(255,255,255,.035) 39px,transparent 40px),#142b29;
+ border:2px solid #9bd2bd;border-radius:4.2%/3%;box-sizing:border-box;text-align:left;overflow:hidden}
+.hc__back-top,.hc__back-bottom,.hc__back-main{display:flex;flex-direction:column;position:relative;z-index:1}
+.hc__back-top{flex-direction:row;justify-content:space-between;align-items:flex-start}
+.hc__back-monogram{font:800 clamp(1.7rem,4vw,2.5rem)/1 'Onest',sans-serif;letter-spacing:-.09em}
+.hc__back-monogram span,.hc__back-heading span{color:#98cbb5}
+.hc__back-edition,.hc__back-label,.hc__back-services,.hc__back-foot{font:600 clamp(.52rem,1.5vw,.71rem)/1.5 'Onest',sans-serif;letter-spacing:.16em}
+.hc__back-edition{opacity:.7}
+.hc__back-main{gap:1.45rem;flex:1;justify-content:center}
+.hc__back-label{color:#a2c6b7}
+.hc__back-heading{font:800 clamp(2.1rem,7.5vw,4.3rem)/.98 'Onest',sans-serif;letter-spacing:-.075em}
+.hc__back-text{font:400 clamp(.83rem,2.6vw,1.12rem)/1.55 'Onest',sans-serif;max-width:18em;color:#e2e7df}
+.hc__back-bottom{gap:1.65rem;padding-top:1.5rem;border-top:1px solid rgba(163,203,181,.45)}
+.hc__back-services{color:#dbede2;font-size:clamp(.69rem,1.9vw,.94rem);letter-spacing:.11em}
+.hc__back-foot{color:#aac4b7;letter-spacing:.08em;font-size:clamp(.48rem,1.35vw,.61rem)}
+/* Source project shipped without card/body.webp or card/sheen.webp masks. Use
+   low-strength highlights rather than requesting those missing masks. */
+.hc__front .hc__foil{-webkit-mask-image:none;mask-image:none;mix-blend-mode:screen;opacity:calc(.045 + var(--lift) * .045)}
+.hc__front .hc__sheen{-webkit-mask-image:none;mask-image:none;opacity:calc(.08 + var(--lift) * .1)}
+@media (max-height:540px){.holo__lite{gap:.35rem}.hc{width:min(72vw,calc(69svh * .716),34rem)}}
+@media (prefers-reduced-motion:reduce){.holo__lite .hc,.hc__in{transition:none!important}}
 /* ---------- floating back-to-top ---------- */
 .totop{--tt-bg:#1A1818;--tt-fg:#E8E4E0;--tt-ring:232,228,224;position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:60;
   display:grid;place-items:center;width:3.25rem;height:3.25rem;padding:0;border:0;border-radius:50%;background:var(--tt-bg);color:var(--tt-fg);cursor:pointer;
@@ -1065,7 +1092,7 @@ self.Worker=function(u,o){var a=alt(u)||u,abs=new URL(a,location.href).href;var 
       <div class="fig" id="fig">
         <img id="figBase" src="assets/images/muhammad-siddique-portrait.jpg" alt="" decoding="async" fetchpriority="high" aria-hidden="true">
         <canvas id="figCanvas" aria-hidden="true"></canvas>
-        <button class="fig__card" id="holoOpen" aria-haspopup="dialog" aria-controls="holo">My creative card</button>
+        <button class="fig__card" id="holoOpen" aria-haspopup="dialog" aria-controls="holo">My profile card</button>
       </div>
     </div>
 
@@ -1395,11 +1422,15 @@ self.Worker=function(u,o){var a=alt(u)||u,abs=new URL(a,location.href).href;var 
 </div>
 
 <!-- ============ Ability card ============ -->
-<div class="holo" id="holo" role="dialog" aria-modal="true" aria-label="Muhammad Siddique's creative card" hidden>
+<div class="holo" id="holo" role="dialog" aria-modal="true" aria-label="Muhammad Siddique Premium Profile Card" hidden>
   <div class="holo__ld" id="holoLd" aria-hidden="true"><div class="cl" aria-hidden="true"><p class="cl__name">Muhammad Siddique</p><div class="cl__line"><i></i></div><p class="cl__row"><span>Loading the card</span><b id="holoPct">0%</b></p></div></div>
   <div class="holo__lite" id="holoLite" hidden>
-    <button class="hc" id="hc" aria-label="Flip the card"><i class="hc__aura"></i><span class="hc__in"><span class="hc__face hc__front"><span class="hc__win"><img class="hc__bg" src="assets/images/4c7752569d-win_bg.webp" loading="lazy" alt="" decoding="async"><img class="hc__sub" src="assets/images/970419499e-win_sub.webp" loading="lazy" alt="" decoding="async"><i class="hc__wsh"></i></span><img class="hc__plate" src="assets/images/muhammad-siddique-card.webp" loading="lazy" alt="Muhammad Siddique creative portfolio card" decoding="async"><i class="hc__foil"></i><i class="hc__sheen"></i><i class="hc__glare"></i><i class="hc__rim"></i></span><span class="hc__face hc__back"><img class="hc__backimg" src="assets/images/muhammad-siddique-card.webp" loading="lazy" alt="" decoding="async"><i class="hc__foil"></i><i class="hc__glare"></i><i class="hc__rim"></i></span></span></button>
-    <p class="hc__hint"><span class="hc__hm">Move across the card</span><span class="hc__ht">Tilt or drag it</span> · tap to flip</p>
+    <button class="hc" id="hc" aria-label="Flip the card"><i class="hc__aura"></i><span class="hc__in"><span class="hc__face hc__front"><span class="hc__win"><img class="hc__bg" src="assets/images/4c7752569d-win_bg.webp" loading="lazy" alt="" decoding="async"><img class="hc__sub" src="assets/images/970419499e-win_sub.webp" loading="lazy" alt="" decoding="async"><i class="hc__wsh"></i></span><img class="hc__plate" src="assets/images/muhammad-siddique-card.webp" loading="lazy" alt="Muhammad Siddique premium profile card" decoding="async"><i class="hc__foil"></i><i class="hc__sheen"></i><i class="hc__glare"></i><i class="hc__rim"></i></span><span class="hc__face hc__back"><span class="hc__back-panel">
+      <span class="hc__back-top"><span class="hc__back-monogram">MS<span>.</span></span><span class="hc__back-edition">PROFILE / 2026</span></span>
+      <span class="hc__back-main"><span class="hc__back-label">MUHAMMAD SIDDIQUE</span><span class="hc__back-heading">CMS<br>DEVELOPER<span>.</span></span><span class="hc__back-text">Thoughtful websites. Flexible content. Seamless digital experiences.</span></span>
+      <span class="hc__back-bottom"><span class="hc__back-services">WORDPRESS / SHOPIFY<br>WEBFLOW / WIX</span><span class="hc__back-foot">DEVELOPMENT &nbsp;·&nbsp; INTEGRATION &nbsp;·&nbsp; SUPPORT</span></span>
+    </span><i class="hc__glare"></i><i class="hc__rim"></i></span></span></button>
+    <p class="hc__hint"><span class="hc__hm">Move to tilt</span><span class="hc__ht">Tilt or drag</span> · click or tap to flip</p>
   </div>
   <button class="holo__x" id="holoClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M5 5l14 14M19 5 5 19"/></svg>Close</button>
 </div>
@@ -2658,135 +2689,115 @@ if (['#works', '#about', '#contact'].includes(location.hash)){
   }, { once: true });
 })();
 
-/* ---------- Ability card: the ThreeUI holo card where the device can carry it, a light CSS card where it can't ---------- */
+/* ---------- Premium Profile Card: local, reliable, dependency-free 3D card ----------
+   The previous version opened ability-card/, a directory absent from the deployed
+   portfolio, so the loader stayed at 0% until a 45-second timeout. All card art
+   is now local and this component needs no iframe or remote WebGL runtime. */
 (() => {
   const layer = $('#holo'), open = $('#holoOpen'), fig = $('#fig');
   if (!layer || !open) return;
-  const SRC = 'ability-card/';
-  const ld = $('#holoLd'), pct = $('#holoPct'), lite = $('#holoLite'), hc = $('#hc');
-  const n = navigator;
-  // the ThreeUI card is the card, on every device. It may take a moment to load, and it is allowed to.
-  // The layered CSS card below is kept for one case only: a browser with no WebGL at all, or an engine that fails outright.
-  const hasGL = (() => { try { const c = document.createElement('canvas'); return !!(c.getContext('webgl2') || c.getContext('webgl')); } catch (e) { return false; } })();
-  let frame = null, back = null, timer = 0, isOpen = false, useLite = !hasGL, liteReady = null, openT = 0, handing = false;
-  const progress = p => { ld.style.setProperty('--p', p); pct.textContent = Math.round(p * 100) + '%'; };
-  // the light card's faces, decoded before it is shown so it never appears half-drawn
-  // the faces are marked lazy so their weight never lands on a visit that gets the 3D card;
-  // asking for them switches them on and waits for them to decode
-  const decodeLite = () => liteReady || (liteReady = Promise.all([...lite.querySelectorAll('img')].map(im => {
-    im.loading = 'eager';
-    return im.decode ? im.decode().catch(() => {}) : Promise.resolve();
-  })));
-  function showLite(){
+  const lite = $('#holoLite'), hc = $('#hc'), loader = $('#holoLd');
+  const motionReduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const clamp = v => Math.max(-1, Math.min(1, v));
+  let isOpen = false, lastFocus = null, loop = 0, held = false;
+  let tx = 0, ty = 0, cx = 0, cy = 0, t0 = 0, touchStart = null;
+
+  // Images are normal local files. Begin loading immediately on first interaction,
+  // but never gate the visible card behind a network or decode promise.
+  function loadCardImages(){
+    lite.querySelectorAll('img').forEach(im => { im.loading = 'eager'; });
+  }
+  function draw(now){
     if (!isOpen) return;
-    useLite = true; clearTimeout(timer);
-    lite.hidden = false; lite.classList.remove('in');
-    let creep = .1; const cr = setInterval(() => { creep = Math.min(.92, creep + (1 - creep) * .18); if (!ld.classList.contains('gone')) progress(creep); }, 140);
-    decodeLite().then(() => {
-      clearInterval(cr); if (!isOpen) return;
-      progress(1);
-      setTimeout(() => {
-        if (!isOpen) return;
-        lite.classList.add('in'); ld.classList.add('out');
-        hc.classList.remove('flip', 'live'); spin(true);
-        setTimeout(() => { if (frame){ frame.remove(); frame = null; } }, 520);   // the 3D card leaves only once the light one covers it
-        setTimeout(() => hc.focus({ preventScroll: true }), 360);
-      }, Math.max(300, 950 - (performance.now() - openT)));   // the outline finishes drawing before the card replaces it
-    });
+    const t = (now - t0) / 1000;
+    const sway = (held || motionReduced.matches) ? 0 : 1;
+    cx += (tx + sway * Math.sin(t * .62) * .34 - cx) * .12;
+    cy += (ty + sway * Math.sin(t * .47 + 1.1) * .22 - cy) * .12;
+    hc.style.setProperty('--px', cx.toFixed(4));
+    hc.style.setProperty('--py', cy.toFixed(4));
+    hc.style.setProperty('--ry', (cx * 14).toFixed(2) + 'deg');
+    hc.style.setProperty('--rx', (-cy * 11).toFixed(2) + 'deg');
+    hc.style.setProperty('--lift', Math.min(1, Math.hypot(cx, cy) * 1.3).toFixed(3));
+    loop = requestAnimationFrame(draw);
+  }
+  function startMotion(){
+    cancelAnimationFrame(loop); t0 = performance.now();
+    if (!document.hidden) loop = requestAnimationFrame(draw);
   }
   function show(){
-    if (isOpen) return; isOpen = true; openT = performance.now(); handing = false;
-    back = document.activeElement;
-    layer.hidden = false; stopScroll();
-    ld.classList.remove('out', 'gone'); progress(0); lite.hidden = true; lite.classList.remove('in');
-    (function(){var d=-(Date.now()%2400)+'ms';document.querySelectorAll('.cl__shine').forEach(function(e){e.style.animationDelay=d;});})();
-    requestAnimationFrame(() => layer.classList.add('on'));
-    if (useLite){ showLite(); return; }
-    frame = document.createElement('iframe');
-    frame.title = "Muhammad Siddique's ability card";
-    frame.setAttribute('sandbox', 'allow-scripts');   // the claude.ai viewer only loads its own files into a same-origin frame
-    frame.loading = 'eager';
-    if (window.__ONEFILE && window.__ONEFILE.holo) frame.srcdoc = window.__ONEFILE.holo; else frame.src = SRC;
-    layer.appendChild(frame);
-    // a long rope on the web, where everything the card needs sits next to it; shorter in the single
-    // file, whose engine comes from the network and so can simply be out of reach
-    timer = setTimeout(showLite, window.__ONEFILE ? 15000 : 45000);
+    if (isOpen) return;
+    isOpen = true; lastFocus = document.activeElement;
+    loadCardImages();
+    // No empty 0% loading screen: the CSS perspective card appears straight away.
+    if (loader) loader.hidden = true;
+    layer.hidden = false;
+    lite.hidden = false;
+    hc.classList.remove('flip', 'live');
+    tx = ty = cx = cy = 0; held = false;
+    stopScroll();
+    requestAnimationFrame(() => {
+      if (!isOpen) return;
+      layer.classList.add('on');
+      lite.classList.add('in');
+    });
+    startMotion();
+    setTimeout(() => { if (isOpen) hc.focus({ preventScroll: true }); }, 160);
   }
   function hide(){
-    if (!isOpen) return; isOpen = false;
-    clearTimeout(timer); spin(false); held = false; tx = ty = 0;
-    layer.classList.remove('on');
-    const f = frame; frame = null;
-    setTimeout(() => { f && f.remove(); lite.hidden = true; lite.classList.remove('in'); layer.hidden = true; }, 360);   // unmounted: nothing keeps rendering
-    startScroll(); back?.focus?.({ preventScroll: true });
+    if (!isOpen) return;
+    isOpen = false; held = false;
+    cancelAnimationFrame(loop); loop = 0;
+    lite.classList.remove('in'); layer.classList.remove('on');
+    const focusTarget = lastFocus;
+    setTimeout(() => {
+      if (isOpen) return; // protect against a quick close/reopen
+      lite.hidden = true; layer.hidden = true;
+    }, 370);
+    startScroll();
+    focusTarget?.focus?.({ preventScroll: true });
   }
-  addEventListener('message', e => {
-    const m = e.data || {};
-    if (!m.holo || !frame || e.source !== frame.contentWindow) return;   // only the card's own frame can talk to this layer
-    if (m.holo === 'close') return hide();
-    if (!frame || !isOpen || useLite) return;
-    // the frame now draws the same loader itself: show it and step aside, with no visible change
-    if ((m.holo === 'up' || m.holo === 'progress') && !frame.classList.contains('up') && !handing){
-      handing = true; const f = frame;                                      // after the loader's own entrance has settled
-      setTimeout(() => { if (frame !== f || useLite) return; f.classList.add('up'); requestAnimationFrame(() => { if (frame === f && !useLite) ld.classList.add('gone'); }); }, Math.max(0, 680 - (performance.now() - openT)));
-    }
-    if (m.holo === 'progress') progress(Math.max(.02, m.p || 0));
-    if (m.holo === 'ready'){ clearTimeout(timer); setTimeout(() => frame && frame.focus(), 400); }
-    if (m.holo === 'fail'){ ld.classList.remove('gone'); ld.classList.add('out'); showLite(); }   // the engine could not start at all: the layered card takes over
-  });
-  // warm the card's images in the background once the page is idle, so opening it is instant
-  (window.requestIdleCallback || (f => setTimeout(f, 2500)))(() => { if (useLite) decodeLite(); }, { timeout: 4000 });
-
-  /* the card's motion: it leans toward the pointer, follows a finger, answers the phone's own tilt,
-     and keeps a slow sway of its own when nobody is touching it. One loop, only while the card is up. */
-  const RX = 11, RY = 14;
-  const calm = matchMedia('(prefers-reduced-motion:reduce)');
-  let tx = 0, ty = 0, cx = 0, cy = 0, held = false, loop = 0, t0 = 0;
-  function step(now){
-    const sway = (held || calm.matches) ? 0 : 1;
-    const t = (now - t0) / 1000;
-    cx += ((tx + sway * Math.sin(t * .62) * .34) - cx) * .12;
-    cy += ((ty + sway * Math.sin(t * .47 + 1.1) * .22) - cy) * .12;
-    const S = hc.style;
-    S.setProperty('--px', cx.toFixed(4)); S.setProperty('--py', cy.toFixed(4));
-    S.setProperty('--ry', (cx * RY).toFixed(2) + 'deg'); S.setProperty('--rx', (-cy * RX).toFixed(2) + 'deg');
-    S.setProperty('--lift', Math.min(1, Math.hypot(cx, cy) * 1.3).toFixed(3));
-    loop = requestAnimationFrame(step);
-  }
-  const spin = on => { cancelAnimationFrame(loop); loop = 0; if (on){ t0 = performance.now(); loop = requestAnimationFrame(step); } };
-  const clamp = v => Math.max(-1, Math.min(1, v));
   lite.addEventListener('pointermove', e => {
+    if (!isOpen) return;
     const r = hc.getBoundingClientRect(); if (!r.width) return;
     const u = (e.clientX - r.left) / r.width, v = (e.clientY - r.top) / r.height;
     if (u < -.4 || u > 1.4 || v < -.35 || v > 1.35){ held = false; tx = ty = 0; return; }
-    held = true; hc.classList.add('live'); tx = clamp((u - .5) * 2); ty = clamp((v - .5) * 2);
+    held = true; hc.classList.add('live');
+    tx = clamp((u - .5) * 2); ty = clamp((v - .5) * 2);
   }, { passive: true });
-  lite.addEventListener('pointerleave', () => { held = false; tx = ty = 0; });
-  // a tap flips it; a drag only turns it
-  let from = null;
-  hc.addEventListener('pointerdown', e => { from = [e.clientX, e.clientY]; try { hc.setPointerCapture(e.pointerId); } catch (err) {} });
-  hc.addEventListener('pointerup', e => {
-    if (from && Math.hypot(e.clientX - from[0], e.clientY - from[1]) < 9) hc.classList.toggle('flip');
-    from = null;
+  lite.addEventListener('pointerleave', () => { held = false; tx = ty = 0; hc.classList.remove('live'); });
+  hc.addEventListener('pointerdown', e => {
+    touchStart = [e.clientX, e.clientY];
+    try { hc.setPointerCapture(e.pointerId); } catch (err) {}
   });
-  hc.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hc.classList.toggle('flip'); } });
-  // phones that report their own tilt move the card without a finger on it
+  hc.addEventListener('pointerup', e => {
+    if (touchStart && Math.hypot(e.clientX - touchStart[0], e.clientY - touchStart[1]) < 9)
+      hc.classList.toggle('flip');
+    touchStart = null;
+  });
+  hc.addEventListener('pointercancel', () => { touchStart = null; });
+  hc.addEventListener('keydown', e => {
+    if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); hc.classList.toggle('flip'); }
+  });
   addEventListener('deviceorientation', e => {
     if (held || e.gamma == null || !isOpen) return;
-    tx = clamp(e.gamma / 28); ty = clamp(((e.beta == null ? 45 : e.beta) - 45) / 30);
+    tx = clamp(e.gamma / 28);
+    ty = clamp(((e.beta == null ? 45 : e.beta) - 45) / 30);
   });
-  document.addEventListener('visibilitychange', () => { if (document.hidden) spin(false); else if (isOpen && useLite) spin(true); });
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden){ cancelAnimationFrame(loop); loop = 0; }
+    else if (isOpen) startMotion();
+  });
   open.addEventListener('click', e => { e.stopPropagation(); show(); });
-  fig.addEventListener('click', e => { if (!e.target.closest('.fig__card')) show(); });
+  fig?.addEventListener('click', e => { if (!e.target.closest('.fig__card')) show(); });
   $('#holoClose').addEventListener('click', hide);
   addEventListener('keydown', e => {
     if (!isOpen) return;
-    if (e.key === 'Escape') return hide();
+    if (e.key === 'Escape'){ e.preventDefault(); hide(); return; }
     if (e.key !== 'Tab') return;
-    // the card layer covers the page, so Tab stays on the card and its close button
-    const f = [...layer.querySelectorAll(FOCUSABLE)].filter(n => n.offsetWidth || n.offsetHeight || n.getClientRects().length);
-    if (!f.length) return;
-    const first = f[0], last = f[f.length - 1];
+    const focusables = [...layer.querySelectorAll(FOCUSABLE)].filter(n =>
+      !n.closest('[hidden]') && (n.offsetWidth || n.offsetHeight || n.getClientRects().length));
+    if (!focusables.length) return;
+    const first = focusables[0], last = focusables[focusables.length - 1];
     if (!layer.contains(document.activeElement)){ e.preventDefault(); first.focus(); return; }
     if (e.shiftKey && document.activeElement === first){ e.preventDefault(); last.focus(); }
     else if (!e.shiftKey && document.activeElement === last){ e.preventDefault(); first.focus(); }
