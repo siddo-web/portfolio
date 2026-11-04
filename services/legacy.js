@@ -6,9 +6,9 @@
   if(!script)return;
   const slug=script.dataset.service;
   const ROOT=new URL('../',script.src);
-  const ids=['wordpress-development','shopify-development','webflow-wix-development','cms-migration-integration','cms-support-optimization'];
-  const routes=['webdev_portfolio/','UIUX_portfolio/','graphic/','appdev_portfolio/','digital-marketing/'];
-  const context=["Examples include IES, Naomi Amram Design and WordPress content integrations.", "Examples include Shopify Liquid components and the Mardoo storefront concept.", "Examples include a personal Webflow portfolio, Wix websites and additional website references whose platforms are not confirmed.", "Examples include WordPress data imports, ecommerce migration and a custom CMS integration.", "Examples include WordPress content audits, layout maintenance and custom plugin improvements."];
+  const ids=['wordpress','shopify','webflow','wix','other-cms'];
+  const routes=['wordpress/','shopify/','webflow/','wix/','other-cms/'];
+  const context=["WordPress website builds and galleries.", "Shopify storefronts and Liquid sections.", "One live Webflow site and clearly marked sample briefs.", "Wix website references and clearly marked sample briefs.", "Custom CMS, migrations and other content systems."];
   const update=(services)=>{
     if(!Array.isArray(services)||services.length!==5)return;
     const active=services.find(x=>x.slug===slug);

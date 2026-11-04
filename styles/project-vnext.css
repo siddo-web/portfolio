@@ -1,0 +1,10 @@
+/* Portfolio vNext — November 2026. Original sticky cards and navigation preserved. */
+.ms-services-dd summary{padding:0!important}
+.project-media-placeholder{display:flex;align-items:center;justify-content:center;flex-direction:column;gap:1.2rem;width:100%;height:100%;min-height:220px;aspect-ratio:16/10;background:linear-gradient(145deg,#292b2e,#151718 68%,#35312c);color:#f3efea;text-align:center;padding:1.8rem;box-sizing:border-box;overflow:hidden}
+.project-media-placeholder .pm-k{font:650 .73rem/1.4 Onest,system-ui,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#dec29a}
+.project-media-placeholder .pm-name{font:650 clamp(1.15rem,2.1vw,1.95rem)/1.12 Onest,system-ui,sans-serif;letter-spacing:-.05em;max-width:19ch}
+.project-media-placeholder .pm-media{font:500 .78rem/1.35 Onest,system-ui,sans-serif;opacity:.6}
+.card .media-status{display:block;font:500 .72rem/1.35 Onest,system-ui,sans-serif;opacity:.6;margin-top:.9rem;max-width:35ch}
+.card .note{display:inline-block;margin-top:1rem;max-width:38ch}
+.card .card__info .desc{max-width:52ch}
+@media(max-width:768px){.project-media-placeholder{min-height:170px;padding:1.1rem}.project-media-placeholder .pm-name{font-size:1.24rem}}

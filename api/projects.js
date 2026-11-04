@@ -1,7 +1,7 @@
 'use strict';
 /** Public CMS endpoint. Never returns drafts even when project JSON contains them. */
 const data = require('../content/projects.json');
-const categories = new Set(["wordpress-development", "shopify-development", "webflow-wix-development", "cms-migration-integration", "cms-support-optimization", "web-development", "web-design", "design-brand", "app-development", "digital-marketing"]);
+const categories = new Set(["wordpress", "shopify", "webflow", "wix", "other-cms", "wordpress-development", "shopify-development", "webflow-wix-development", "cms-migration-integration", "cms-support-optimization", "web-development", "web-design", "design-brand", "app-development", "digital-marketing"]);
 function visibleProjects(source) {
   const list = Array.isArray(source?.projects) ? source.projects : [];
   return list.filter(p => p && p.published === true && categories.has(p.category))

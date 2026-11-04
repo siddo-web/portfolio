@@ -1,3 +1,11 @@
+# Muhammad Siddique — CMS Developer Portfolio (November 2026 revision)
+
+**Latest release:** Separate WordPress, Shopify, Webflow, Wix and Other CMS categories; original interactive layered profile card and bounded loader restored; Webflow hanging-frame gallery enlarged with an additional true sticky-card stack; 10+ documented entries or clearly labelled service briefs per category; SEO canonicals, sitemap and permanent redirects updated.
+
+Please start with `CHANGELOG_VNEXT.md` and `QA_VNEXT.md` for details and deployment instructions. Earlier release notes bundled below may refer to superseded card/route implementations.
+
+---
+
 > **Project content refresh:** See [OWN_SITE_CONTENT_UPDATE.md](OWN_SITE_CONTENT_UPDATE.md) for the spreadsheet-based project names, live links and how to replace temporary media.
 
 > **CMS Developer edition (Nov 4, 2026):** Five CMS-focused services, restored original inner-page designs, homepage navigation updates and an admin Services editor are included. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) for details and deployment guidance.

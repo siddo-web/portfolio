@@ -5,7 +5,7 @@
   if(!script)return;
   const cmsBase=new URL('./',script.src),siteBase=new URL('../',cmsBase);
   const chosen=script.dataset.category||'';
-  const categories={"wordpress-development": "WordPress Development", "shopify-development": "Shopify Development", "webflow-wix-development": "Webflow & Wix Development", "cms-migration-integration": "CMS Migration & Integrations", "cms-support-optimization": "CMS Support & Optimization", "web-development": "Web Development", "web-design": "Web Design", "design-brand": "Design & Brand", "app-development": "App Development", "digital-marketing": "Digital Marketing"};
+  const categories={"wordpress":"WordPress Development","shopify":"Shopify Development","webflow":"Webflow Development","wix":"Wix Development","other-cms":"Other CMS & Integrations","wordpress-development": "WordPress Development", "shopify-development": "Shopify Development", "webflow-wix-development": "Webflow Development", "cms-migration-integration": "Wix Development", "cms-support-optimization": "Other CMS & Integrations", "web-development": "Web Development", "web-design": "Web Design", "design-brand": "Design & Brand", "app-development": "App Development", "digital-marketing": "Digital Marketing"};
   const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('public.css',cmsBase);document.head.append(css);
   const section=document.createElement('section');section.className='ms-cms-section';section.id='selected-projects';
   section.setAttribute('aria-label','Selected portfolio projects');section.hidden=true;

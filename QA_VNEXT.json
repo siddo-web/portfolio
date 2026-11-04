@@ -1,0 +1,47 @@
+{
+  "canonical_service_pages": {
+    "wordpress": "https://siddique-profile.vercel.app/wordpress/",
+    "shopify": "https://siddique-profile.vercel.app/shopify/",
+    "webflow": "https://siddique-profile.vercel.app/webflow/",
+    "wix": "https://siddique-profile.vercel.app/wix/",
+    "other-cms": "https://siddique-profile.vercel.app/other-cms/"
+  },
+  "redirected_legacy_paths": [
+    "/webdev_portfolio",
+    "/webdev_portfolio/",
+    "/UIUX_portfolio",
+    "/UIUX_portfolio/",
+    "/graphic",
+    "/graphic/",
+    "/appdev_portfolio",
+    "/appdev_portfolio/",
+    "/digital-marketing",
+    "/digital-marketing/",
+    "/services/wordpress-development",
+    "/services/wordpress-development/",
+    "/services/shopify-development",
+    "/services/shopify-development/",
+    "/services/webflow-wix-development",
+    "/services/webflow-wix-development/",
+    "/services/cms-migration-integration",
+    "/services/cms-migration-integration/",
+    "/services/cms-support-optimization",
+    "/services/cms-support-optimization/",
+    "/webdev_portfolio/index.html",
+    "/UIUX_portfolio/index.html",
+    "/graphic/index.html",
+    "/appdev_portfolio/index.html",
+    "/digital-marketing/index.html"
+  ],
+  "site_url": "https://siddique-profile.vercel.app",
+  "profile_card": "Original layered interactive profile card restored; bounded 0-100% loader retained",
+  "inventory_counts": {
+    "wordpress": 13,
+    "shopify": 11,
+    "webflow": 11,
+    "wix": 11,
+    "other-cms": 14
+  },
+  "platform_verification": "Webflow and Wix pages contain clearly marked example briefs where the project inventory did not identify completed client websites",
+  "media": "All newly added cards use transparent placeholder treatments; add project screenshots/video after verification."
+}

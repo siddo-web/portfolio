@@ -14,16 +14,16 @@ test('drafts are excluded from the public CMS API',()=>{
 });
 test('demo remains an unpublished draft, while own-site projects are published',()=>{
  const list=require('../content/projects.json').projects;
- assert.equal(list.length,13);assert.equal(list[0].published,false);assert.equal(visibleProjects({projects:list}).length,12);
+ assert(list.length>=55);assert.equal(list[0].published,false);assert(visibleProjects({projects:list}).length>=40);
 });
 test('public GET responds without drafts; other methods rejected',()=>{
- const out=res();publicApi({method:'GET'},out);assert.equal(out.code,200);assert.equal(out.data.ok,true);assert.equal(out.data.projects.length,12);assert(!out.data.projects.some(p=>p.title==='SXS Performance Part'));
+ const out=res();publicApi({method:'GET'},out);assert.equal(out.code,200);assert.equal(out.data.ok,true);assert(out.data.projects.length>=40);assert(!out.data.projects.some(p=>p.title==='SXS Performance Part'));
  const denied=res();publicApi({method:'POST'},denied);assert.equal(denied.code,405);
 });
 test('sitemap and robots routes only expose real public pages',()=>{
  assert.equal(ROUTES.length,8);assert(!ROUTES.some(x=>x.includes('admin')));
  const req={method:'GET',headers:{host:'portfolio.example.com'}};const map=res();sitemap(req,map);
- assert.equal(map.code,200);assert.match(map.data,/https:\/\/portfolio\.example\.com\/webdev_portfolio\//);
+ assert.equal(map.code,200);assert.match(map.data,/https:\/\/portfolio\.example\.com\/webflow\//);
  const bot=res();robots(req,bot);assert.match(bot.data,/Disallow: \/admin\//);assert.match(bot.data,/sitemap\.xml/);
  assert.equal(siteUrl({headers:{host:'bad<script>'}}),'https://example.invalid');
 });

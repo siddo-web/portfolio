@@ -8,7 +8,7 @@ const COOKIE = 'ms_portfolio_session';
 const EXPIRES_MS = 8 * 60 * 60 * 1000;
 const LOGIN_MAX = 6;
 const attempts = new Map(); // Per-instance best effort only; use Vercel Firewall for durable rate limits.
-const cat = new Set(["wordpress-development", "shopify-development", "webflow-wix-development", "cms-migration-integration", "cms-support-optimization", "web-development", "web-design", "design-brand", "app-development", "digital-marketing"]);
+const cat = new Set(["wordpress", "shopify", "webflow", "wix", "other-cms", "wordpress-development", "shopify-development", "webflow-wix-development", "cms-migration-integration", "cms-support-optimization", "web-development", "web-design", "design-brand", "app-development", "digital-marketing"]);
 function envReady(){ return ['GITHUB_OWNER','GITHUB_REPO','GITHUB_TOKEN','ADMIN_PASSWORD','SESSION_SECRET'].every(k => (process.env[k] || '').trim()) && process.env.ADMIN_PASSWORD.length >= 12 && process.env.SESSION_SECRET.length >= 32; }
 function reject(res,status,message){return res.status(status).json({ok:false,message});}
 function b64url(b){return Buffer.from(b).toString('base64url');}
@@ -28,7 +28,7 @@ async function github(file,options={}){
 async function readProjects(){try{const r=await github('content/projects.json');const content=Buffer.from((r.content||'').replace(/\s/g,''),'base64').toString('utf8');const d=JSON.parse(content);return {projects:Array.isArray(d.projects)?d.projects:[],sha:r.sha};}catch(e){if(e.status===404)return{projects:[],sha:null};throw e;}}
 async function writeProjects(projects,sha){const body={message:'CMS: update portfolio projects',branch:process.env.GITHUB_BRANCH||'main',content:Buffer.from(JSON.stringify({projects},null,2)+'\n').toString('base64')};if(sha)body.sha=sha;await github('content/projects.json',{method:'PUT',json:body});}
 // Five service pages share one GitHub-backed services collection.
-const allowedServiceSlugs = new Set(['wordpress-development','shopify-development','webflow-wix-development','cms-migration-integration','cms-support-optimization']);
+const allowedServiceSlugs = new Set(['wordpress','shopify','webflow','wix','other-cms']);
 async function readServices(){
  const r=await github('content/services.json');
  const d=JSON.parse(Buffer.from((r.content||'').replace(/\s/g,''),'base64').toString('utf8'));

@@ -1,18 +1,18 @@
 {
   "services": [
     {
-      "slug": "wordpress-development",
+      "slug": "wordpress",
       "title": "WordPress Development",
       "shortTitle": "WordPress",
-      "tagline": "WordPress websites built to be yours.",
-      "summary": "Custom WordPress websites, Gutenberg and Elementor builds, and WooCommerce stores that are fast, flexible and easy to update.",
-      "intro": "My WordPress work includes corporate sites, interior-design portfolios, content imports, galleries and custom plugins. I focus on practical layouts and content structures that clients can keep up to date.",
+      "tagline": "WordPress websites with complete editing freedom.",
+      "summary": "Custom WordPress, Elementor, Gutenberg, WooCommerce and content-heavy websites with flexible, maintainable CMS structures.",
+      "intro": "WordPress websites and content systems, including IES engineering pages, Naomi Amram project galleries and reusable Elementor builds. These case studies distinguish full websites from gallery/component work.",
       "benefits": [
-        "Custom themes and responsive page builds",
-        "Gutenberg or Elementor page templates",
-        "WooCommerce storefronts and product pages",
-        "Custom post types, fields and reusable blocks",
-        "Speed, security and launch-ready checks"
+        "Custom WordPress pages and responsive themes",
+        "Elementor, Gutenberg and Kadence sections",
+        "WooCommerce product and catalogue layouts",
+        "ACF fields, post types and structured content",
+        "Gallery, navigation and accessibility fixes"
       ],
       "deliverables": [
         "Editable page templates",
@@ -28,9 +28,10 @@
       ],
       "tools": [
         "WordPress",
-        "WooCommerce",
         "Elementor",
-        "Gutenberg"
+        "Gutenberg",
+        "WooCommerce",
+        "ACF"
       ],
       "faq": [
         {
@@ -44,18 +45,18 @@
       ]
     },
     {
-      "slug": "shopify-development",
+      "slug": "shopify",
       "title": "Shopify Development",
       "shortTitle": "Shopify",
-      "tagline": "Online stores that make shopping feel simple.",
-      "summary": "Shopify theme customization, storefront sections, product templates and conversion-focused eCommerce experiences.",
-      "intro": "I work on ecommerce storefront layouts, reusable Shopify Liquid sections, product templates and catalog presentation. The selected examples include component work and a storefront design concept.",
+      "tagline": "Storefronts built around better shopping.",
+      "summary": "Shopify themes, custom Liquid sections, product cards, collection pages and ecommerce catalogue migration.",
+      "intro": "Shopify design and component work from the project inventory. Website references, Liquid components and migration work are marked separately so each entry reflects the documented scope.",
       "benefits": [
-        "Shopify theme setup and customization",
-        "Product, collection and landing page templates",
-        "Custom Liquid sections and reusable blocks",
-        "Mobile shopping and checkout journey improvements",
-        "App integration and storefront cleanup"
+        "Theme customisation and Shopify Liquid",
+        "Product pages, collections and section blocks",
+        "Reusable store components and brand grids",
+        "Mobile-first storefront design",
+        "WooCommerce to Shopify migrations"
       ],
       "deliverables": [
         "Storefront page templates",
@@ -72,7 +73,7 @@
       "tools": [
         "Shopify",
         "Liquid",
-        "HTML / CSS",
+        "CSS",
         "JavaScript"
       ],
       "faq": [
@@ -87,18 +88,18 @@
       ]
     },
     {
-      "slug": "webflow-wix-development",
-      "title": "Webflow & Wix Development",
-      "shortTitle": "Webflow & Wix",
-      "tagline": "Thoughtful pages with straightforward editing.",
-      "summary": "Responsive Webflow and Wix websites with editable CMS collections, flexible page sections and polished interactions.",
-      "intro": "I create and refine website experiences across visual builders, with attention to responsive layouts and content editing. The selection also includes website references whose platforms are not independently confirmed.",
+      "slug": "webflow",
+      "title": "Webflow Development",
+      "shortTitle": "Webflow",
+      "tagline": "Webflow sites with thoughtful CMS structure.",
+      "summary": "Responsive Webflow sites, portfolio collections, reusable components and restrained interactions with SEO-ready page structure.",
+      "intro": "The supplied inventory includes one live personal Webflow portfolio. Additional entries below are explicitly labelled implementation examples rather than invented client websites.",
       "benefits": [
-        "Responsive website design and builds",
-        "Webflow CMS collections and dynamic pages",
-        "Wix page customization and content structure",
-        "Forms, interactions and third-party embeds",
-        "On-page SEO and mobile experience review"
+        "Webflow layouts and responsive styling",
+        "CMS collections and dynamic pages",
+        "Animations with accessible fallbacks",
+        "Portfolio templates and component systems",
+        "SEO-friendly internal links and metadata"
       ],
       "deliverables": [
         "Reusable page sections",
@@ -114,9 +115,9 @@
       ],
       "tools": [
         "Webflow",
-        "Wix",
         "CMS collections",
-        "Custom CSS / JS"
+        "Interactions",
+        "SEO"
       ],
       "faq": [
         {
@@ -130,88 +131,88 @@
       ]
     },
     {
-      "slug": "cms-migration-integration",
-      "title": "CMS Migration & Integrations",
-      "shortTitle": "CMS Migration",
-      "tagline": "Move content without losing the important details.",
-      "summary": "Content migration, CMS restructuring, dynamic content models and integrations that connect your website with the tools you use.",
-      "intro": "From catalog moves to structured WordPress project imports and admin CMS integrations, I focus on moving content carefully and keeping the new setup maintainable.",
+      "slug": "wix",
+      "title": "Wix Development",
+      "shortTitle": "Wix",
+      "tagline": "Clear, flexible Wix websites you can update.",
+      "summary": "Wix websites with responsive pages, galleries, blog collections, contact flows and straightforward content editing.",
+      "intro": "The project inventory identifies Steph Saffer and Heroes of Tomorrow Africa as Wix references. The rest are clearly marked Wix service briefs to replace with actual delivered work later.",
       "benefits": [
-        "Website and content migration planning",
-        "Page, media and URL mapping",
-        "CMS fields and dynamic content models",
-        "Forms, analytics and third-party integrations",
-        "Redirects and post-migration quality checks"
+        "Wix business websites and landing pages",
+        "Responsive content sections and mobile layouts",
+        "Wix blog, galleries and CMS collections",
+        "Contact, booking and form integration",
+        "SEO and editing handover"
       ],
       "deliverables": [
-        "Content migration plan",
-        "Mapped page and content structures",
-        "Integration checks",
-        "Redirect and launch checklist"
+        "Reusable page sections",
+        "CMS-driven content pages",
+        "Responsive layout testing",
+        "Editorial handover"
       ],
       "steps": [
-        "Audit content and existing URLs",
-        "Map the new CMS structure",
-        "Migrate and verify content",
-        "Test redirects and launch"
+        "Choose the right platform structure",
+        "Create reusable design sections",
+        "Connect dynamic collections and forms",
+        "Test, publish and hand over"
       ],
       "tools": [
-        "WordPress",
-        "Shopify",
-        "Webflow",
-        "APIs & forms"
+        "Wix",
+        "Wix Studio",
+        "Wix CMS",
+        "SEO"
       ],
       "faq": [
         {
-          "question": "Can existing URLs be preserved?",
-          "answer": "Where practical, yes. When URLs must change, a redirect plan helps visitors and search engines find the new pages."
+          "question": "Which should I use, Webflow or Wix?",
+          "answer": "It depends on the design, content structure, team and update workflow. We can review those needs before selecting a platform."
         },
         {
-          "question": "Can existing forms and analytics be retained?",
-          "answer": "We can review the current setup and map out which integrations should carry over to the new platform."
+          "question": "Can I add pages without a developer?",
+          "answer": "Yes, where the platform supports it, CMS templates and reusable sections can make routine publishing much easier."
         }
       ]
     },
     {
-      "slug": "cms-support-optimization",
-      "title": "CMS Support & Optimization",
-      "shortTitle": "CMS Support",
-      "tagline": "Keep your site working as it grows.",
-      "summary": "CMS updates, page improvements, accessibility checks, performance optimization and ongoing website support.",
-      "intro": "Ongoing CMS work involves accurate page content, custom-plugin QA, mobile fixes, layout cleanup and regular maintenance. The examples show the type of implementation work involved rather than unverified business results.",
+      "slug": "other-cms",
+      "title": "Other CMS & Integrations",
+      "shortTitle": "Other CMS",
+      "tagline": "Integrations and content systems beyond a single builder.",
+      "summary": "Content migrations, custom CMS administration, Funnelish landing pages, structured imports, plugins and cross-platform integrations.",
+      "intro": "Cross-platform projects include a custom CMS for OnyxDigital, Funnelish landing pages, WordPress data imports and content integrations. These are documented as workflows or components where there is no standalone public site.",
       "benefits": [
-        "CMS updates and layout fixes",
-        "Page speed and Core Web Vitals checks",
-        "Mobile and accessibility improvements",
-        "Technical SEO and content structure",
-        "New sections, forms and feature requests"
+        "Custom admin/CMS workflows and APIs",
+        "Data imports and content migrations",
+        "Funnelish and landing-page editors",
+        "CMS plugin and theme integration",
+        "Structured content, maintenance and support"
       ],
       "deliverables": [
-        "Site review and prioritized fixes",
-        "Tested enhancements",
-        "Performance and usability checks",
-        "Clear update notes"
+        "Reusable page sections",
+        "CMS-driven content pages",
+        "Responsive layout testing",
+        "Editorial handover"
       ],
       "steps": [
-        "Review issues and priorities",
-        "Plan safe changes",
-        "Implement and test",
-        "Report on the updates"
+        "Choose the right platform structure",
+        "Create reusable design sections",
+        "Connect dynamic collections and forms",
+        "Test, publish and hand over"
       ],
       "tools": [
-        "WordPress",
-        "Shopify",
-        "Webflow / Wix",
-        "SEO & analytics"
+        "Custom CMS",
+        "Funnelish",
+        "WXR/XML",
+        "Integrations"
       ],
       "faq": [
         {
-          "question": "Do you offer one-time fixes?",
-          "answer": "Yes. Individual fixes and scoped improvements can be handled without requiring a long-term maintenance arrangement."
+          "question": "Which should I use, Webflow or Wix?",
+          "answer": "It depends on the design, content structure, team and update workflow. We can review those needs before selecting a platform."
         },
         {
-          "question": "Do you work on existing websites?",
-          "answer": "Yes. Work can start with an audit of your current CMS, theme, plugins and performance concerns."
+          "question": "Can I add pages without a developer?",
+          "answer": "Yes, where the platform supports it, CMS templates and reusable sections can make routine publishing much easier."
         }
       ]
     }

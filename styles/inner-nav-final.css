@@ -4,7 +4,7 @@
 .rn nav{flex:1;min-width:0}
 .ms-nav-services{position:relative;list-style:none}
 .ms-services-dd{position:relative}
-.ms-services-dd summary{list-style:none;display:flex;align-items:center;gap:.3rem;cursor:pointer;white-space:nowrap;font:500 .98rem/1.5 'Onest',sans-serif;opacity:.83;padding:.45rem 0;color:var(--fg)}
+.ms-services-dd summary{list-style:none;display:flex;align-items:center;gap:.3rem;cursor:pointer;white-space:nowrap;font:500 .98rem/1.5 'Onest',sans-serif;opacity:.83;padding:0;color:var(--fg)}
 .ms-services-dd summary::-webkit-details-marker{display:none}
 .ms-services-dd summary svg{height:15px;width:15px;transition:transform .22s}
 .ms-services-dd[open] summary svg{transform:rotate(180deg)}

@@ -1,7 +1,7 @@
 /* All five CMS services are sourced from content/services.json and editable in /admin/. */
 (()=>{
  'use strict';
- const PAGE_ROUTES=['webdev_portfolio/','UIUX_portfolio/','graphic/','appdev_portfolio/','digital-marketing/'];
+ const PAGE_ROUTES=['wordpress/','shopify/','webflow/','wix/','other-cms/'];
  const safeSlug=s=>/^[a-z0-9-]{2,64}$/.test(s||'');
  const setText=(el,value)=>{if(el&&typeof value==='string')el.textContent=value;};
  const scoped=(selector,i)=>document.querySelectorAll(selector)[i];

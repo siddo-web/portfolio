@@ -31,8 +31,8 @@ test('services can be edited in authenticated CMS; slugs cannot be modified',asy
  const cookie=loginCookie(r);
  r=res();await api(request('GET','services',{},cookie),r);assert.equal(r.data.services.length,5);
  const edited={...stored[0],title:'WordPress & WooCommerce',slug:'changed-slug'};
- r=res();await api(request('POST','saveService',{slug:'wordpress-development',service:edited},cookie),r);
- assert.equal(r.code,200);assert.equal(stored[0].title,'WordPress & WooCommerce');assert.equal(stored[0].slug,'wordpress-development');
+ r=res();await api(request('POST','saveService',{slug:'wordpress',service:edited},cookie),r);
+ assert.equal(r.code,200);assert.equal(stored[0].title,'WordPress & WooCommerce');assert.equal(stored[0].slug,'wordpress');
  const bad=res();await api(request('POST','saveService',{slug:'unknown',service:edited},cookie),bad);assert.equal(bad.code,400);
- const incomplete=res();await api(request('POST','saveService',{slug:'wordpress-development',service:{...edited,benefits:[]}},cookie),incomplete);assert.equal(incomplete.code,400);
+ const incomplete=res();await api(request('POST','saveService',{slug:'wordpress',service:{...edited,benefits:[]}},cookie),incomplete);assert.equal(incomplete.code,400);
 });

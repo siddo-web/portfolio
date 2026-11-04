@@ -3,7 +3,7 @@ const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const fs=require('node:fs');const path=require('node:path');
 const root=path.resolve(__dirname,'..');
-const pages=['index.html','webdev_portfolio/index.html','UIUX_portfolio/index.html','graphic/index.html','appdev_portfolio/index.html','digital-marketing/index.html','explorer.html','privacy.html','services/wordpress-development/index.html','services/shopify-development/index.html','services/webflow-wix-development/index.html','services/cms-migration-integration/index.html','services/cms-support-optimization/index.html'];
+const pages=['index.html','wordpress/index.html','shopify/index.html','webflow/index.html','wix/index.html','other-cms/index.html','webdev_portfolio/index.html','UIUX_portfolio/index.html','graphic/index.html','appdev_portfolio/index.html','digital-marketing/index.html','explorer.html','privacy.html','services/wordpress-development/index.html','services/shopify-development/index.html','services/webflow-wix-development/index.html','services/cms-migration-integration/index.html','services/cms-support-optimization/index.html'];
 function read(f){return fs.readFileSync(path.join(root,f),'utf8');}
 test('every published page has canonical SEO metadata and correct branding',()=>{
  for(const page of pages){const s=read(page);assert.match(s,/<link rel="canonical" href="[^"]+">/,page);assert(!s.includes('id="nl-badge-frame"'),page);assert(!s.includes('ms-inner-demo" role="note"'),page);assert(!/<meta property="og:url" content="assets\//.test(s),page);}

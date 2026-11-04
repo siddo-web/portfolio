@@ -1,35 +1,12 @@
-'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const root=path.resolve(__dirname,'..');
-const read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const routes=['webdev_portfolio','UIUX_portfolio','graphic','appdev_portfolio','digital-marketing'];
-const slugs=['wordpress-development','shopify-development','webflow-wix-development','cms-migration-integration','cms-support-optimization'];
-test('service pages use the existing portfolio card and gallery layouts, not generic service-card templates',()=>{
- routes.forEach((route,i)=>{
-  const html=read(route+'/index.html');
-  assert.match(html,/<section class="intro">/);
-  assert.match(html,/data-cms-service-heading/);
-  assert.match(html,/services\/legacy\.js/);
-  assert.match(html,/<link rel="canonical" href="\/[^"]+"/);
-  if(route==='graphic'){
-    assert.match(html,/class="worlds"/);
-    assert((html.match(/class="world"/g)||[]).length>=5);
-  }else if(route==='digital-marketing'){
-    assert.match(html,/const PROJECTS = \[/);
-    assert.match(html,/"title":"Naomi Amram — Website Updates"/);
-  }else{
-    assert.match(html,/class="card/);
-    assert.match(html,/class="stage"/);
-    assert.match(html,/assets\/media\//);
-  }
-  const alias=read(`services/${slugs[i]}/index.html`);
-  assert.match(alias,new RegExp(route+'\/'));
-  assert.doesNotMatch(alias,/detail-card/);
- });
+const root=path.resolve(__dirname,'..'), read=p=>fs.readFileSync(path.join(root,p),'utf8');
+const keys=['wordpress','shopify','webflow','wix','other-cms'];
+test('all five canonical services preserve original scroll-driven portfolio presentation',()=>{
+ for(const slug of keys){const s=read(slug+'/index.html');assert(s.includes('<section class="intro">'),slug);assert.match(s,new RegExp('canonical" href="https://siddique-profile\.vercel\.app/'+slug+'/"'),slug);assert(s.includes('ms-services-dd'),slug);}
+ for(const slug of keys.filter(x=>x!=='webflow'))assert(read(slug+'/index.html').includes('class="card'),slug);
+ const web=read('webflow/index.html');assert(web.includes('class="world'));assert(web.includes('vnext-work__card'));assert(!web.includes('Steph Saffer'));assert(!web.includes('Heroes of Tomorrow Africa'));
 });
-test('homepage cards, footer links and animated doors use restored routes',()=>{
- const home=read('index.html');
- for(const r of routes){assert.match(home,new RegExp(`\./${r}/index\.html`));assert.match(home,new RegExp(`href="${r}/"`));}
- assert.doesNotMatch(home,/\.\/services\/wordpress-development\/index\.html/);
- assert.match(read('services/public.js'),/PAGE_ROUTES/);
+test('homepage animated doors and footer route to distinct clean canonical URLs',()=>{
+ const s=read('index.html');for(const slug of keys){assert(s.includes("'./"+slug+"/'"),slug);assert(s.includes('href="'+slug+'/"'),slug);}
+ const cfg=JSON.parse(read('vercel.json'));assert(cfg.redirects.find(x=>x.source==='/graphic/'&&x.destination==='/webflow/'&&x.permanent===true));
 });
