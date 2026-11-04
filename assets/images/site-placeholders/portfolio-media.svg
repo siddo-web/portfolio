@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="800" viewBox="0 0 1280 800">
+<defs><linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#262525"/><stop offset="1" stop-color="#4b4641"/></linearGradient></defs>
+<rect width="1280" height="800" fill="url(#bg)"/>
+<rect x="90" y="95" width="1100" height="610" rx="20" fill="#35322f" stroke="#716b64" stroke-width="2"/>
+<path d="M90 155h1100" stroke="#716b64" stroke-width="2"/>
+<circle cx="130" cy="125" r="10" fill="#ba7772"/><circle cx="165" cy="125" r="10" fill="#d5ae73"/><circle cx="200" cy="125" r="10" fill="#8ab59d"/>
+<rect x="300" y="260" width="680" height="195" rx="12" fill="#403c38" stroke="#615b56"/>
+<text x="640" y="335" font-family="Arial,sans-serif" font-size="42" font-weight="700" text-anchor="middle" fill="#f1ede7">Project media</text>
+<text x="640" y="395" font-family="Arial,sans-serif" font-size="26" text-anchor="middle" fill="#c1bcb5">Screenshot or video coming soon</text>
+<text x="640" y="623" font-family="Arial,sans-serif" font-size="17" letter-spacing="3" text-anchor="middle" fill="#a59e96">MUHAMMAD SIDDIQUE · PORTFOLIO</text>
+</svg>

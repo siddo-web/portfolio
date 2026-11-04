@@ -1,0 +1,152 @@
+{
+  "supplied_screenshots_attached": 14,
+  "webflow_gallery_previews_created": 4,
+  "project_cards_which_still_need_owner_stills": [
+    {
+      "page": "shopify",
+      "title": "Mardoo Scrubs",
+      "fallback": "../assets/images/site-placeholders/portfolio-media.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "shopify",
+      "title": "Featured Products Grid",
+      "fallback": "../assets/images/site-placeholders/portfolio-media.svg",
+      "live_screenshot": false
+    },
+    {
+      "page": "shopify",
+      "title": "Palace Product Template",
+      "fallback": "../assets/images/site-placeholders/portfolio-media.svg",
+      "live_screenshot": false
+    },
+    {
+      "page": "shopify",
+      "title": "CTM Product Cards",
+      "fallback": "../assets/images/site-placeholders/portfolio-media.svg",
+      "live_screenshot": false
+    },
+    {
+      "page": "other-cms",
+      "title": "WooCommerce to Shopify Migration",
+      "fallback": "../assets/images/site-placeholders/portfolio-media.svg",
+      "live_screenshot": false
+    },
+    {
+      "page": "other-cms",
+      "title": "OnyxDigital — Admin CMS",
+      "fallback": "../assets/images/site-placeholders/portfolio-media.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "School of Imagination",
+      "fallback": "../assets/images/site-placeholders/school-of-imagination.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "United Way of Florence County",
+      "fallback": "../assets/images/site-placeholders/united-way-of-florence-county.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Elie Design FL",
+      "fallback": "../assets/images/site-placeholders/elie-design-fl.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Boston Custom Signs",
+      "fallback": "../assets/images/site-placeholders/boston-custom-signs.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Cambiar",
+      "fallback": "../assets/images/site-placeholders/cambiar.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Swanky Home Pros",
+      "fallback": "../assets/images/site-placeholders/swanky-home-pros.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Greenberg Psychology",
+      "fallback": "../assets/images/site-placeholders/greenberg-psychology.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "RNL Realty",
+      "fallback": "../assets/images/site-placeholders/rnl-realty.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Kaanthaa",
+      "fallback": "../assets/images/site-placeholders/kaanthaa.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Adorn Marmor",
+      "fallback": "../assets/images/site-placeholders/adorn-marmor.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Lisa Even",
+      "fallback": "../assets/images/site-placeholders/lisa-even.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "SmartLife Foundation",
+      "fallback": "../assets/images/site-placeholders/smartlife-foundation.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "TENFOLD",
+      "fallback": "../assets/images/site-placeholders/tenfold.svg",
+      "live_screenshot": true
+    },
+    {
+      "page": "selected-sites",
+      "title": "Please Paulo Stop Cappin",
+      "fallback": "../assets/images/site-placeholders/please-paulo-stop-cappin.svg",
+      "live_screenshot": true
+    }
+  ],
+  "removed_capture_files": [
+    "UIUX_portfolio/README.md",
+    "shopify/README.md",
+    "wix/README.md",
+    "wordpress/README.md",
+    "graphic/README.md",
+    "appdev_portfolio/README.md",
+    "webflow/README.md",
+    "other-cms/README.md",
+    "manifest.json",
+    "UIUX_portfolio/manifest.json",
+    "webdev_portfolio/manifest.json",
+    "graphic/manifest.json",
+    "appdev_portfolio/manifest.json",
+    "appdev_portfolio/assets/other/8f640a0991-asset.html",
+    "graphic/assets/other/224f6fab9e-asset.html",
+    "webdev_portfolio/assets/other/666d07be96-asset.html",
+    "UIUX_portfolio/assets/other/0d12958f8d-asset.html",
+    "index.html - removed 1 capture shim",
+    "shopify/index.html - removed 1 capture shim",
+    "wix/index.html - removed 1 capture shim",
+    "wordpress/index.html - removed 1 capture shim",
+    "selected-sites/index.html - removed 1 capture shim",
+    "webflow/index.html - removed 1 capture shim",
+    "other-cms/index.html - removed 1 capture shim"
+  ]
+}

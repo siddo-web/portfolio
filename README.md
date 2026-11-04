@@ -1,3 +1,7 @@
+## Latest update — screenshots and capture cleanup
+
+See `SCREENSHOTS_AND_CLEANUP.md` for the exact list of 14 real attached screenshots, site screenshot fallbacks, and instructions for capturing remaining live screenshots locally. The obsolete capture-generated source metadata and old sample video artwork were removed.
+
 # Muhammad Siddique — Public CMS Developer Portfolio (No Login)
 
 This is a publicly viewable HTML/CSS/JavaScript portfolio deployed on Vercel. **There is no website login, admin dashboard or GitHub write API.** The former `/admin/` route redirects home and the deprecated `/api/admin` endpoint responds HTTP 410 without any authentication or write capabilities.

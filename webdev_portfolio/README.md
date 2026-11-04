@@ -1,6 +1,3 @@
-# therishithakor.com — captured by Enrichr
-
-Captured 2026-11-02T11:52:32.514Z from https://therishithakor.com/web-developer/
 
 ## Open it
 
