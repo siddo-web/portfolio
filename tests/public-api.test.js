@@ -23,7 +23,7 @@ test('public GET responds without drafts; other methods rejected',()=>{
 test('sitemap and robots routes only expose real public pages',()=>{
  assert.equal(ROUTES.length,8);assert(!ROUTES.some(x=>x.includes('admin')));
  const req={method:'GET',headers:{host:'portfolio.example.com'}};const map=res();sitemap(req,map);
- assert.equal(map.code,200);assert.match(map.data,/https:\/\/portfolio\.example\.com\/graphic\//);
+ assert.equal(map.code,200);assert.match(map.data,/https:\/\/portfolio\.example\.com\/services\/wordpress-development\//);
  const bot=res();robots(req,bot);assert.match(bot.data,/Disallow: \/admin\//);assert.match(bot.data,/sitemap\.xml/);
  assert.equal(siteUrl({headers:{host:'bad<script>'}}),'https://example.invalid');
 });

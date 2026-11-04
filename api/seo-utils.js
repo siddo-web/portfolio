@@ -1,5 +1,5 @@
 'use strict';
-const ROUTES=['/','/webdev_portfolio/','/UIUX_portfolio/','/graphic/','/appdev_portfolio/','/digital-marketing/','/explorer.html','/privacy.html'];
+const ROUTES=["/", "/services/wordpress-development/", "/services/shopify-development/", "/services/webflow-wix-development/", "/services/cms-migration-integration/", "/services/cms-support-optimization/", "/explorer.html", "/privacy.html"];
 function siteUrl(req){
   const configured=String(process.env.SITE_URL||'').trim();
   if(configured){try{const u=new URL(configured);if(u.protocol==='https:'||u.hostname==='localhost')return u.origin;}catch{}}

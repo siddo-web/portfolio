@@ -5,7 +5,7 @@
   if(!script)return;
   const cmsBase=new URL('./',script.src),siteBase=new URL('../',cmsBase);
   const chosen=script.dataset.category||'';
-  const categories={'web-development':'Web Development','web-design':'Web Design','design-brand':'Design & Brand','app-development':'App Development','digital-marketing':'Digital Marketing'};
+  const categories={"wordpress-development": "WordPress Development", "shopify-development": "Shopify Development", "webflow-wix-development": "Webflow & Wix Development", "cms-migration-integration": "CMS Migration & Integrations", "cms-support-optimization": "CMS Support & Optimization", "web-development": "Web Development", "web-design": "Web Design", "design-brand": "Design & Brand", "app-development": "App Development", "digital-marketing": "Digital Marketing"};
   const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('public.css',cmsBase);document.head.append(css);
   const section=document.createElement('section');section.className='ms-cms-section';section.id='selected-projects';
   section.setAttribute('aria-label','Selected portfolio projects');section.hidden=true;
@@ -23,7 +23,7 @@
   const top=create('div','ms-cms-top');shell.append(top);
   const intro=create('div','');intro.append(create('span','ms-cms-eyebrow','PROJECT ARCHIVE / CURATED WORK'));
   const title=create('h2','','Selected ');title.append(create('em','','work.'));intro.append(title);
-  intro.append(create('p','','A collection of ideas brought to life across design, development and marketing.'));top.append(intro);
+  intro.append(create('p','','Selected projects and related work from across CMS development and digital experiences.'));top.append(intro);
   const filter=create('div','ms-cms-filters');top.append(filter);
   const grid=create('div','ms-cms-grid');shell.append(grid);
   const detail=create('dialog','ms-cms-dialog');detail.setAttribute('aria-label','Project details');document.body.append(detail);

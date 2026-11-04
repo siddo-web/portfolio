@@ -1,3 +1,6 @@
+CMS DEVELOPER UPDATE — NOVEMBER 4, 2026
+The 5 NEW service pages and admin Services editor are included. Read CMS_DEVELOPER_UPDATE.md. Upload the contents of the ZIP to the repository ROOT. Preserve the existing assets/uploads folder and your Vercel environment variables.
+
 MUHAMMAD SIDDIQUE PORTFOLIO — COMPLETE WEBSITE UPDATE
 Prepared: 4 November 2026
 Repository: https://github.com/siddo-web/portfolio

@@ -13,6 +13,11 @@ const pages={
  'graphic/index.html':'/graphic/',
  'appdev_portfolio/index.html':'/appdev_portfolio/',
  'digital-marketing/index.html':'/digital-marketing/',
+ 'services/wordpress-development/index.html':'/services/wordpress-development/',
+ 'services/shopify-development/index.html':'/services/shopify-development/',
+ 'services/webflow-wix-development/index.html':'/services/webflow-wix-development/',
+ 'services/cms-migration-integration/index.html':'/services/cms-migration-integration/',
+ 'services/cms-support-optimization/index.html':'/services/cms-support-optimization/',
  'explorer.html':'/explorer.html',
  'privacy.html':'/privacy.html'
 };

@@ -1,0 +1,219 @@
+{
+  "services": [
+    {
+      "slug": "wordpress-development",
+      "title": "WordPress Development",
+      "shortTitle": "WordPress",
+      "tagline": "WordPress websites built to be yours.",
+      "summary": "Custom WordPress websites, Gutenberg and Elementor builds, and WooCommerce stores that are fast, flexible and easy to update.",
+      "intro": "A website should be straightforward to manage long after launch. I build responsive WordPress experiences around clear layouts, sensible content structures and practical editing workflows, so the day-to-day updates stay in your hands.",
+      "benefits": [
+        "Custom themes and responsive page builds",
+        "Gutenberg or Elementor page templates",
+        "WooCommerce storefronts and product pages",
+        "Custom post types, fields and reusable blocks",
+        "Speed, security and launch-ready checks"
+      ],
+      "deliverables": [
+        "Editable page templates",
+        "Responsive layouts",
+        "Core technical SEO setup",
+        "Content editing handover"
+      ],
+      "steps": [
+        "Map the pages and content",
+        "Build the templates and components",
+        "Test usability and performance",
+        "Launch and hand over"
+      ],
+      "tools": [
+        "WordPress",
+        "WooCommerce",
+        "Elementor",
+        "Gutenberg"
+      ],
+      "faq": [
+        {
+          "question": "Can I edit the website myself?",
+          "answer": "Yes. The goal is an editor-friendly website where you can change your content, images and pages without needing to edit code."
+        },
+        {
+          "question": "Can you improve an existing WordPress site?",
+          "answer": "Yes. Existing themes, layouts, speed issues and WooCommerce changes can be reviewed before deciding whether to refine or rebuild."
+        }
+      ]
+    },
+    {
+      "slug": "shopify-development",
+      "title": "Shopify Development",
+      "shortTitle": "Shopify",
+      "tagline": "Online stores that make shopping feel simple.",
+      "summary": "Shopify theme customization, storefront sections, product templates and conversion-focused eCommerce experiences.",
+      "intro": "A Shopify store has to work for the customer and for the team updating it. From clean product discovery to flexible sections, I focus on practical storefront experiences that keep your catalog clear and your store simple to maintain.",
+      "benefits": [
+        "Shopify theme setup and customization",
+        "Product, collection and landing page templates",
+        "Custom Liquid sections and reusable blocks",
+        "Mobile shopping and checkout journey improvements",
+        "App integration and storefront cleanup"
+      ],
+      "deliverables": [
+        "Storefront page templates",
+        "Collection and product layouts",
+        "Reusable Shopify sections",
+        "Testing and editing handover"
+      ],
+      "steps": [
+        "Review the store and catalog",
+        "Plan templates and navigation",
+        "Develop and test the storefront",
+        "Publish and document changes"
+      ],
+      "tools": [
+        "Shopify",
+        "Liquid",
+        "HTML / CSS",
+        "JavaScript"
+      ],
+      "faq": [
+        {
+          "question": "Can you work with my current Shopify theme?",
+          "answer": "Yes. I can review the current theme and identify changes that can be made without unnecessarily replacing the whole store."
+        },
+        {
+          "question": "Will I be able to manage products?",
+          "answer": "Yes. Product, price, inventory and collection management stay inside Shopify, with reusable page sections wherever possible."
+        }
+      ]
+    },
+    {
+      "slug": "webflow-wix-development",
+      "title": "Webflow & Wix Development",
+      "shortTitle": "Webflow & Wix",
+      "tagline": "Thoughtful pages with straightforward editing.",
+      "summary": "Responsive Webflow and Wix websites with editable CMS collections, flexible page sections and polished interactions.",
+      "intro": "No-code and low-code platforms can still deliver careful, professional experiences. I focus on clear page architecture, well-organized CMS content and responsive design so teams can make updates confidently without losing visual consistency.",
+      "benefits": [
+        "Responsive website design and builds",
+        "Webflow CMS collections and dynamic pages",
+        "Wix page customization and content structure",
+        "Forms, interactions and third-party embeds",
+        "On-page SEO and mobile experience review"
+      ],
+      "deliverables": [
+        "Reusable page sections",
+        "CMS-driven content pages",
+        "Responsive layout testing",
+        "Editorial handover"
+      ],
+      "steps": [
+        "Choose the right platform structure",
+        "Create reusable design sections",
+        "Connect dynamic collections and forms",
+        "Test, publish and hand over"
+      ],
+      "tools": [
+        "Webflow",
+        "Wix",
+        "CMS collections",
+        "Custom CSS / JS"
+      ],
+      "faq": [
+        {
+          "question": "Which should I use, Webflow or Wix?",
+          "answer": "It depends on the design, content structure, team and update workflow. We can review those needs before selecting a platform."
+        },
+        {
+          "question": "Can I add pages without a developer?",
+          "answer": "Yes, where the platform supports it, CMS templates and reusable sections can make routine publishing much easier."
+        }
+      ]
+    },
+    {
+      "slug": "cms-migration-integration",
+      "title": "CMS Migration & Integrations",
+      "shortTitle": "CMS Migration",
+      "tagline": "Move content without losing the important details.",
+      "summary": "Content migration, CMS restructuring, dynamic content models and integrations that connect your website with the tools you use.",
+      "intro": "Moving a website or changing its content system needs more than copying text. I plan the content structure, map existing URLs, carry over important assets and check the forms, tracking and integrations people rely on.",
+      "benefits": [
+        "Website and content migration planning",
+        "Page, media and URL mapping",
+        "CMS fields and dynamic content models",
+        "Forms, analytics and third-party integrations",
+        "Redirects and post-migration quality checks"
+      ],
+      "deliverables": [
+        "Content migration plan",
+        "Mapped page and content structures",
+        "Integration checks",
+        "Redirect and launch checklist"
+      ],
+      "steps": [
+        "Audit content and existing URLs",
+        "Map the new CMS structure",
+        "Migrate and verify content",
+        "Test redirects and launch"
+      ],
+      "tools": [
+        "WordPress",
+        "Shopify",
+        "Webflow",
+        "APIs & forms"
+      ],
+      "faq": [
+        {
+          "question": "Can existing URLs be preserved?",
+          "answer": "Where practical, yes. When URLs must change, a redirect plan helps visitors and search engines find the new pages."
+        },
+        {
+          "question": "Can existing forms and analytics be retained?",
+          "answer": "We can review the current setup and map out which integrations should carry over to the new platform."
+        }
+      ]
+    },
+    {
+      "slug": "cms-support-optimization",
+      "title": "CMS Support & Optimization",
+      "shortTitle": "CMS Support",
+      "tagline": "Keep your site working as it grows.",
+      "summary": "CMS updates, page improvements, accessibility checks, performance optimization and ongoing website support.",
+      "intro": "A good website needs steady care. Whether it is a broken layout, slow loading pages or a new content section, I help make useful improvements while protecting the experience people already know.",
+      "benefits": [
+        "CMS updates and layout fixes",
+        "Page speed and Core Web Vitals checks",
+        "Mobile and accessibility improvements",
+        "Technical SEO and content structure",
+        "New sections, forms and feature requests"
+      ],
+      "deliverables": [
+        "Site review and prioritized fixes",
+        "Tested enhancements",
+        "Performance and usability checks",
+        "Clear update notes"
+      ],
+      "steps": [
+        "Review issues and priorities",
+        "Plan safe changes",
+        "Implement and test",
+        "Report on the updates"
+      ],
+      "tools": [
+        "WordPress",
+        "Shopify",
+        "Webflow / Wix",
+        "SEO & analytics"
+      ],
+      "faq": [
+        {
+          "question": "Do you offer one-time fixes?",
+          "answer": "Yes. Individual fixes and scoped improvements can be handled without requiring a long-term maintenance arrangement."
+        },
+        {
+          "question": "Do you work on existing websites?",
+          "answer": "Yes. Work can start with an audit of your current CMS, theme, plugins and performance concerns."
+        }
+      ]
+    }
+  ]
+}

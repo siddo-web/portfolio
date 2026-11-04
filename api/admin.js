@@ -8,7 +8,7 @@ const COOKIE = 'ms_portfolio_session';
 const EXPIRES_MS = 8 * 60 * 60 * 1000;
 const LOGIN_MAX = 6;
 const attempts = new Map(); // Per-instance best effort only; use Vercel Firewall for durable rate limits.
-const cat = new Set(['web-development','web-design','design-brand','app-development','digital-marketing']);
+const cat = new Set(["wordpress-development", "shopify-development", "webflow-wix-development", "cms-migration-integration", "cms-support-optimization", "web-development", "web-design", "design-brand", "app-development", "digital-marketing"]);
 function envReady(){ return ['GITHUB_OWNER','GITHUB_REPO','GITHUB_TOKEN','ADMIN_PASSWORD','SESSION_SECRET'].every(k => (process.env[k] || '').trim()) && process.env.ADMIN_PASSWORD.length >= 12 && process.env.SESSION_SECRET.length >= 32; }
 function reject(res,status,message){return res.status(status).json({ok:false,message});}
 function b64url(b){return Buffer.from(b).toString('base64url');}
@@ -27,6 +27,30 @@ async function github(file,options={}){
 }
 async function readProjects(){try{const r=await github('content/projects.json');const content=Buffer.from((r.content||'').replace(/\s/g,''),'base64').toString('utf8');const d=JSON.parse(content);return {projects:Array.isArray(d.projects)?d.projects:[],sha:r.sha};}catch(e){if(e.status===404)return{projects:[],sha:null};throw e;}}
 async function writeProjects(projects,sha){const body={message:'CMS: update portfolio projects',branch:process.env.GITHUB_BRANCH||'main',content:Buffer.from(JSON.stringify({projects},null,2)+'\n').toString('base64')};if(sha)body.sha=sha;await github('content/projects.json',{method:'PUT',json:body});}
+// Five service pages share one GitHub-backed services collection.
+const allowedServiceSlugs = new Set(['wordpress-development','shopify-development','webflow-wix-development','cms-migration-integration','cms-support-optimization']);
+async function readServices(){
+ const r=await github('content/services.json');
+ const d=JSON.parse(Buffer.from((r.content||'').replace(/\s/g,''),'base64').toString('utf8'));
+ return {services:Array.isArray(d.services)?d.services:[],sha:r.sha};
+}
+async function writeServices(services,sha){
+ const body={message:'CMS: update service page',branch:process.env.GITHUB_BRANCH||'main',content:Buffer.from(JSON.stringify({services},null,2)+'\n').toString('base64'),sha};
+ await github('content/services.json',{method:'PUT',json:body});
+}
+function cleanService(input,prev){
+ if(!input||typeof input!=='object'||!prev||!allowedServiceSlugs.has(prev.slug))throw badRequest('Invalid service details.');
+ const value=(field,max)=>valStr(input[field],max);
+ const arr=(field,maxCount,maxLen)=>{
+   if(!Array.isArray(input[field])||input[field].length<1||input[field].length>maxCount)throw badRequest('Invalid '+field+' list.');
+   const values=input[field].map(x=>valStr(x,maxLen));if(values.some(x=>!x))throw badRequest('Complete all '+field+' entries.');return values;
+ };
+ const faq=Array.isArray(input.faq)?input.faq.slice(0,8).map(x=>({question:valStr(x?.question,240),answer:valStr(x?.answer,1000)})):[];
+ const d={...prev,title:value('title',70),shortTitle:value('shortTitle',30),tagline:value('tagline',160),summary:value('summary',460),intro:value('intro',1800),benefits:arr('benefits',10,200),deliverables:arr('deliverables',8,140),steps:arr('steps',8,160),tools:arr('tools',12,70),faq};
+ if(!d.title||!d.shortTitle||!d.tagline||!d.summary||!d.intro)throw badRequest('Complete the service title, summary, tagline and introduction.');
+ if(faq.length>8||faq.some(x=>!x.question||!x.answer))throw badRequest('Complete all FAQ questions and answers.');
+ return d;
+}
 // For distributed login throttling on Vercel, configure Upstash Redis REST.
 // Without it this falls back to the existing per-instance counter and Vercel Firewall is essential.
 function redisConfigured(){return !!(process.env.UPSTASH_REDIS_REST_URL&&process.env.UPSTASH_REDIS_REST_TOKEN);}
@@ -71,6 +95,15 @@ module.exports=async function handler(req,res){
    if(!validSession(req))return reject(res,401,'Please sign in to the CMS.');
    if(method==='GET'&&action==='status')return res.json({ok:true,authenticated:true});
    if(method==='GET'&&action==='projects'){const d=await readProjects();return res.json({ok:true,projects:d.projects});}
+   if(method==='GET'&&action==='services'){const d=await readServices();return res.json({ok:true,services:d.services});}
+   if(method==='POST'&&action==='saveService'){
+     const inputData=input(req);const slug=valStr(inputData.slug,80);
+     if(!allowedServiceSlugs.has(slug))return reject(res,400,'Unknown service.');
+     const rec=await readServices();const i=rec.services.findIndex(x=>x.slug===slug);
+     if(i<0)return reject(res,404,'Service not found.');
+     const updated=cleanService(inputData.service,rec.services[i]);rec.services[i]=updated;
+     await writeServices(rec.services,rec.sha);return res.json({ok:true,service:updated,message:'Service updated in GitHub. The website will refresh after Vercel redeploys.'});
+   }
    if(method==='POST'&&action==='save'){
     const d=input(req);const rec=await readProjects();const id=valStr(d.id,80);let i=id?rec.projects.findIndex(p=>p.id===id):-1;
     if(id&&i<0)return reject(res,404,'Project not found.');if(i<0&&rec.projects.length>=150)return reject(res,400,'Maximum 150 projects reached.');

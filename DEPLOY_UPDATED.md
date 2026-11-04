@@ -1,3 +1,5 @@
+> **Newer changes:** The CMS Developer update supersedes the original five-services positioning described below. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) first; the original galleries remain preserved as archives.
+
 # Updated Portfolio — November 4, 2026
 
 This is a **clean, single-root GitHub + Vercel ZIP** (no nested duplicate site, `.git`, credentials or Netlify-exported full-page HTML captures). It preserves the existing homepage, five service areas, interactions and Jotform enquiry embed. All files are meant to be placed in the ROOT of the existing `siddo-web/portfolio` repository.
