@@ -1280,7 +1280,7 @@ self.Worker=function(u,o){var a=alt(u)||u,abs=new URL(a,location.href).href;var 
       <button class="sf__ghost" data-go="works">See my work</button>
     </div>
     <div class="sf__cols">
-      <div><h3>Work</h3><ul class="work"><li><a href="services/wordpress-development/" data-door="0">WordPress Development</a></li><li><a href="services/shopify-development/" data-door="1">Shopify Development</a></li><li><a href="services/webflow-wix-development/" data-door="2">Webflow &amp; Wix Development</a></li><li><a href="services/cms-migration-integration/" data-door="3">CMS Migration & Integrations</a></li><li><a href="services/cms-support-optimization/" data-door="4">CMS Support & Optimization</a></li></ul></div>
+      <div><h3>Work</h3><ul class="work"><li><a href="webdev_portfolio/" data-door="0">WordPress Development</a></li><li><a href="UIUX_portfolio/" data-door="1">Shopify Development</a></li><li><a href="graphic/" data-door="2">Webflow &amp; Wix Development</a></li><li><a href="appdev_portfolio/" data-door="3">CMS Migration & Integrations</a></li><li><a href="digital-marketing/" data-door="4">CMS Support & Optimization</a></li></ul></div>
       <div><h3>Navigate</h3><ul><li><a href="./" data-go="home">Home</a></li><li><a href="./#about" data-go="about">My process</a></li><li><button data-contact>Contact</button></li></ul></div>
       <div><h3>Status</h3><ul><li class="st">Available for work</li><li class="st">Based in Karachi, Pakistan</li><li class="st">Local time <span data-ftime>—</span></li></ul></div>
     </div>
@@ -2161,11 +2161,11 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   // Standalone portfolios navigate as full pages after the walkthrough.
   // BlockChain and Explorer keep matching captures; there is no standalone DevOps portfolio.
   const ROUTES = [
-    './services/wordpress-development/index.html',
-    './services/shopify-development/index.html',
-    './services/webflow-wix-development/index.html',
-    './services/cms-migration-integration/index.html',
-    './services/cms-support-optimization/index.html'
+    './webdev_portfolio/index.html',
+    './UIUX_portfolio/index.html',
+    './graphic/index.html',
+    './appdev_portfolio/index.html',
+    './digital-marketing/index.html'
   ];
   const ROUTE_BASE = new URL('./', location.href);
   const routeUrl = i => new URL(ROUTES[i], ROUTE_BASE).href;

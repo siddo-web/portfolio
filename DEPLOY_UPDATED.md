@@ -1,4 +1,4 @@
-> **Newer changes:** The CMS Developer update supersedes the original five-services positioning described below. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) first; the original galleries remain preserved as archives.
+> **Newer changes:** The CMS Developer update supersedes the original five-services positioning described below. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) first; the original galleries are the active service pages again.
 
 # Updated Portfolio — November 4, 2026
 

@@ -1,6 +1,7 @@
 /* All five CMS services are sourced from content/services.json and editable in /admin/. */
 (()=>{
  'use strict';
+ const PAGE_ROUTES=['webdev_portfolio/','UIUX_portfolio/','graphic/','appdev_portfolio/','digital-marketing/'];
  const safeSlug=s=>/^[a-z0-9-]{2,64}$/.test(s||'');
  const setText=(el,value)=>{if(el&&typeof value==='string')el.textContent=value;};
  const scoped=(selector,i)=>document.querySelectorAll(selector)[i];
@@ -15,7 +16,7 @@
    const card=scoped('.ms-expertise__grid .ms-service',i);
    if(card){setText(card.querySelector('h3'),service.title);setText(card.querySelector('p'),service.summary);const button=card.querySelector('button');if(button&&button.firstChild?.nodeType===3)button.firstChild.textContent='Explore '+(service.shortTitle||service.title)+' '; }
    const foot=scoped('.sf__cols ul.work a',i);
-   if(foot){setText(foot,service.title);foot.href='services/'+service.slug+'/';}
+   if(foot){setText(foot,service.title);foot.href=PAGE_ROUTES[i];}
    setText(scoped('.ld__pill',i+1)?.querySelector('span'),service.shortTitle||service.title);
    if(Array.isArray(window.__cmsDoorInfo)&&window.__cmsDoorInfo[i]){
      const info=window.__cmsDoorInfo[i];info[0]=service.title;info[1]=service.tagline||service.summary;info[2]=Array.isArray(service.benefits)?service.benefits:[];

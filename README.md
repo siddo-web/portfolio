@@ -1,4 +1,4 @@
-> **CMS Developer edition (Nov 4, 2026):** Five CMS-focused services, five new service pages, homepage navigation updates and an admin Services editor are included. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) for details and deployment guidance.
+> **CMS Developer edition (Nov 4, 2026):** Five CMS-focused services, restored original inner-page designs, homepage navigation updates and an admin Services editor are included. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) for details and deployment guidance.
 
 > **Updated release:** See [DEPLOY_UPDATED.md](DEPLOY_UPDATED.md) for changes, safety notes and exact GitHub/Vercel deployment instructions.
 
@@ -11,9 +11,9 @@ A static HTML/CSS/JS portfolio with **Jotform** project enquiries and a **GitHub
 ## Files
 
 - `index.html`: main website, original interactive pages and Jotform project popup.
-- `services/`: five new CMS development service pages plus the shared editable-service frontend.
+- `services/`: redirect aliases to the five original portfolio page layouts, plus the shared editable-service frontend.
 - `content/services.json`: five CMS services that can be edited in the dashboard.
-- `webdev_portfolio/`, `UIUX_portfolio/`, `graphic/`, `appdev_portfolio/`, `digital-marketing/`: original galleries preserved as archived portfolio material.
+- `webdev_portfolio/`, `UIUX_portfolio/`, `graphic/`, `appdev_portfolio/`, `digital-marketing/`: original project galleries retained as the live service pages with CMS-focused descriptions.
 - `admin/`: responsive project + CMS service management dashboard at `/admin/`.
 - `api/admin.js`: Vercel serverless admin API for authentication and GitHub project updates.
 - `content/projects.json`: public portfolio projects (includes a preserved draft test project from the live repo).
