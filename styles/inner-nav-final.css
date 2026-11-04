@@ -9,9 +9,6 @@
 .ms-services-dd summary svg{height:15px;width:15px;transition:transform .22s}
 .ms-services-dd[open] summary svg{transform:rotate(180deg)}
 .ms-services-dd:hover summary,.ms-services-dd[open] summary{opacity:1}
-:focus-visible {
-    outline: 0px solid var(--accent) !important;
-}
 .ms-services-pop{position:absolute;left:50%;top:calc(100% + 17px);transform:translateX(-50%);width:310px;max-width:min(90vw,310px);padding:14px;border:1px solid rgba(var(--fg-rgb),.15);border-radius:18px;background:var(--bg);color:var(--fg);box-shadow:0 23px 55px rgba(0,0,0,.16);z-index:200;white-space:normal}
 .ms-services-pop::before{content:'';position:absolute;left:0;right:0;top:-22px;height:22px}
 .ms-services-cap{display:flex;justify-content:space-between;padding:7px 9px 13px;font-size:10px;letter-spacing:.12em;opacity:.55;font-weight:650}

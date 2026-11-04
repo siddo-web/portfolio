@@ -947,6 +947,22 @@ body{margin:0}
 .hc__front .hc__sheen{-webkit-mask-image:none;mask-image:none;opacity:calc(.08 + var(--lift) * .1)}
 @media (max-height:540px){.holo__lite{gap:.35rem}.hc{width:min(72vw,calc(69svh * .716),34rem)}}
 @media (prefers-reduced-motion:reduce){.holo__lite .hc,.hc__in{transition:none!important}}
+
+/* EXACT USER-SUPPLIED PREMIUM CARD: never crop/recompose the reference. */
+.hc{aspect-ratio:1061 / 1483;width:min(84vw,calc(79svh * 1061 / 1483),33.5rem)}
+.hc__face.hc__front{border-radius:1.5% / 1%;background:#b4686c}
+.hc__reference{display:block;position:absolute;inset:0;width:100%;height:100%;object-fit:fill;user-select:none;-webkit-user-drag:none;pointer-events:none}
+.hc__front .hc__glare{opacity:.14;mix-blend-mode:soft-light}
+.hc__front .hc__glare::before{opacity:.38}
+.hc__face.hc__back{border-radius:1.5% / 1%}
+.holo__ld[hidden],.holo__lite[hidden],.holo[hidden]{display:none!important}
+.holo__ld{z-index:4}
+.holo__ld.out{pointer-events:none}
+.holo__lite{z-index:2}
+.hc__hint{margin:0;line-height:1.35;text-align:center}
+@media(max-width:680px){.hc{width:min(88vw,calc(75svh * 1061 / 1483),26.5rem)}.holo__lite{gap:clamp(.55rem,2vh,1.15rem)}}
+@media(max-height:620px) and (min-width:680px){.hc{width:min(70vw,calc(70svh * 1061 / 1483),30rem)}.holo__lite{gap:.5rem}}
+
 /* ---------- floating back-to-top ---------- */
 .totop{--tt-bg:#1A1818;--tt-fg:#E8E4E0;--tt-ring:232,228,224;position:fixed;right:max(1.25rem,env(safe-area-inset-right));bottom:max(1.25rem,env(safe-area-inset-bottom));z-index:60;
   display:grid;place-items:center;width:3.25rem;height:3.25rem;padding:0;border:0;border-radius:50%;background:var(--tt-bg);color:var(--tt-fg);cursor:pointer;
@@ -1014,6 +1030,7 @@ self.Worker=function(u,o){var a=alt(u)||u,abs=new URL(a,location.href).href;var 
 .jf-note a{color:var(--foreground,#171515);text-decoration:underline;text-underline-offset:3px;}
 @media(max-width:640px){.modal__panel:has(.jf-frame){padding:14px}.jf-frame{height:68dvh;min-height:400px;}}
 </style>
+<link rel="stylesheet" href="styles/portfolio-polish.css?v=2">
 </head>
 <body>
 
@@ -1425,7 +1442,7 @@ self.Worker=function(u,o){var a=alt(u)||u,abs=new URL(a,location.href).href;var 
 <div class="holo" id="holo" role="dialog" aria-modal="true" aria-label="Muhammad Siddique Premium Profile Card" hidden>
   <div class="holo__ld" id="holoLd" aria-hidden="true"><div class="cl" aria-hidden="true"><p class="cl__name">Muhammad Siddique</p><div class="cl__line"><i></i></div><p class="cl__row"><span>Loading the card</span><b id="holoPct">0%</b></p></div></div>
   <div class="holo__lite" id="holoLite" hidden>
-    <button class="hc" id="hc" aria-label="Flip the card"><i class="hc__aura"></i><span class="hc__in"><span class="hc__face hc__front"><span class="hc__win"><img class="hc__bg" src="assets/images/4c7752569d-win_bg.webp" loading="lazy" alt="" decoding="async"><img class="hc__sub" src="assets/images/970419499e-win_sub.webp" loading="lazy" alt="" decoding="async"><i class="hc__wsh"></i></span><img class="hc__plate" src="assets/images/muhammad-siddique-card.webp" loading="lazy" alt="Muhammad Siddique premium profile card" decoding="async"><i class="hc__foil"></i><i class="hc__sheen"></i><i class="hc__glare"></i><i class="hc__rim"></i></span><span class="hc__face hc__back"><span class="hc__back-panel">
+    <button class="hc" id="hc" aria-label="Flip the card"><i class="hc__aura"></i><span class="hc__in"><span class="hc__face hc__front"><img class="hc__reference" src="assets/images/muhammad-siddique-premium-profile.png" alt="Muhammad Siddique Premium Profile Card — original ornate gold-framed design" decoding="async" loading="eager" width="1061" height="1483"><i class="hc__glare" aria-hidden="true"></i></span><span class="hc__face hc__back"><span class="hc__back-panel">
       <span class="hc__back-top"><span class="hc__back-monogram">MS<span>.</span></span><span class="hc__back-edition">PROFILE / 2026</span></span>
       <span class="hc__back-main"><span class="hc__back-label">MUHAMMAD SIDDIQUE</span><span class="hc__back-heading">CMS<br>DEVELOPER<span>.</span></span><span class="hc__back-text">Thoughtful websites. Flexible content. Seamless digital experiences.</span></span>
       <span class="hc__back-bottom"><span class="hc__back-services">WORDPRESS / SHOPIFY<br>WEBFLOW / WIX</span><span class="hc__back-foot">DEVELOPMENT &nbsp;·&nbsp; INTEGRATION &nbsp;·&nbsp; SUPPORT</span></span>
@@ -2689,10 +2706,9 @@ if (['#works', '#about', '#contact'].includes(location.hash)){
   }, { once: true });
 })();
 
-/* ---------- Premium Profile Card: local, reliable, dependency-free 3D card ----------
-   The previous version opened ability-card/, a directory absent from the deployed
-   portfolio, so the loader stayed at 0% until a 45-second timeout. All card art
-   is now local and this component needs no iframe or remote WebGL runtime. */
+/* ---------- Premium Profile Card: original reference artwork + restored progress loader ----------
+   All assets are local. The loader now makes real progress and has a finite fallback,
+   rather than relying on the removed ability-card/ embedded app. */
 (() => {
   const layer = $('#holo'), open = $('#holoOpen'), fig = $('#fig');
   if (!layer || !open) return;
@@ -2700,12 +2716,56 @@ if (['#works', '#about', '#contact'].includes(location.hash)){
   const motionReduced = matchMedia('(prefers-reduced-motion: reduce)');
   const clamp = v => Math.max(-1, Math.min(1, v));
   let isOpen = false, lastFocus = null, loop = 0, held = false;
+  let loadCycle = 0, progressTimer = 0;
+  const pct = $('#holoPct');
   let tx = 0, ty = 0, cx = 0, cy = 0, t0 = 0, touchStart = null;
 
-  // Images are normal local files. Begin loading immediately on first interaction,
-  // but never gate the visible card behind a network or decode promise.
-  function loadCardImages(){
-    lite.querySelectorAll('img').forEach(im => { im.loading = 'eager'; });
+  // The supplied PNG is the exact card face. The progress animation is bounded:
+  // slow decoding or a missing asset can never trap the visitor on a 0% screen.
+  function updateProgress(value){
+    const p = Math.max(0, Math.min(100, Math.round(value)));
+    loader?.style.setProperty('--p', String(p / 100));
+    if (pct) pct.textContent = `${p}%`;
+  }
+  function cardImageReady(){
+    const art = lite.querySelector('.hc__reference');
+    if (!art) return Promise.resolve();
+    art.loading = 'eager';
+    if (art.complete && art.naturalWidth > 0) return Promise.resolve();
+    if (typeof art.decode === 'function') return art.decode().catch(() => {});
+    return new Promise(resolve => {
+      art.addEventListener('load', resolve, {once:true});
+      art.addEventListener('error', resolve, {once:true});
+    });
+  }
+  function startCardLoader(cycle){
+    clearInterval(progressTimer);
+    updateProgress(0);
+    const start = performance.now();
+    progressTimer = setInterval(() => {
+      if (!isOpen || cycle !== loadCycle) { clearInterval(progressTimer); return; }
+      const elapsed = performance.now() - start;
+      updateProgress(Math.min(93, Math.floor((elapsed / 1450) * 93)));
+    }, 40);
+    Promise.all([
+      Promise.race([cardImageReady(), new Promise(resolve => setTimeout(resolve, 4200))]),
+      new Promise(resolve => setTimeout(resolve, 1040))
+    ]).then(() => {
+      if (!isOpen || cycle !== loadCycle) return;
+      clearInterval(progressTimer);
+      updateProgress(100);
+      setTimeout(() => {
+        if (!isOpen || cycle !== loadCycle) return;
+        lite.hidden = false;
+        requestAnimationFrame(() => {
+          if (!isOpen || cycle !== loadCycle) return;
+          loader?.classList.add('out');
+          lite.classList.add('in');
+          startMotion();
+          setTimeout(() => { if (isOpen && cycle === loadCycle) hc.focus({ preventScroll:true }); }, 240);
+        });
+      }, 180);
+    });
   }
   function draw(now){
     if (!isOpen) return;
@@ -2727,25 +2787,22 @@ if (['#works', '#about', '#contact'].includes(location.hash)){
   function show(){
     if (isOpen) return;
     isOpen = true; lastFocus = document.activeElement;
-    loadCardImages();
-    // No empty 0% loading screen: the CSS perspective card appears straight away.
-    if (loader) loader.hidden = true;
+    const cycle = ++loadCycle;
     layer.hidden = false;
-    lite.hidden = false;
+    lite.hidden = true;
+    loader?.classList.remove('out', 'gone');
+    if (loader) loader.hidden = false;
     hc.classList.remove('flip', 'live');
     tx = ty = cx = cy = 0; held = false;
     stopScroll();
-    requestAnimationFrame(() => {
-      if (!isOpen) return;
-      layer.classList.add('on');
-      lite.classList.add('in');
-    });
-    startMotion();
-    setTimeout(() => { if (isOpen) hc.focus({ preventScroll: true }); }, 160);
+    requestAnimationFrame(() => { if (isOpen && cycle === loadCycle) layer.classList.add('on'); });
+    startCardLoader(cycle);
   }
   function hide(){
     if (!isOpen) return;
     isOpen = false; held = false;
+    ++loadCycle;
+    clearInterval(progressTimer);
     cancelAnimationFrame(loop); loop = 0;
     lite.classList.remove('in'); layer.classList.remove('on');
     const focusTarget = lastFocus;

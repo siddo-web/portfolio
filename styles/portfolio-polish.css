@@ -1,0 +1,104 @@
+/* November 2026: consistent, accessible type and icon scale.
+   Scoped to existing components; original layout, cards and media unchanged. */
+:root {--polish-reading:1rem;--polish-icon:1.25rem}
+html {text-size-adjust:100%;-webkit-text-size-adjust:100%}
+/* Homepage editorial hierarchy */
+.hero .h1 {font-size:clamp(2.8rem,4.3vw,4.65rem);line-height:1.04;letter-spacing:-.055em}
+.hero .eyebrow {font-size:clamp(.82rem,.94vw,.93rem)}
+.hero .h1 .cal {font-size:.7em;max-width:100%}
+.hero .fig__card {font-size:clamp(.75rem,.82vw,.875rem);min-height:42px;padding-inline:1rem}
+.ms-about h2,.ms-faq h2,.ms-expertise .ms-section-head h2 {font-size:clamp(2.85rem,5.4vw,5.8rem);line-height:1.04;letter-spacing:-.065em}
+.ms-about .ms-about__copy p,.ms-faq>div>div>p {font-size:clamp(1rem,1.18vw,1.12rem);line-height:1.65}
+.ms-about .ms-about__note p {font-size:clamp(1.12rem,1.35vw,1.43rem);line-height:1.5}
+.ms-about .ms-note-number {font-size:clamp(2.9rem,3.6vw,4.15rem)}
+.ms-about .ms-note-sun {font-size:5rem;opacity:.09}
+.ms-expertise__grid>.ms-service {min-height:370px;grid-template-rows:84px minmax(0,1fr) auto;padding:clamp(23px,1.85vw,32px)}
+.ms-expertise__grid .ms-service__symbol {width:62px;height:62px;border-radius:14px}
+.ms-expertise__grid .ms-service__symbol img {width:39px;height:39px}
+.ms-expertise__grid .ms-service h3 {font-size:clamp(1.55rem,1.85vw,2rem);min-height:0;line-height:1.2;letter-spacing:-.04em;margin-bottom:15px}
+.ms-expertise__grid .ms-service p {font-size:clamp(.96rem,1.08vw,1.05rem);line-height:1.6}
+.ms-expertise__grid .ms-service button {font-size:clamp(.875rem,1vw,.98rem);padding-top:16px}
+.ms-expertise__grid .ms-service__arrow {width:18px;height:18px}
+.ms-kicker,.ms-section-number {font-size:.78rem;letter-spacing:.115em}
+.ms-faq__items summary {font-size:clamp(1.06rem,1.25vw,1.32rem);line-height:1.38;padding:24px 0}
+.ms-faq__items summary span {width:30px;height:30px;font-size:1.35rem}
+.ms-faq__items details p {font-size:1rem;line-height:1.65}
+.story__yr {font-size:clamp(5rem,9.4vw,8.75rem)}
+.story__h {font-size:clamp(2.2rem,3vw,3.1rem)}
+.dinfo__h {font-size:clamp(1.45rem,1.85vw,1.85rem)}
+.dinfo__p {font-size:clamp(.88rem,1.05vw,1rem);line-height:1.45}
+.ms-text-link,.sf__btn,.sf__input {font-size:clamp(.92rem,1.07vw,1.04rem)}
+.pill__badge {width:2.1rem;height:2.1rem;font-size:.94rem}
+.hcard__tile {width:5.2rem;font-size:1.5rem}
+.totop {width:3rem;height:3rem}
+.totop svg.ar {width:1.05rem;height:1.05rem}
+/* Inner project pages use the same reading rhythm, without changing stacked cards. */
+.intro h1 {font-size:clamp(2.6rem,5.3vw,4.85rem);line-height:1.03;letter-spacing:-.043em;white-space:normal;text-wrap:balance;overflow-wrap:break-word}
+.intro p {font-size:clamp(1rem,1.13vw,1.14rem);line-height:1.65}
+.card h2 {font-size:clamp(1.75rem,2.65vw,2.5rem);line-height:1.12;letter-spacing:-.035em}
+.card .desc {font-size:clamp(.96rem,1.06vw,1.06rem);line-height:1.62}
+.card .sub {font-size:.95rem;line-height:1.5}
+.tags li {font-size:.82rem;line-height:1.3}
+.live {font-size:.9rem}
+.live svg,.chip svg {width:1rem;height:1rem}
+/* Focus indicators visible across light/dark themes. */
+.hc:focus-visible,.holo__x:focus-visible,.fig__card:focus-visible {outline:3px solid #E0B777;outline-offset:5px}
+@media (max-width:1199.98px){.hero .h1{font-size:clamp(2.65rem,5.2vw,4.05rem)}.ms-expertise__grid>.ms-service{min-height:340px}}
+@media (max-width:679.98px){
+ .hero .h1{font-size:clamp(2.12rem,9.1vw,3rem);line-height:1.07}
+ .hero .fig__card{font-size:.78rem;min-height:43px;left:0;bottom:8%}
+ .ms-about h2,.ms-faq h2,.ms-expertise .ms-section-head h2{font-size:clamp(2.35rem,9.8vw,3.35rem);line-height:1.06;letter-spacing:-.053em}
+ .ms-expertise__grid>.ms-service{min-height:305px;padding:24px;grid-template-rows:74px minmax(0,1fr) auto}
+ .ms-expertise__grid .ms-service__symbol{width:56px;height:56px;border-radius:12px}
+ .ms-expertise__grid .ms-service__symbol img{width:35px;height:35px}
+ .ms-expertise__grid .ms-service h3{font-size:clamp(1.55rem,7.2vw,1.88rem);line-height:1.15;margin-bottom:12px}
+ .ms-expertise__grid .ms-service p{font-size:1rem}
+ .ms-faq__items summary{font-size:1.08rem}
+ .story__yr{font-size:clamp(3.5rem,15vw,4.35rem)}
+ .story__h{font-size:1.65rem}
+ .ms-about .ms-about__note p{font-size:1.14rem}
+ .ms-about .ms-note-sun{font-size:4rem}
+ .intro h1{font-size:clamp(2.15rem,8.9vw,3.15rem);line-height:1.08;overflow-wrap:anywhere;white-space:normal}
+ .intro p{font-size:1rem;line-height:1.58}
+ .card h2{font-size:clamp(1.55rem,6.5vw,1.94rem);line-height:1.15}
+ .card .desc{font-size:1rem}
+ .card .sub{font-size:.93rem}
+}
+@media (max-width:359.98px){.hero .h1{font-size:2.05rem}.ms-about h2,.ms-faq h2,.ms-expertise .ms-section-head h2{font-size:2.2rem}.intro h1{font-size:2.1rem}}
+@media(prefers-reduced-motion:reduce){.ms-service,.hc,.hc__in{transition-duration:.01ms!important}}
+
+/* Higher-specificity final scale to neutralize late legacy inline styles. */
+body .hero .h1{font-size:clamp(2.7rem,4.2vw,4.55rem);line-height:1.04}
+body .ms-about h2,body .ms-faq h2,body .ms-expertise .ms-section-head h2{font-size:clamp(3rem,5vw,5.15rem);line-height:1.05;letter-spacing:-.059em}
+body .ms-about .ms-about__note p{font-size:clamp(1.08rem,1.37vw,1.38rem);line-height:1.52}
+body .ms-expertise__grid>.ms-service{min-height:370px;grid-template-rows:85px minmax(0,1fr) auto;padding:clamp(23px,1.85vw,32px)}
+body .ms-expertise__grid .ms-service__symbol{width:62px;height:62px;border-radius:14px}
+body .ms-expertise__grid .ms-service__symbol img{width:39px;height:39px}
+body .ms-expertise__grid .ms-service h3{font-size:clamp(1.55rem,1.86vw,2rem);min-height:0;line-height:1.2;margin-bottom:15px}
+body .ms-expertise__grid .ms-service p{font-size:clamp(.96rem,1.08vw,1.05rem);line-height:1.6}
+body .ms-faq__items summary{font-size:clamp(1.06rem,1.25vw,1.32rem)}
+body .story__yr{font-size:clamp(4.8rem,9.2vw,8.4rem)}
+body .intro h1{font-size:clamp(2.6rem,5.3vw,4.85rem);white-space:normal;line-height:1.06;text-wrap:balance}
+body .card h2{font-size:clamp(1.75rem,2.65vw,2.5rem);line-height:1.12}
+@media(min-width:680px) and (max-width:1049.98px){
+ body .ms-about h2,body .ms-faq h2,body .ms-expertise .ms-section-head h2{font-size:clamp(3rem,7vw,4.25rem)}
+}
+@media(max-width:679.98px){
+ body .hero .h1{font-size:clamp(2.13rem,9.1vw,2.92rem)}
+ body .ms-about h2,body .ms-faq h2,body .ms-expertise .ms-section-head h2{font-size:clamp(2.25rem,10.1vw,2.92rem);line-height:1.08}
+ body .ms-expertise__grid>.ms-service{min-height:307px;padding:24px;grid-template-rows:73px minmax(0,1fr) auto}
+ body .ms-expertise__grid .ms-service__symbol{width:56px;height:56px;border-radius:12px}
+ body .ms-expertise__grid .ms-service__symbol img{width:35px;height:35px}
+ body .ms-expertise__grid .ms-service h3{font-size:clamp(1.55rem,7.25vw,1.9rem);line-height:1.16}
+ body .ms-expertise__grid .ms-service p{font-size:1rem}
+ body .ms-about .ms-about__note p{font-size:1.14rem}
+ body .intro h1{font-size:clamp(2.15rem,8.9vw,3.15rem);overflow-wrap:anywhere}
+ body .card h2{font-size:clamp(1.55rem,6.5vw,1.94rem)}
+}
+/* Pixel-based minimums ensure type does not shrink on legacy tablet rem scaling. */
+body .hero .h1{font-size:clamp(42px,4.2vw,73px)}
+body .ms-expertise__grid .ms-service h3{font-size:clamp(25px,1.86vw,32px)}
+@media (max-width:679.98px){
+ body .hero .h1{font-size:clamp(34px,9.1vw,47px)}
+ body .ms-expertise__grid .ms-service h3{font-size:clamp(25px,7.25vw,30px)}
+}

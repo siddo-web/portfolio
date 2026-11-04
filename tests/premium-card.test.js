@@ -11,10 +11,15 @@ test('Premium Profile Card is rendered locally with no dangling iframe route',()
   assert(!html.includes("const SRC = 'ability-card/'"));
   assert(!html.includes('frame.src = SRC'));
   assert(!html.includes('setTimeout(showLite, window.__ONEFILE ? 15000 : 45000)'));
-  assert.match(html,/if \(loader\) loader.hidden = true;/);
+  assert.match(html,/if \(loader\) loader.hidden = false;/);
+  assert.match(html,/startCardLoader\(cycle\)/);
+  assert.match(html,/updateProgress\(100\)/);
+  assert.match(html,/setTimeout\(resolve, 4200\)/);
+  assert.match(html,/class="hc__reference"/);
+  assert.match(html,/muhammad-siddique-premium-profile\.png/);
 });
 test('All images for the profile card exist locally',()=>{
- for(const filename of ['muhammad-siddique-card.webp','4c7752569d-win_bg.webp','970419499e-win_sub.webp'])
+ for(const filename of ['muhammad-siddique-premium-profile.png','muhammad-siddique-card.webp','4c7752569d-win_bg.webp','970419499e-win_sub.webp'])
    assert(fs.existsSync(path.join(root,'assets/images',filename)),filename);
 });
 test('Card preserves tilt, flip, Escape/Close and focus handling',()=>{
