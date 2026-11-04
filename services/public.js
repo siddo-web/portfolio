@@ -1,4 +1,4 @@
-/* All five CMS services are sourced from content/services.json and editable in /admin/. */
+/* All five CMS services are sourced from content/services.json and editable as JSON in the repository. */
 (()=>{
  'use strict';
  const PAGE_ROUTES=['wordpress/','shopify/','webflow/','wix/','other-cms/'];

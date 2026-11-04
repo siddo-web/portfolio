@@ -3,10 +3,7 @@ const ROUTES=["/", "/wordpress/", "/shopify/", "/webflow/", "/wix/", "/other-cms
 function siteUrl(req){
   const configured=String(process.env.SITE_URL||'').trim();
   if(configured){try{const u=new URL(configured);if(u.protocol==='https:'||u.hostname==='localhost')return u.origin;}catch{}}
-  // Canonical domain should be set using SITE_URL; fallback is useful in previews.
-  const host=String(req.headers?.host||'').toLowerCase();
-  if(!/^[a-z0-9.-]+(?::\d{1,5})?$/.test(host))return 'https://example.invalid';
-  const proto=/^(localhost|127\.0\.0\.1)(:\d+)?$/.test(host)?'http:':'https:';
-  return proto+'//'+host;
+  // Never trust a caller-controlled Host header when generating canonical links.
+  return 'https://siddique-profile.vercel.app';
 }
 module.exports={ROUTES,siteUrl};

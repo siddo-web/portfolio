@@ -6,7 +6,7 @@ function visibleProjects(source) {
   const list = Array.isArray(source?.projects) ? source.projects : [];
   return list.filter(p => p && p.published === true && categories.has(p.category))
     .map(({id,title,category,year,tags,summary,description,url,image,gallery,featured,replaceLegacy,updatedAt}) => ({
-      id,title,category,year,tags,summary,description,url,image,
+      id,title,category,year,tags,summary,description,url,image,published:true,
       gallery:Array.isArray(gallery)?gallery:[],featured:featured===true,
       replaceLegacy:replaceLegacy===true,updatedAt
     }))

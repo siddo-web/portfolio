@@ -21,7 +21,7 @@
       const desc=document.querySelector('meta[name="description"]');
       if(desc&&active.summary)desc.content=active.summary;
     }
-    // Keeps desktop dropdown, mobile menu and footer labels consistent with /admin/ edits.
+    // Keeps desktop dropdown, mobile menu and footer labels consistent with changes to the service JSON.
     document.querySelectorAll('[data-nav^="door:"]').forEach(el=>{
       const idx=Number(el.getAttribute('data-nav').slice(5));
       const d=services[idx];if(!d)return;

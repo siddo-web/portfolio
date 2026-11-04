@@ -1,3 +1,5 @@
+> **SUPERSEDED:** This document describes an earlier login-enabled build. The current version has no website login. Follow `README.md` and `NO_LOGIN_SECURITY_UPDATE.md` instead.
+
 # CMS Developer portfolio — restored original service pages
 
 The five CMS services still display on the homepage, in the animated doors, service cards, menu and footer. All service links now open the original portfolio inner-page designs (instead of the generic new service layouts):

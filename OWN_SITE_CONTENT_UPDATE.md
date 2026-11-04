@@ -1,3 +1,5 @@
+> **SUPERSEDED:** This document describes an earlier login-enabled build. The current version has no website login. Follow `README.md` and `NO_LOGIN_SECURITY_UPDATE.md` instead.
+
 # Own-site content update (4 November 2026)
 
 The original scrolling cards, pinned galleries, media slots, animations and mobile layouts are retained. Only their project copy, project links and accessibility descriptions were updated from `Siddique_Fiverr_Project_Master_List_Updated_v3.xlsx`.

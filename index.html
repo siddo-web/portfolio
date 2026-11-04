@@ -2313,7 +2313,7 @@ const toggleMode = () => setMode(getMode() === 'dark' ? 'light' : 'dark');
   window.__cmsDoorInfo = INFO;
   const dinfo = $('#dinfo'), wallEl = $('.doors__wall', sec), MOB = matchMedia('(max-width: 639.98px)');
   units.forEach((u, i) => $('.doorway', u).setAttribute('aria-description', INFO[i][1] + ': ' + INFO[i][2].join(', ')));
-  const setInfo = i => { dinfo.querySelector('.dinfo__h').textContent = INFO[i][0]; dinfo.querySelector('.dinfo__t').textContent = INFO[i][1]; dinfo.querySelector('.dinfo__p').innerHTML = INFO[i][2].map(s => `<li>${s}</li>`).join(''); };
+  const setInfo = i => { dinfo.querySelector('.dinfo__h').textContent = INFO[i][0]; dinfo.querySelector('.dinfo__t').textContent = INFO[i][1]; const list=dinfo.querySelector('.dinfo__p'); list.replaceChildren(); INFO[i][2].forEach(s => { const li=document.createElement('li'); li.textContent=String(s); list.append(li); }); };
   if (canHover){
     // one source of truth: whichever door is under the pointer right now (re-checked on every move and scroll),
     // so the description can never be left behind however fast the cursor travels

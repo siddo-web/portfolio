@@ -1,3 +1,5 @@
+> **SUPERSEDED:** This document describes an earlier login-enabled build. The current version has no website login. Follow `README.md` and `NO_LOGIN_SECURITY_UPDATE.md` instead.
+
 > **Newer changes:** The CMS Developer update supersedes the original five-services positioning described below. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) first; the original galleries are the active service pages again.
 
 # Updated Portfolio — November 4, 2026

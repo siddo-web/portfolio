@@ -1,4 +1,4 @@
-/* Muhammad Siddique: publicly published projects only; GitHub CMS remains the default editor. */
+/* Muhammad Siddique: publicly published projects only; Edit published JSON directly in the repository. */
 (()=>{
   'use strict';
   const script=document.currentScript;
@@ -82,10 +82,8 @@
     else document.body.append(section);
   }
   mount();
-  const backup=()=>fetch(new URL('content/projects.json',siteBase),{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('CMS content unavailable')));
   fetch(new URL('api/projects',siteBase),{headers:{'Accept':'application/json'},cache:'no-cache'})
     .then(r=>r.ok?r.json():Promise.reject(new Error('CMS endpoint unavailable')))
-    .catch(backup)
     .then(d=>{all=(Array.isArray(d.projects)?d.projects:[]).filter(p=>p&&p.published===true&&categories[p.category])
       .sort((a,b)=>Number(b.featured===true)-Number(a.featured===true)||String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')));
       filters();render();})

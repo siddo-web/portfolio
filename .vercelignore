@@ -1,0 +1,18 @@
+# Do not deploy local tooling, docs, tests or environment templates as public assets.
+.git/
+.github/
+tests/
+scripts/
+*.md
+*.txt
+QA_VNEXT.json
+.env
+.env.*
+!.env.example
+.env.example
+*.zip
+*.log
+.DS_Store
+
+# Do not deploy remnants of the removed login interface.
+admin/
