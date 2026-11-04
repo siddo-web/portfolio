@@ -1,0 +1,55 @@
+MUHAMMAD SIDDIQUE PORTFOLIO — COMPLETE WEBSITE UPDATE
+Prepared: 4 November 2026
+Repository: https://github.com/siddo-web/portfolio
+
+WHAT'S IN THIS ZIP
+- Full website tree: homepage, Web Development, Web Design, Design & Brand,
+  App Development, Digital Marketing, Explorer, Privacy, admin CMS, API,
+  styles, fonts, images, media, SEO routes and tests.
+- Digital Marketing now uses the same sticky stacked-card / desktop monitor
+  layout, navigation and animations as Web Development.
+- Six labelled ILLUSTRATIVE marketing visual previews. They are not client case
+  studies or performance claims.
+- All prior site fixes from the latest provided full website build are kept.
+
+IMPORTANT: EXTRACT THE ZIP FIRST. DO NOT UPLOAD THE .ZIP AS A WEBSITE FILE.
+All the files and folders inside this ZIP belong in the ROOT of your
+siddo-web/portfolio GitHub repository (alongside index.html and vercel.json).
+Do NOT place them inside an extra portfolio/ folder. In particular:
+
+CORRECT: digital-marketing/index.html
+CORRECT: digital-marketing/assets/visuals/seo.svg
+WRONG:   digital-marketing/digital-marketing/index.html
+WRONG:   portfolio/digital-marketing/index.html
+
+RECOMMENDED REPLACE PROCEDURE
+1. Download/clone or back up your existing GitHub main branch.
+2. Extract this ZIP to a folder on your computer.
+3. Copy extracted CONTENTS into the repository root, replacing matching
+   files. GitHub Desktop or local Git is recommended for a full folder sync.
+   If you use GitHub's "Add file > Upload files", upload the extracted
+   contents, NOT the archive itself, and keep the same paths.
+4. Commit to main; if Vercel is connected, it should redeploy automatically.
+5. Verify /, /webdev_portfolio/, /digital-marketing/, and /admin/.
+
+PREVENT ACCIDENTAL DATA LOSS
+This ZIP preserves the CMS project record as an unpublished draft, but
+GitHub can hold newer CMS edits since this ZIP was generated. If you've added
+or edited CMS projects, keep your latest content/projects.json rather than
+blindly replacing it with an older copy.
+
+Two image files were uploaded via the CMS after the source site ZIP was made:
+  assets/uploads/1793743026151-d9e3b1e9ff9544fb.webp
+  assets/uploads/1793743028726-f1a5ddd138435ace.webp
+These files exist on GitHub, not inside this archive. DO NOT DELETE THEM
+from your existing repository. When replacing files, merge instead of
+wiping the repo. They are currently used by an unpublished draft.
+
+This ZIP has no real production secrets. For admin functionality on Vercel,
+keep environment variables already configured for the GitHub CMS.
+
+TESTING
+- 11 Node automated tests passed.
+- 12 HTML pages, 138 local resource references and 60 inline scripts checked.
+- All 6 new SVG visual assets parsed successfully.
+- Browser-based visual verification could not be completed in this environment.
