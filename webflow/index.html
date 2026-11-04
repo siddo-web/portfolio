@@ -96,7 +96,7 @@ html.embed.out .glow{opacity:1;visibility:visible;transition:opacity .4s ease}
 .print .peg::after{content:"";position:absolute;left:3px;right:3px;top:11px;height:3px;border-radius:2px;background:#8a8580;box-shadow:0 1px 0 rgba(255,255,255,.4)}
 .paper{display:block;height:100%;margin-top:14px;padding:clamp(5px,.5vw,8px);background:#fbfaf7;border-radius:2px;
   box-shadow:0 1px 1px rgba(0,0,0,.12),0 24px 40px -18px rgba(0,0,0,.45),0 50px 80px -40px rgba(0,0,0,.35);transition:transform .45s cubic-bezier(.16,1,.3,1),box-shadow .45s ease;cursor:zoom-in}
-.paper img{display:block;height:100%;width:auto;background:#ddd}
+.paper img{display:block;object-fit:cover;height:100%;width:auto;background:#ddd}
 .print.dark .paper{background:#151414}
 .print:hover .paper,.paper:focus-visible{transform:translateY(-6px) scale(1.025);box-shadow:0 1px 1px rgba(0,0,0,.12),0 34px 54px -18px rgba(0,0,0,.5),0 60px 90px -40px rgba(0,0,0,.4)}
 /* a carousel hangs as a little stack of prints */
