@@ -67,7 +67,7 @@
   }
   function filters(){
     if(chosen){filter.hidden=true;return;}
-    filter.replaceChildren();[['','All'],...Object.entries(categories)].forEach(([key,label])=>{
+    filter.replaceChildren();[['','All'],...Object.entries(categories).filter(([key])=>all.some(p=>p.category===key))].forEach(([key,label])=>{
       const b=create('button',active===key?'active':'',label);b.type='button';b.setAttribute('aria-pressed',String(active===key));
       b.addEventListener('click',()=>{active=key;filter.querySelectorAll('button').forEach(x=>{
         x.classList.remove('active');x.setAttribute('aria-pressed','false');
@@ -81,13 +81,13 @@
     else if(document.querySelector('#root'))document.querySelector('#root').append(section);
     else document.body.append(section);
   }
-  mount();filters();
+  mount();
   const backup=()=>fetch(new URL('content/projects.json',siteBase),{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error('CMS content unavailable')));
   fetch(new URL('api/projects',siteBase),{headers:{'Accept':'application/json'},cache:'no-cache'})
     .then(r=>r.ok?r.json():Promise.reject(new Error('CMS endpoint unavailable')))
     .catch(backup)
     .then(d=>{all=(Array.isArray(d.projects)?d.projects:[]).filter(p=>p&&p.published===true&&categories[p.category])
       .sort((a,b)=>Number(b.featured===true)-Number(a.featured===true)||String(b.updatedAt||'').localeCompare(String(a.updatedAt||'')));
-      render();})
+      filters();render();})
     .catch(()=>{section.hidden=true;});
 })();

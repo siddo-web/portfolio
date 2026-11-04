@@ -16,7 +16,7 @@ test('service pages use the existing portfolio card and gallery layouts, not gen
     assert((html.match(/class="world"/g)||[]).length>=5);
   }else if(route==='digital-marketing'){
     assert.match(html,/const PROJECTS = \[/);
-    assert.match(html,/"title":"CMS Content Updates"/);
+    assert.match(html,/"title":"Naomi Amram — Website Updates"/);
   }else{
     assert.match(html,/class="card/);
     assert.match(html,/class="stage"/);

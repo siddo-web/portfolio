@@ -8,7 +8,7 @@
   const ROOT=new URL('../',script.src);
   const ids=['wordpress-development','shopify-development','webflow-wix-development','cms-migration-integration','cms-support-optimization'];
   const routes=['webdev_portfolio/','UIUX_portfolio/','graphic/','appdev_portfolio/','digital-marketing/'];
-  const context=["The selected projects below demonstrate relevant front-end and interaction work, rather than claiming they were built in WordPress.", "The selected projects below highlight interface and shopping-journey thinking, rather than claiming they were built on Shopify.", "The creative work below highlights the visual direction I bring to CMS builds, rather than claiming a specific platform was used.", "The selected apps below illustrate product logic and user experience, rather than claiming they are CMS migration projects.", "The examples below illustrate CMS support capabilities; they are not presented as client performance results."];
+  const context=["Examples include IES, Naomi Amram Design and WordPress content integrations.", "Examples include Shopify Liquid components and the Mardoo storefront concept.", "Examples include a personal Webflow portfolio, Wix websites and additional website references whose platforms are not confirmed.", "Examples include WordPress data imports, ecommerce migration and a custom CMS integration.", "Examples include WordPress content audits, layout maintenance and custom plugin improvements."];
   const update=(services)=>{
     if(!Array.isArray(services)||services.length!==5)return;
     const active=services.find(x=>x.slug===slug);
@@ -16,7 +16,7 @@
       const h=document.querySelector('main .intro h1');
       if(h)h.textContent=active.shortTitle||active.title;
       const intro=document.querySelector('main .intro p');
-      if(intro&&active.summary){const index=ids.indexOf(slug);intro.textContent=active.summary+' '+(context[index]||'');}
+      if(intro&&(active.intro||active.summary)){intro.textContent=active.intro||active.summary;}
       document.title=(active.title||'CMS Development')+' — Muhammad Siddique | CMS Developer';
       const desc=document.querySelector('meta[name="description"]');
       if(desc&&active.summary)desc.content=active.summary;

@@ -1,3 +1,5 @@
+> **Project content refresh:** See [OWN_SITE_CONTENT_UPDATE.md](OWN_SITE_CONTENT_UPDATE.md) for the spreadsheet-based project names, live links and how to replace temporary media.
+
 > **CMS Developer edition (Nov 4, 2026):** Five CMS-focused services, restored original inner-page designs, homepage navigation updates and an admin Services editor are included. Read [CMS_DEVELOPER_UPDATE.md](CMS_DEVELOPER_UPDATE.md) for details and deployment guidance.
 
 > **Updated release:** See [DEPLOY_UPDATED.md](DEPLOY_UPDATED.md) for changes, safety notes and exact GitHub/Vercel deployment instructions.
