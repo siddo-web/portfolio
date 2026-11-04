@@ -33,7 +33,7 @@
 ## Editing and media
 - New project screenshot placeholders are editable SVGs inside `assets/images/site-placeholders/`. They are NOT screenshots of the linked client websites.
 - To replace a card preview with a recording, add the file in the corresponding section and update both the static card HTML and the matching `const PROJECTS` record (or upload project media using the admin).
-- All service pages retain at least 10 cards. Cards still labelled “Example brief” are not to be described as completed client work.
+- Duplicate cards were removed in the latest update. Some service pages now have fewer than 10 **unique** entries; see `DUPLICATES_REMOVED.md`. Cards still labelled “Example brief” are not to be described as completed client work.
 - `content/projects.json` contains confirmed-platform projects for the homepage CMS. Platform-unconfirmed links are only on `/selected-sites/` until their CMS is confirmed.
 - Webflow has Greater Gain Group and SRNY in the large hanging gallery and first sticky cards; gallery currently uses explicit placeholder artwork, not original website captures.
 - Keep `SITE_URL=https://siddique-profile.vercel.app` for sitemap canonicals.

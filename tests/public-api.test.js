@@ -12,12 +12,13 @@ test('drafts are excluded from the public CMS API',()=>{
  assert.deepEqual(list.map(x=>x.title),['Featured','Live']);
  assert.equal(list[0].featured,true);
 });
-test('demo remains an unpublished draft, while own-site projects are published',()=>{
+test('deduplicated CMS includes substantial published client records',()=>{
  const list=require('../content/projects.json').projects;
- assert(list.length>=55);assert.equal(list[0].published,false);assert(visibleProjects({projects:list}).length>=40);
+ assert(list.length>=30);assert(visibleProjects({projects:list}).length>=25);
+ assert(!list.some(p=>p.title==='SXS Performance Part'));
 });
 test('public GET responds without drafts; other methods rejected',()=>{
- const out=res();publicApi({method:'GET'},out);assert.equal(out.code,200);assert.equal(out.data.ok,true);assert(out.data.projects.length>=40);assert(!out.data.projects.some(p=>p.title==='SXS Performance Part'));
+ const out=res();publicApi({method:'GET'},out);assert.equal(out.code,200);assert.equal(out.data.ok,true);assert(out.data.projects.length>=25);assert(!out.data.projects.some(p=>p.title==='SXS Performance Part'));
  const denied=res();publicApi({method:'POST'},denied);assert.equal(denied.code,405);
 });
 test('sitemap and robots routes only expose real public pages',()=>{

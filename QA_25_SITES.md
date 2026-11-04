@@ -1,6 +1,6 @@
 # Verification summary
 
-- 21 existing Node test cases passed.
+- Original run: 21 Node test cases passed. Latest deduplication release: 23 tests pass; see `DUPLICATES_REMOVED.md`.
 - 25 user-provided domains were present as links on the intended published pages.
 - 58 embedded JavaScript blocks passed Node syntax checks.
 - All referenced local images, scripts and stylesheets on the six published project pages resolved inside this folder (0 missing).

@@ -1,8 +1,10 @@
+> **Newest update (Nov 5, 2026):** Duplicate site/project cards were removed across service pages and the admin CMS. Read [DUPLICATES_REMOVED.md](DUPLICATES_REMOVED.md) for counts and details. Previous files below describe historical revisions.
+
 > **Newest update:** See `RELEASE_NOTES_25_WEBSITES.md` and `USER_PROJECTS_25_SITES.md` for the 25 added website references, six published work categories, and media replacement instructions. Older change notes document prior revisions.
 
 # Muhammad Siddique — CMS Developer Portfolio (November 2026 revision)
 
-**Latest release:** Separate WordPress, Shopify, Webflow, Wix and Other CMS categories; original interactive layered profile card and bounded loader restored; Webflow hanging-frame gallery enlarged with an additional true sticky-card stack; 10+ documented entries or clearly labelled service briefs per category; SEO canonicals, sitemap and permanent redirects updated.
+**Latest release:** Separate WordPress, Shopify, Webflow, Wix and Other CMS categories; original interactive layered profile card and bounded loader restored; Webflow hanging-frame gallery enlarged with an additional true sticky-card stack; deduplicated work entries per category; SEO canonicals, sitemap and permanent redirects updated.
 
 Please start with `CHANGELOG_VNEXT.md` and `QA_VNEXT.md` for details and deployment instructions. Earlier release notes bundled below may refer to superseded card/route implementations.
 
@@ -28,7 +30,7 @@ A static HTML/CSS/JS portfolio with **Jotform** project enquiries and a **GitHub
 - `webdev_portfolio/`, `UIUX_portfolio/`, `graphic/`, `appdev_portfolio/`, `digital-marketing/`: original project galleries retained as the live service pages with CMS-focused descriptions.
 - `admin/`: responsive project + CMS service management dashboard at `/admin/`.
 - `api/admin.js`: Vercel serverless admin API for authentication and GitHub project updates.
-- `content/projects.json`: public portfolio projects (includes a preserved draft test project from the live repo).
+- `content/projects.json`: public portfolio projects (deduplicated public/draft project records).
 - `assets/uploads/`: images uploaded by the dashboard are committed here in GitHub.
 - `cms/public.js`, `cms/public.css`: the public Selected Work section and modal.
 - `vercel.json`: static deployment and no-index headers for the admin page.
