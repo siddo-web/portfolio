@@ -1,12 +1,659 @@
-.ms-cms-section{--cms-ink:#171515;--cms-gold:#ae9374;color:var(--foreground,var(--cms-ink));background:var(--background,#f8f6f2);padding:clamp(70px,8vw,130px) 0}.ms-cms-section[hidden]{display:none!important}.ms-cms-shell{width:min(calc(100% - 80px),1360px);margin:0 auto}.ms-cms-top{display:flex;align-items:end;justify-content:space-between;gap:30px;margin-bottom:35px}.ms-cms-eyebrow{color:var(--accent,#b99f7f);font-weight:700;letter-spacing:.16em;font-size:11px}.ms-cms-top h2{font-weight:500;letter-spacing:-.075em;font-size:clamp(53px,6vw,104px);line-height:1.04;margin:13px 0 16px}.ms-cms-top h2 em{font-family:Georgia,serif;font-weight:400;color:var(--accent,#ae9374)}.ms-cms-top p{font-size:15px;line-height:1.65;color:var(--muted,#79736c);margin:0;max-width:430px}.ms-cms-filters{display:flex;flex-wrap:wrap;gap:6px;max-width:590px;justify-content:flex-end}.ms-cms-filters button{border:1px solid rgba(127,119,109,.3);padding:9px 13px;border-radius:40px;background:transparent;color:inherit;font-size:12px;cursor:pointer}.ms-cms-filters button.active,.ms-cms-filters button:hover{background:var(--foreground,#171515);color:var(--background,#fff)}.ms-cms-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:25px}.ms-cms-card{min-width:0}.ms-cms-cover{width:100%;aspect-ratio:1.26;border:0;border-radius:18px;position:relative;display:block;overflow:hidden;cursor:pointer;padding:0;background:linear-gradient(135deg,#d4c3af,#5c524b);color:white}.ms-cms-cover img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.15,1,.3,1)}.ms-cms-cover:hover img{transform:scale(1.06)}.ms-cms-placeholder{display:grid;place-items:center;height:100%;font:500 52px/1 Georgia,serif;opacity:.75}.ms-cms-open{position:absolute;bottom:18px;left:18px;border-radius:30px;background:#f8f5f0;color:#171515;padding:9px 14px;font-size:11px;opacity:0;transform:translateY(10px);transition:.25s}.ms-cms-cover:hover .ms-cms-open,.ms-cms-cover:focus-visible .ms-cms-open{opacity:1;transform:none}.ms-cms-info{padding:19px 1px}.ms-cms-cat{text-transform:uppercase;letter-spacing:.14em;color:var(--accent,#b2997d);font-size:10px;font-weight:700}.ms-cms-title{display:block;text-align:left;cursor:pointer;font:500 clamp(23px,2vw,31px)/1.2 'Onest',Arial,sans-serif;letter-spacing:-.045em;margin-top:8px;border:none;padding:0;color:inherit;background:none}.ms-cms-description{max-width:370px;margin:9px 0 0;font-size:14px;line-height:1.5;color:var(--muted,#807971)}.ms-cms-dialog{width:min(850px,calc(100vw - 30px));max-height:calc(100dvh - 30px);padding:0;border:0;border-radius:23px;background:#f7f5f1;color:#171515;box-shadow:0 45px 100px #0006;overflow:auto}.ms-cms-dialog::backdrop{background:#000b;backdrop-filter:blur(6px)}.ms-cms-close{position:sticky;top:16px;float:right;margin:16px 16px -57px;z-index:2;width:40px;height:40px;border-radius:99px;border:0;background:#171515;color:white;font-size:27px;cursor:pointer}.ms-cms-large{width:100%;max-height:460px;object-fit:cover;display:block}.ms-cms-dialogbody{padding:clamp(25px,4vw,50px)}.ms-cms-dialogbody h2{font-weight:500;font-size:clamp(37px,5.5vw,65px);letter-spacing:-.065em;line-height:1.1;margin:13px 0}.ms-cms-meta{color:#958575;font-size:13px}.ms-cms-summary{font-size:19px;line-height:1.6}.ms-cms-desc{margin-top:15px;font-size:15px;line-height:1.75;color:#625b54}.ms-cms-visit{display:inline-block;padding:14px 20px;background:#171515;color:white;border-radius:11px;margin-top:27px;font-size:14px}@media(max-width:1100px){.ms-cms-top{display:block}.ms-cms-filters{max-width:none;justify-content:flex-start;margin-top:27px}.ms-cms-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.ms-cms-shell{width:calc(100% - 38px)}.ms-cms-grid{grid-template-columns:1fr;gap:15px}.ms-cms-top h2{font-size:57px}.ms-cms-cover{aspect-ratio:1.22}.ms-cms-open{opacity:1;transform:none}}
+.ms-cms-section {
+    --cms-ink: #171515;
+    --cms-gold: #ae9374;
+    color: var(--foreground, var(--cms-ink));
+    background: var(--background, #f8f6f2);
+    padding: clamp(70px, 8vw, 130px) 0
+}
 
-.ms-cms-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:24px}.ms-cms-gallery img{width:100%;border-radius:12px;object-fit:cover}@media(max-width:520px){.ms-cms-gallery{grid-template-columns:1fr}}
+.ms-cms-section[hidden] {
+    display: none !important
+}
+
+.ms-cms-shell {
+    width: min(calc(100% - 80px), 1360px);
+    margin: 0 auto
+}
+
+.ms-cms-top {
+    display: flex;
+    align-items: end;
+    justify-content: space-between;
+    gap: 30px;
+    margin-bottom: 35px
+}
+
+.ms-cms-eyebrow {
+    color: var(--accent, #b99f7f);
+    font-weight: 700;
+    letter-spacing: .16em;
+    font-size: 11px
+}
+
+.ms-cms-top h2 {
+    font-weight: 500;
+    letter-spacing: -.075em;
+    font-size: clamp(53px, 6vw, 104px);
+    line-height: 1.04;
+    margin: 13px 0 16px
+}
+
+.ms-cms-top h2 em {
+    font-family: Georgia, serif;
+    font-weight: 400;
+    color: var(--accent, #ae9374)
+}
+
+.ms-cms-top p {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--muted, #79736c);
+    margin: 0;
+    max-width: 430px
+}
+
+.ms-cms-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    max-width: 590px;
+    justify-content: flex-end
+}
+
+.ms-cms-filters button {
+    border: 1px solid rgba(127, 119, 109, .3);
+    padding: 9px 13px;
+    border-radius: 40px;
+    background: transparent;
+    color: inherit;
+    font-size: 12px;
+    cursor: pointer
+}
+
+.ms-cms-filters button.active,
+.ms-cms-filters button:hover {
+    background: var(--foreground, #171515);
+    color: var(--background, #fff)
+}
+
+.ms-cms-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px
+}
+
+.ms-cms-card {
+    min-width: 0
+}
+
+.ms-cms-cover {
+    width: 100%;
+    aspect-ratio: 1.26;
+    border: 0;
+    border-radius: 18px;
+    position: relative;
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    padding: 0;
+    background: linear-gradient(135deg, #d4c3af, #5c524b);
+    color: white
+}
+
+.ms-cms-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .7s cubic-bezier(.15, 1, .3, 1)
+}
+
+.ms-cms-cover:hover img {
+    transform: scale(1.06)
+}
+
+.ms-cms-placeholder {
+    display: grid;
+    place-items: center;
+    height: 100%;
+    font: 500 52px/1 Georgia, serif;
+    opacity: .75
+}
+
+.ms-cms-open {
+    position: absolute;
+    bottom: 18px;
+    left: 18px;
+    border-radius: 30px;
+    background: #f8f5f0;
+    color: #171515;
+    padding: 9px 14px;
+    font-size: 11px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: .25s
+}
+
+.ms-cms-cover:hover .ms-cms-open,
+.ms-cms-cover:focus-visible .ms-cms-open {
+    opacity: 1;
+    transform: none
+}
+
+.ms-cms-info {
+    padding: 19px 1px
+}
+
+.ms-cms-cat {
+    text-transform: uppercase;
+    letter-spacing: .14em;
+    color: var(--accent, #b2997d);
+    font-size: 10px;
+    font-weight: 700
+}
+
+.ms-cms-title {
+    display: block;
+    text-align: left;
+    cursor: pointer;
+    font: 500 clamp(23px, 2vw, 31px)/1.2 'Onest', Arial, sans-serif;
+    letter-spacing: -.045em;
+    margin-top: 8px;
+    border: none;
+    padding: 0;
+    color: inherit;
+    background: none
+}
+
+.ms-cms-description {
+    max-width: 370px;
+    margin: 9px 0 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--muted, #807971)
+}
+
+.ms-cms-dialog {
+    width: min(850px, calc(100vw - 30px));
+    max-height: calc(100dvh - 30px);
+    padding: 0;
+    border: 0;
+    border-radius: 23px;
+    background: #f7f5f1;
+    color: #171515;
+    box-shadow: 0 45px 100px #0006;
+    overflow: auto
+}
+
+.ms-cms-dialog::backdrop {
+    background: #000b;
+    backdrop-filter: blur(6px)
+}
+
+.ms-cms-close {
+    position: sticky;
+    top: 16px;
+    float: right;
+    margin: 16px 16px -57px;
+    z-index: 2;
+    width: 40px;
+    height: 40px;
+    border-radius: 99px;
+    border: 0;
+    background: #171515;
+    color: white;
+    font-size: 27px;
+    cursor: pointer
+}
+
+.ms-cms-large {
+    width: 100%;
+    max-height: 460px;
+    object-fit: cover;
+    display: block
+}
+
+.ms-cms-dialogbody {
+    padding: clamp(25px, 4vw, 50px)
+}
+
+.ms-cms-dialogbody h2 {
+    font-weight: 500;
+    font-size: clamp(37px, 5.5vw, 65px);
+    letter-spacing: -.065em;
+    line-height: 1.1;
+    margin: 13px 0
+}
+
+.ms-cms-meta {
+    color: #958575;
+    font-size: 13px
+}
+
+.ms-cms-summary {
+    font-size: 19px;
+    line-height: 1.6
+}
+
+.ms-cms-desc {
+    margin-top: 15px;
+    font-size: 15px;
+    line-height: 1.75;
+    color: #625b54
+}
+
+.ms-cms-visit {
+    display: inline-block;
+    padding: 14px 20px;
+    background: #171515;
+    color: white;
+    border-radius: 11px;
+    margin-top: 27px;
+    font-size: 14px
+}
+
+@media(max-width:1100px) {
+    .ms-cms-top {
+        display: block
+    }
+
+    .ms-cms-filters {
+        max-width: none;
+        justify-content: flex-start;
+        margin-top: 27px
+    }
+
+    .ms-cms-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+}
+
+@media(max-width:700px) {
+    .ms-cms-shell {
+        width: calc(100% - 38px)
+    }
+
+    .ms-cms-grid {
+        grid-template-columns: 1fr;
+        gap: 15px
+    }
+
+    .ms-cms-top h2 {
+        font-size: 57px
+    }
+
+    .ms-cms-cover {
+        aspect-ratio: 1.22
+    }
+
+    .ms-cms-open {
+        opacity: 1;
+        transform: none
+    }
+}
+
+.ms-cms-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    margin-top: 24px
+}
+
+.ms-cms-gallery img {
+    width: 100%;
+    border-radius: 12px;
+    object-fit: cover
+}
+
+@media(max-width:520px) {
+    .ms-cms-gallery {
+        grid-template-columns: 1fr
+    }
+}
+
 /* CMS editorial enhancements */
-.ms-cms-feature-label{position:absolute;top:15px;left:15px;z-index:2;padding:7px 12px;border-radius:80px;color:#171515;background:#f2e9da;font-size:11px;font-weight:650;letter-spacing:.03em}
-.ms-cms-replaced{display:none!important}
-.ms-cms-filters button:focus-visible,.ms-cms-cover:focus-visible,.ms-cms-title:focus-visible,.ms-cms-close:focus-visible{outline:3px solid #b6976c;outline-offset:3px}
-@media(prefers-reduced-motion:reduce){.ms-cms-cover img,.ms-cms-open{transition:none!important}}
+.ms-cms-feature-label {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    padding: 7px 12px;
+    border-radius: 80px;
+    color: #171515;
+    background: #f2e9da;
+    font-size: 11px;
+    font-weight: 650;
+    letter-spacing: .03em
+}
+
+.ms-cms-replaced {
+    display: none !important
+}
+
+.ms-cms-filters button:focus-visible,
+.ms-cms-cover:focus-visible,
+.ms-cms-title:focus-visible,
+.ms-cms-close:focus-visible {
+    outline: 3px solid #b6976c;
+    outline-offset: 3px
+}
+
+@media(prefers-reduced-motion:reduce) {
+
+    .ms-cms-cover img,
+    .ms-cms-open {
+        transition: none !important
+    }
+}
+
 /* Refined, responsive portfolio explorer; inherits the established charcoal/rose palette. */
-#projects{scroll-margin-top:88px}.ms-cms-section{padding:clamp(65px,7vw,112px) 0;position:relative}.ms-cms-top{align-items:end}.ms-cms-controls{min-width:min(100%,610px);display:flex;flex-direction:column;align-items:flex-end;gap:13px}.ms-cms-filters{max-width:610px;gap:7px}.ms-cms-filters button{font:500 13px/1.25 'Onest',sans-serif;padding:12px 17px;transition:background .2s,color .2s,border-color .2s}.ms-cms-search{display:block;width:min(100%,290px)}.ms-cms-search input{width:100%;font:inherit;font-size:14px;color:var(--foreground);padding:13px 17px;background:var(--field,rgba(196,176,176,.12));border:1px solid var(--line,rgba(130,110,110,.3));border-radius:12px;outline-offset:3px}.ms-cms-search input::placeholder{color:var(--muted)}.ms-cms-count{font-size:13px;color:var(--muted);margin:0 0 20px}.ms-cms-cover{aspect-ratio:1.45;background:var(--surface-2,#d6cdc6);border:1px solid var(--line,transparent)}.ms-cms-cover img{object-position:top center}.ms-cms-cover--plain{background:linear-gradient(155deg,var(--surface,#ded8d4),var(--surface-2,#c9c2bc));color:var(--foreground)}.ms-cms-monogram{display:flex;align-items:flex-end;justify-content:flex-start;width:100%;height:100%;padding:clamp(20px,3vw,34px);text-align:left;font:500 clamp(29px,3vw,45px)/1.07 'Onest',sans-serif;letter-spacing:-.06em;overflow-wrap:anywhere;max-width:100%}.ms-cms-open{opacity:1;transform:none;background:var(--background,#ede7e1);color:var(--foreground);bottom:14px;left:14px;font-size:12px}.ms-cms-title{font-size:clamp(22px,2.1vw,30px)}.ms-cms-info{padding:17px 2px 5px}.ms-cms-inline-link{display:inline-block;color:var(--foreground);border-bottom:1px solid var(--accent,#877070);margin-top:13px;padding-bottom:3px;font-size:13px;font-weight:600}.ms-cms-inline-link:hover{opacity:.7}.ms-cms-more{display:block;margin:31px auto 0;padding:15px 25px;border:1px solid var(--line);border-radius:30px;background:transparent;color:var(--foreground);font:500 14px 'Onest',sans-serif;cursor:pointer}.ms-cms-more[hidden]{display:none}.ms-cms-more:hover{background:var(--foreground);color:var(--background)}.ms-cms-empty{grid-column:1/-1;padding:35px 0;color:var(--muted);font-size:16px}.ms-cms-archive-link{margin:34px 0 0}.ms-cms-archive-link a{font-size:15px;text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:6px}.ms-cms-components{margin-top:65px;padding-top:38px;border-top:1px solid var(--line)}.ms-cms-components h3{font:500 clamp(32px,3.6vw,51px)/1.12 'Onest',sans-serif;letter-spacing:-.055em;margin:0 0 12px}.ms-cms-components-desc{font-size:15px;color:var(--muted);max-width:610px;line-height:1.6;margin:0 0 25px}.ms-cms-component-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.ms-cms-component{padding:23px;border:1px solid var(--line);border-radius:17px;background:var(--surface,#ded8d4)}.ms-cms-component span{font-size:10px;letter-spacing:.14em;font-weight:700;color:var(--accent)}.ms-cms-component h4{font:500 20px/1.3 'Onest',sans-serif;letter-spacing:-.035em;margin:14px 0 9px}.ms-cms-component p{font-size:13px;line-height:1.55;color:var(--muted)}.ms-cms-verification{padding:13px 16px;border-left:3px solid var(--accent,#ae9374);background:rgba(155,138,120,.09);font-size:13px;color:#65534a;line-height:1.5;margin-top:18px}.ms-cms-top h2{font-size:clamp(48px,5vw,78px)}.ms-cms-card{transition:transform .25s ease}.ms-cms-card:hover{transform:translateY(-3px)}.ms-cms-cover:focus-visible,.ms-cms-title:focus-visible,.ms-cms-more:focus-visible,.ms-cms-filters button:focus-visible{outline:3px solid var(--accent,#a9927c);outline-offset:4px}
-@media(max-width:1000px){.ms-cms-controls{align-items:flex-start;min-width:0}.ms-cms-filters{justify-content:flex-start}.ms-cms-component-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:700px){.ms-cms-shell{width:calc(100% - 36px)}.ms-cms-top h2{font-size:clamp(42px,12vw,57px)}.ms-cms-filters{gap:6px}.ms-cms-filters button{font-size:12px;padding:10px 13px}.ms-cms-grid{gap:21px}.ms-cms-cover{aspect-ratio:1.47}.ms-cms-component-grid{grid-template-columns:1fr}.ms-cms-controls,.ms-cms-search{width:100%}.ms-cms-intro p{font-size:15px}.ms-cms-section{padding:65px 0}.ms-cms-card:hover{transform:none}}
-@media(prefers-reduced-motion:reduce){.ms-cms-card{transition:none}}
+#projects {
+    scroll-margin-top: 88px
+}
+
+.ms-cms-section {
+    padding: clamp(65px, 7vw, 112px) 0;
+    position: relative
+}
+
+.ms-cms-top {
+    align-items: end
+}
+
+.ms-cms-controls {
+    min-width: min(100%, 610px);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 13px
+}
+
+.ms-cms-filters {
+    max-width: 610px;
+    gap: 7px
+}
+
+.ms-cms-filters button {
+    font: 500 13px/1.25 'Onest', sans-serif;
+    padding: 12px 17px;
+    transition: background .2s, color .2s, border-color .2s
+}
+
+.ms-cms-search {
+    display: block;
+    width: min(100%, 290px)
+}
+
+.ms-cms-search input {
+    width: 100%;
+    font: inherit;
+    font-size: 14px;
+    color: var(--foreground);
+    padding: 13px 17px;
+    background: var(--field, rgba(196, 176, 176, .12));
+    border: 1px solid var(--line, rgba(130, 110, 110, .3));
+    border-radius: 12px;
+    outline-offset: 3px
+    margin-top: 10px;
+}
+
+.ms-cms-search input::placeholder {
+    color: var(--muted)
+}
+
+.ms-cms-count {
+    font-size: 13px;
+    color: var(--muted);
+    margin: 0 0 20px
+}
+
+.ms-cms-cover {
+    aspect-ratio: 1.45;
+    background: var(--surface-2, #d6cdc6);
+    border: 1px solid var(--line, transparent)
+}
+
+.ms-cms-cover img {
+    object-position: top center
+}
+
+.ms-cms-cover--plain {
+    background: linear-gradient(155deg, var(--surface, #ded8d4), var(--surface-2, #c9c2bc));
+    color: var(--foreground)
+}
+
+.ms-cms-monogram {
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: clamp(20px, 3vw, 34px);
+    text-align: left;
+    font: 500 clamp(29px, 3vw, 45px)/1.07 'Onest', sans-serif;
+    letter-spacing: -.06em;
+    overflow-wrap: anywhere;
+    max-width: 100%
+}
+
+.ms-cms-open {
+    opacity: 1;
+    transform: none;
+    background: var(--background, #ede7e1);
+    color: var(--foreground);
+    bottom: 14px;
+    left: 14px;
+    font-size: 12px
+}
+
+.ms-cms-title {
+    font-size: clamp(22px, 2.1vw, 30px)
+}
+
+.ms-cms-info {
+    padding: 17px 2px 5px
+}
+
+.ms-cms-inline-link {
+    display: inline-block;
+    color: var(--foreground);
+    border-bottom: 1px solid var(--accent, #877070);
+    margin-top: 13px;
+    padding-bottom: 3px;
+    font-size: 13px;
+    font-weight: 600
+}
+
+.ms-cms-inline-link:hover {
+    opacity: .7
+}
+
+.ms-cms-more {
+    display: block;
+    margin: 31px auto 0;
+    padding: 15px 25px;
+    border: 1px solid var(--line);
+    border-radius: 30px;
+    background: transparent;
+    color: var(--foreground);
+    font: 500 14px 'Onest', sans-serif;
+    cursor: pointer
+}
+
+.ms-cms-more[hidden] {
+    display: none
+}
+
+.ms-cms-more:hover {
+    background: var(--foreground);
+    color: var(--background)
+}
+
+.ms-cms-empty {
+    grid-column: 1/-1;
+    padding: 35px 0;
+    color: var(--muted);
+    font-size: 16px
+}
+
+.ms-cms-archive-link {
+    margin: 34px 0 0
+}
+
+.ms-cms-archive-link a {
+    font-size: 15px;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-underline-offset: 6px
+}
+
+.ms-cms-components {
+    margin-top: 65px;
+    padding-top: 38px;
+    border-top: 1px solid var(--line)
+}
+
+.ms-cms-components h3 {
+    font: 500 clamp(32px, 3.6vw, 51px)/1.12 'Onest', sans-serif;
+    letter-spacing: -.055em;
+    margin: 0 0 12px
+}
+
+.ms-cms-components-desc {
+    font-size: 15px;
+    color: var(--muted);
+    max-width: 610px;
+    line-height: 1.6;
+    margin: 0 0 25px
+}
+
+.ms-cms-component-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 15px
+}
+
+.ms-cms-component {
+    padding: 23px;
+    border: 1px solid var(--line);
+    border-radius: 17px;
+    background: var(--surface, #ded8d4)
+}
+
+.ms-cms-component span {
+    font-size: 10px;
+    letter-spacing: .14em;
+    font-weight: 700;
+    color: var(--accent)
+}
+
+.ms-cms-component h4 {
+    font: 500 20px/1.3 'Onest', sans-serif;
+    letter-spacing: -.035em;
+    margin: 14px 0 9px
+}
+
+.ms-cms-component p {
+    font-size: 13px;
+    line-height: 1.55;
+    color: var(--muted)
+}
+
+.ms-cms-verification {
+    padding: 13px 16px;
+    border-left: 3px solid var(--accent, #ae9374);
+    background: rgba(155, 138, 120, .09);
+    font-size: 13px;
+    color: #65534a;
+    line-height: 1.5;
+    margin-top: 18px
+}
+
+.ms-cms-top h2 {
+    font-size: clamp(48px, 5vw, 78px)
+}
+
+.ms-cms-card {
+    transition: transform .25s ease
+}
+
+.ms-cms-card:hover {
+    transform: translateY(-3px)
+}
+
+.ms-cms-cover:focus-visible,
+.ms-cms-title:focus-visible,
+.ms-cms-more:focus-visible,
+.ms-cms-filters button:focus-visible {
+    outline: 3px solid var(--accent, #a9927c);
+    outline-offset: 4px
+}
+
+@media(max-width:1000px) {
+    .ms-cms-controls {
+        align-items: flex-start;
+        min-width: 0
+    }
+
+    .ms-cms-filters {
+        justify-content: flex-start
+    }
+
+    .ms-cms-component-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr))
+    }
+}
+
+@media(max-width:700px) {
+    .ms-cms-shell {
+        width: calc(100% - 36px)
+    }
+
+    .ms-cms-top h2 {
+        font-size: clamp(42px, 12vw, 57px)
+    }
+
+    .ms-cms-filters {
+        gap: 6px
+    }
+
+    .ms-cms-filters button {
+        font-size: 12px;
+        padding: 10px 13px
+    }
+
+    .ms-cms-grid {
+        gap: 21px
+    }
+
+    .ms-cms-cover {
+        aspect-ratio: 1.47
+    }
+
+    .ms-cms-component-grid {
+        grid-template-columns: 1fr
+    }
+
+    .ms-cms-controls,
+    .ms-cms-search {
+        width: 100%
+    }
+
+    .ms-cms-intro p {
+        font-size: 15px
+    }
+
+    .ms-cms-section {
+        padding: 65px 0
+    }
+
+    .ms-cms-card:hover {
+        transform: none
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .ms-cms-card {
+        transition: none
+    }
+}
