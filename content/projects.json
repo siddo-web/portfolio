@@ -644,7 +644,7 @@
     {
       "id": "PRJ-041",
       "title": "Adorn Marmor",
-      "category": "unverified",
+      "category": "shopify",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -664,7 +664,7 @@
     {
       "id": "PRJ-042",
       "title": "Aion Silicon",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -704,7 +704,7 @@
     {
       "id": "PRJ-044",
       "title": "Avancera Solution",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -724,7 +724,7 @@
     {
       "id": "PRJ-045",
       "title": "Black Pony Gallery",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -744,7 +744,7 @@
     {
       "id": "PRJ-046",
       "title": "Boston Custom Signs",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -764,7 +764,7 @@
     {
       "id": "PRJ-047",
       "title": "Cambiar",
-      "category": "unverified",
+      "category": "shopify",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -784,7 +784,7 @@
     {
       "id": "PRJ-048",
       "title": "Carrytype",
-      "category": "unverified",
+      "category": "shopify",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -804,7 +804,7 @@
     {
       "id": "PRJ-049",
       "title": "Concierge Elite",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -824,7 +824,7 @@
     {
       "id": "PRJ-050",
       "title": "Curate9",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -844,7 +844,7 @@
     {
       "id": "PRJ-051",
       "title": "Elie Design FL",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -864,7 +864,7 @@
     {
       "id": "PRJ-052",
       "title": "Firewood NI",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -883,14 +883,14 @@
     },
     {
       "id": "PRJ-053",
-      "title": "Graphicsense / Bodyfix",
-      "category": "unverified",
+      "title": "Bodyfix",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
       "summary": "Website reference; confirm actual scope and platform before publishing.",
       "description": "Website reference; confirm actual scope and platform before publishing.",
-      "url": "https://graphicsense.co.uk/bodyfix",
+      "url": "https://www.mybodyfix.co.nz/",
       "image": "",
       "gallery": [],
       "featured": false,
@@ -904,7 +904,7 @@
     {
       "id": "PRJ-054",
       "title": "Greenberg Psychology",
-      "category": "unverified",
+      "category": "wix",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -924,7 +924,7 @@
     {
       "id": "PRJ-055",
       "title": "InnoEnhance",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -944,7 +944,7 @@
     {
       "id": "PRJ-056",
       "title": "Kaanthaa",
-      "category": "unverified",
+      "category": "shopify",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -964,7 +964,7 @@
     {
       "id": "PRJ-057",
       "title": "Kairo Consulting",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -984,7 +984,7 @@
     {
       "id": "PRJ-059",
       "title": "Lisa Even",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1004,7 +1004,7 @@
     {
       "id": "PRJ-060",
       "title": "Modunite",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1024,7 +1024,7 @@
     {
       "id": "PRJ-061",
       "title": "Peerani Health",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1044,7 +1044,7 @@
     {
       "id": "PRJ-062",
       "title": "Please Paulo Stop Cappin",
-      "category": "unverified",
+      "category": "shopify",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1064,7 +1064,7 @@
     {
       "id": "PRJ-063",
       "title": "Protech Payments",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1084,7 +1084,7 @@
     {
       "id": "PRJ-064",
       "title": "RNL Realty",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1104,7 +1104,7 @@
     {
       "id": "PRJ-065",
       "title": "School of Imagination",
-      "category": "unverified",
+      "category": "other-cms",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1124,7 +1124,7 @@
     {
       "id": "PRJ-066",
       "title": "Shelter Rock Islamic Center",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1142,29 +1142,9 @@
       "updatedAt": "2026-11-06T00:00:00.000Z"
     },
     {
-      "id": "PRJ-067",
-      "title": "SmartLife Foundation",
-      "category": "unverified",
-      "kind": "website",
-      "year": "",
-      "tags": "",
-      "summary": "Nonprofit community programmes",
-      "description": "Nonprofit community programmes",
-      "url": "https://www.smartlifefoundation.org/",
-      "image": "",
-      "gallery": [],
-      "featured": false,
-      "published": true,
-      "verification": "platform-unconfirmed",
-      "sourceId": "PRJ-067",
-      "sourceNote": "Confirm CMS/platform and your exact contribution before moving to WordPress/Shopify/Webflow/Wix; add screenshots and client approval.",
-      "sourceRows": "",
-      "updatedAt": "2026-11-06T00:00:00.000Z"
-    },
-    {
       "id": "PRJ-068",
       "title": "Tamara Zentner Coach",
-      "category": "unverified",
+      "category": "wix",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1184,7 +1164,7 @@
     {
       "id": "PRJ-069",
       "title": "TENFOLD",
-      "category": "unverified",
+      "category": "other-cms",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1204,7 +1184,7 @@
     {
       "id": "PRJ-070",
       "title": "The Dealz Depot HQ",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1224,7 +1204,7 @@
     {
       "id": "PRJ-071",
       "title": "U&I Construction",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1244,7 +1224,7 @@
     {
       "id": "PRJ-072",
       "title": "United Way of Florence County",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1264,7 +1244,7 @@
     {
       "id": "PRJ-073",
       "title": "USA Fitech LLC",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1284,7 +1264,7 @@
     {
       "id": "PRJ-074",
       "title": "We Are Vectorly",
-      "category": "unverified",
+      "category": "shopify",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1304,7 +1284,7 @@
     {
       "id": "PRJ-075",
       "title": "Write My Life Stories",
-      "category": "unverified",
+      "category": "wordpress",
       "kind": "website",
       "year": "",
       "tags": "",
@@ -1319,26 +1299,6 @@
       "sourceId": "PRJ-075",
       "sourceNote": "Confirm CMS/platform and your exact contribution before moving to WordPress/Shopify/Webflow/Wix; add screenshots and client approval.",
       "sourceRows": "29",
-      "updatedAt": "2026-11-06T00:00:00.000Z"
-    },
-    {
-      "id": "PRJ-076",
-      "title": "Your Profit Partners",
-      "category": "unverified",
-      "kind": "website",
-      "year": "",
-      "tags": "",
-      "summary": "Website reference; confirm actual scope and platform before publishing.",
-      "description": "Website reference; confirm actual scope and platform before publishing.",
-      "url": "https://your-profit-partners.com/",
-      "image": "",
-      "gallery": [],
-      "featured": false,
-      "published": true,
-      "verification": "platform-unconfirmed",
-      "sourceId": "PRJ-076",
-      "sourceNote": "Confirm CMS/platform and your exact contribution before moving to WordPress/Shopify/Webflow/Wix; add screenshots and client approval.",
-      "sourceRows": "36",
       "updatedAt": "2026-11-06T00:00:00.000Z"
     }
   ]
