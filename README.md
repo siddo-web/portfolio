@@ -1,37 +1,82 @@
-## Project images (current build)
+# Muhammad Siddique — Developer Portfolio
 
-Every project card now displays a bundled local WebP image. Missing captures have title-specific, replacement-ready placeholders; actual user-provided screenshots remain unchanged. See **`PROJECT_IMAGE_REPLACEMENT_GUIDE.md`** and **`PROJECT_IMAGE_MAP.json`** to find filenames and update screenshots. The old remote screenshot loader has been disabled.
+Production source for the existing Muhammad Siddique portfolio, updated 6 November 2026. This release preserves the original site's visual identity, editorial styling, animated service doors, profile card and Jotform contact flow. It replaces hardcoded project grids with one catalog and five scoped service collections.
 
-## Latest update — screenshots and capture cleanup
+## Start locally
 
-See `SCREENSHOTS_AND_CLEANUP.md` for the exact list of 14 real attached screenshots, site screenshot fallbacks, and instructions for capturing remaining live screenshots locally. The obsolete capture-generated source metadata and old sample video artwork were removed.
+Requirements: **Python 3** (for the simplest local static server) and **Node.js 18 or later** (only for the optional automated tests). There are **no npm dependencies, package installs, paid services, build/bundling steps, or `node_modules`** in this project.
 
-# Muhammad Siddique — Public CMS Developer Portfolio (No Login)
+From the directory containing `index.html`:
 
-This is a publicly viewable HTML/CSS/JavaScript portfolio deployed on Vercel. **There is no website login, admin dashboard or GitHub write API.** The former `/admin/` route redirects home and the deprecated `/api/admin` endpoint responds HTTP 410 without any authentication or write capabilities.
+```sh
+python -m http.server 8000
+```
 
-## Editing your work
+Open `http://localhost:8000/`. Don't open the HTML pages through `file://`: the project catalog is fetched over HTTP. A plain local HTTP server serves `content/projects.json`; on Vercel the primary source is `/api/projects`.
 
-Update the project entries directly in `content/projects.json` (published projects only) or service copy in `content/services.json`. Commit and push to the GitHub repository; Vercel redeploys automatically. Media can be replaced in the corresponding portfolio assets. Existing responsive design, gallery cards, profile-card loader, and Jotform enquiry popup remain intact.
+Run the test suite:
 
-**Do not commit unpublished project details, client credentials, GitHub tokens or other secrets.** Previously unpublished draft entries have been exported to a separate backup file that must **not** be pushed to a public repository. Older GitHub commits may still contain them.
+```sh
+node --test tests/*.test.js
+```
 
-## Safe rollout from an earlier version
+The suite checks published project identity, five-category isolation, URL and image safety, interactive filter/search/pagination behavior, services, security/CSP, redirects and active assets.
 
-1. Extract and copy the **contents** of this ZIP into the repository root, preserving `.git` and your local `.env` if any.
-2. Remove the now-unnecessary old `admin/` folder from the local repository. Deleting via VS Code Explorer works; or run `git rm -r admin` where that folder is currently tracked. Keep `api/admin.js` from this release, as a harmless HTTP 410 retirement handler.
-3. Run `git status` and confirm the old `admin/` files are deleted before `git add -A` and `git commit`.
-4. Check GitHub repository access and Vercel project permissions. Public repositories reveal frontend source and older commit history.
-5. Deploy and verify `/admin/` no longer opens a login, `/api/admin` does not allow login or edits, `/api/projects` still shows published work, and all portfolio pages work.
+## Deploy to Vercel
 
-No `GITHUB_TOKEN`, `ADMIN_PASSWORD`, `SESSION_SECRET` or Redis login-rate-limit variables are required for this release. If you previously configured those solely for the old portfolio admin, revoke the GitHub token and remove those values from Vercel after confirming no other service uses them.
+1. Extract the ZIP **contents** to the repository's **root** (`index.html`, `vercel.json`, `api/`, `content/`, `assets/`, etc. should be at the root, not inside a second wrapper folder).
+2. If updating an existing GitHub repository, preserve its `.git` folder. Copy the new files over the old working tree; delete obsolete legacy website folders that no longer appear in this release if the repository still tracks them.
+3. In Vercel, keep the existing project and connect or update that repository. Use the **Other** framework preset, root directory `./`, leave **Build Command** and **Output Directory** empty/unset. Do not install dependencies; Vercel will serve the static pages and build the Node serverless `/api` handlers.
+4. Set the optional `SITE_URL` environment variable to your site's final HTTPS origin (e.g. `https://example.com`). Default SEO metadata still references the previously configured `https://siddique-profile.vercel.app`. If changing domains, use the script below and commit the generated meta changes.
+5. Deploy, then verify the homepage, service-page routes and `/selected-sites/`, the project categories, internal anchors, external links and Jotform enquiry flow on a real desktop and mobile browser.
 
-## Hosting and tests
+Existing `vercel.json` handles API rewrites, redirects and security headers. `.vercelignore` excludes local import/QA files from static hosting. The public API is **read-only**, without an admin login. `api/admin.js` intentionally returns HTTP 410 for the retired admin API.
 
-- Vercel preset: Other. Root: repository root.
-- `SITE_URL` is optional for generating sitemap/robots origin; no login credentials required.
-- Enquiry form is embedded through Jotform; submissions go to Jotform, not this site's APIs.
-- Run `node --test tests/*.test.js` from repository root to test locally.
-- CSP hashes: after changing inline scripts in HTML run `python scripts/refresh-csp.py`.
+## Site structure and navigation
 
-See `SECURITY_DEPLOYMENT_GUIDE.md`, `NO_LOGIN_SECURITY_UPDATE.md` and `DUPLICATES_REMOVED.md`. Older historical notes can refer to earlier CMS versions and are superseded for login/security questions.
+Homepage sequence: **Home → About → Services → Projects → Skills → Contact**. The original interactive door showcase and process sections remain available below the primary content. Five service pages have their own project collections:
+
+| Service | Route | Published website cards | Separate component/workflow entries |
+| --- | --- | ---: | ---: |
+| WordPress Development | `/wordpress/` | 8 | 6 |
+| Shopify Development | `/shopify/` | 1 | 6 |
+| Webflow Development | `/webflow/` | 3 | 0 |
+| Wix Development | `/wix/` | 1 | 0 |
+| Other CMS & Integrations | `/other-cms/` | 4 | 4 |
+
+The homepage **All websites** filter shows just these 17 platform-identified website cards. The separate `/selected-sites/` directory shows 35 supplied website references whose CMS **and/or exact project contribution remain unconfirmed**. They are not assigned to a service by guesswork. These published references are not a claim of independently verified client delivery. Workflows and technical components are identified as such rather than presented as separate completed websites.
+
+## Project catalog and editing
+
+- `content/projects.json` — **68 public catalog records**: 17 website cards in the five service categories, 16 technical/component or workflow records on service pages, plus 35 platform-unconfirmed website references in their separate archive.
+- `content/project-source.csv` — source CSV containing the full set of **76** unique project records, including the supplied titles, links and verification notes.
+- `content/review-queue.json` — **8 unpublished or pending-review** records (concepts, examples, or entries without an approved link). Preserved so no source item is lost; excluded from Vercel hosting via `.vercelignore`.
+- `content/services.json` — headings and descriptive service content.
+- `cms/public.js` and `cms/public.css` — shared frontend rendering, five filtering tabs, search, pagination, project dialogs and component/workflow sections.
+- `scripts/build-project-catalog.py` — optional CSV reimport tool. It matches existing entries conservatively by canonicalized URL, title and high-confidence similarity, and retains existing real screenshots where matched. Make a backup before reimporting edited project data.
+
+**To add or edit a public project:** edit `content/projects.json`, preserving an unused `id`, a category (`wordpress`, `shopify`, `webflow`, `wix`, `other-cms`, or `unverified`), `kind` (`website`, `personal`, `component`, or `workflow`), and `published: true`. Populate `title`, `summary`, `description`, `url` (an HTTPS website URL) and optionally `image` (an existing local screenshot). Use `verification`/`sourceNote` to record what is and isn't independently confirmed. To add a new service-page website, assign a verified platform and `kind: "website"`. To add an unconfirmed website, use `category: "unverified"`—it will appear only in `/selected-sites/`. For a component or workflow, use the corresponding `kind`: it will be labeled and rendered separately. Do **not** invent a screenshot or infer a CMS from a site's appearance.
+
+The published API (`api/projects.js`) reads `content/projects.json`. The UI uses that API on Vercel and falls back to the local JSON file in simple static-server mode. After changes, run the tests and deploy.
+
+The supplied CSV records and website links were preserved and syntax-checked, but **external sites were not all confirmed live, and project ownership or contributions have not been independently verified**. Check each link and contribution before describing it as a finished client project. The pending-review files may include internal notes: **do not publish those files to a public repository** without reviewing or relocating them. Vercel's `.vercelignore` prevents static deployment but does **not** hide source files committed to public GitHub.
+
+## Metadata and security
+
+Update canonical and Open Graph links for a custom domain with:
+
+```sh
+SITE_URL=https://your-domain.example node scripts/set-site-url.mjs
+python scripts/refresh-csp.py
+node --test tests/*.test.js
+```
+
+If you edit inline JavaScript in any HTML file, regenerate the Content-Security-Policy script hashes using `python scripts/refresh-csp.py` before deploying. Keep the current `vercel.json` security headers. Do not put API secrets, account credentials, or private client records in frontend files.
+
+The existing enquiry form is loaded through Jotform at `https://form.jotform.com/263056967949073`, and a direct link is provided if it cannot be embedded. Verify the form and its notification settings in your own Jotform account.
+
+## Verification status for this release
+
+**Passed:** 40 automated Node tests; project uniqueness/category/API checks; local image existence; HTML/CSS/JS relative assets; content security hashes and redirects. Native screenshot-based visual QA could not be run here because the available Chromium browser is managed by a policy blocking navigation, including to `localhost`. Consequently, desktop/mobile visual results and external URL reachability still require a real-browser check after deployment.
+
+See `PROJECT_AUDIT.md` for the consolidated inventory, QA scope and outstanding content-verification tasks.

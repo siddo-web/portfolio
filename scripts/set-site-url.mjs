@@ -1,37 +1,37 @@
-/** Optional one-time SEO metadata finalization after a custom domain is known.
- * SITE_URL=https://portfolio.example.com node scripts/set-site-url.mjs
+/** Set the existing portfolio's canonical and social-card origin for a custom HTTPS domain.
+ * Usage: SITE_URL=https://example.com node scripts/set-site-url.mjs
+ * Inline scripts are not edited; running refresh-csp afterwards remains safe.
  */
 import fs from 'node:fs';
 import path from 'node:path';
-const input=process.env.SITE_URL||'';
-let base;try{base=new URL(input);}catch{console.error('Set SITE_URL to an absolute HTTPS URL.');process.exit(1);}
-if(base.protocol!=='https:'||base.pathname!=='/'||base.search||base.hash){console.error('SITE_URL must be an HTTPS origin, e.g. https://portfolio.example.com');process.exit(1);}
-const pages={
- 'index.html':'/',
- 'webdev_portfolio/index.html':'/webdev_portfolio/',
- 'UIUX_portfolio/index.html':'/UIUX_portfolio/',
- 'graphic/index.html':'/graphic/',
- 'appdev_portfolio/index.html':'/appdev_portfolio/',
- 'digital-marketing/index.html':'/digital-marketing/',
- 'services/wordpress-development/index.html':'/services/wordpress-development/',
- 'services/shopify-development/index.html':'/services/shopify-development/',
- 'services/webflow-wix-development/index.html':'/services/webflow-wix-development/',
- 'services/cms-migration-integration/index.html':'/services/cms-migration-integration/',
- 'services/cms-support-optimization/index.html':'/services/cms-support-optimization/',
- 'explorer.html':'/explorer.html',
- 'privacy.html':'/privacy.html'
-};
-const root=path.resolve(import.meta.dirname,'..');
-for(const [file,route] of Object.entries(pages)){
- const p=path.join(root,file),origin=base.origin,full=origin+route;
- let s=fs.readFileSync(p,'utf8');
- s=s.replace(/<link rel="canonical" href="[^"]*">/,'<link rel="canonical" href="'+full+'">');
- if(s.includes('property="og:url"'))s=s.replace(/<meta property="og:url" content="[^"]*">/,'<meta property="og:url" content="'+full+'">');
- else s=s.replace('</title>','</title>\n<meta property="og:url" content="'+full+'">');
- s=s.replace(/(<meta property="og:image" content=")(?!https?:\/\/)([^"<>]+)("\s*\/?>)/g,(_,a,img,c)=>a+new URL(img,full).href+c);
- if(!s.includes('property="og:image"')){
-  s=s.replace('</title>','</title>\n<meta property="og:image" content="'+origin+'/assets/images/muhammad-siddique-og.jpg">');
- }
- fs.writeFileSync(p,s);
+let base;
+try { base = new URL(process.env.SITE_URL || ''); }
+catch { console.error('SITE_URL must be a valid https:// origin'); process.exit(1); }
+if (base.protocol !== 'https:' || base.pathname !== '/' || base.search || base.hash) {
+  console.error('SITE_URL must be a clean HTTPS origin, such as https://portfolio.example.com');
+  process.exit(1);
 }
-console.log('Updated canonical and Open Graph URLs for',base.origin);
+const pages = {'index.html':'/','wordpress/index.html':'/wordpress/','shopify/index.html':'/shopify/',
+  'webflow/index.html':'/webflow/','wix/index.html':'/wix/','other-cms/index.html':'/other-cms/',
+  'selected-sites/index.html':'/selected-sites/','explorer.html':'/explorer.html',
+  'privacy.html':'/privacy.html'};
+const root = path.resolve(import.meta.dirname, '..');
+let changed = 0;
+for (const [filename, route] of Object.entries(pages)) {
+  const file = path.join(root, filename);
+  if (!fs.existsSync(file)) continue;
+  const current = fs.readFileSync(file, 'utf8');
+  let content = current;
+  const canonical = `<link rel="canonical" href="${base.origin + route}">`;
+  content = content.replace(/<link\b(?=[^>]*\brel=["']canonical["'])[^>]*>/gi, canonical);
+  const setMeta = (property, value) => {
+    const meta = new RegExp(`<meta\\b(?=[^>]*\\bproperty=["']${property}["'])[^>]*>`, 'gi');
+    content = content.replace(meta, tag => /\bcontent=["'][^"']*["']/.test(tag)
+      ? tag.replace(/\bcontent=["'][^"']*["']/, `content="${value}"`)
+      : tag.replace(/\/?>(\s*)$/, ` content="${value}">$1`));
+  };
+  setMeta('og:url', base.origin + route);
+  setMeta('og:image', base.origin + '/assets/images/muhammad-siddique-og.jpg');
+  if (content !== current) { fs.writeFileSync(file, content); changed++; }
+}
+console.log(`Updated SEO metadata on ${changed} pages for ${base.origin}`);

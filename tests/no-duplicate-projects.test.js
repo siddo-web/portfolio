@@ -1,32 +1,21 @@
 'use strict';
-const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const root=path.resolve(__dirname,'..');
-const pages=['wordpress','shopify','wix','other-cms','selected-sites'];
-const normal=url=>{
-  if(!url)return '';
-  const u=new URL(url);
-  return u.hostname.replace(/^www\./,'').toLowerCase()+decodeURIComponent(u.pathname).replace(/\/$/,'').toLowerCase();
-};
-test('service projects show one card per website across category pages',()=>{
- const urls=new Map(),titles=new Map();
- for(const slug of pages){
-  const html=fs.readFileSync(path.join(root,slug,'index.html'),'utf8');
-  const m=html.match(/const PROJECTS\s*=\s*(\[.*?\])\s*;/s);assert(m,`Missing static project data: ${slug}`);
-  const projects=JSON.parse(m[1]);
-  const cards=html.match(/<article\b[^>]*class="card(?: flip)?"[^>]*>/g)||[];
-  assert.equal(cards.length,projects.length,`Static card count differs from JS data: ${slug}`);
-  for(const [i,p] of projects.entries()){
-   const n=normal(p.url);
-   if(n){assert(!urls.has(n),`${slug} repeats ${p.title} already in ${urls.get(n)}`);urls.set(n,slug+' / '+p.title);}
-   const t=p.title.toLowerCase().replace(/\s+/g,' ').trim();
-   assert(!titles.has(t),`${slug} repeats ${p.title} already in ${titles.get(t)}`);
-   titles.set(t,slug+' / '+p.title);
-   assert.match(html,new RegExp(`id="p${i}"`));
-  }
+const {test}=require('node:test'),assert=require('node:assert/strict');
+const fs=require('node:fs'),path=require('node:path');
+const root=path.resolve(__dirname,'..');const data=require('../content/projects.json').projects;
+const review=require('../content/review-queue.json').projects;
+const csv=fs.readFileSync(path.join(root,'content/project-source.csv'),'utf8');
+function norm(u){if(!u)return '';const parsed=new URL(u);return parsed.hostname.replace(/^www\./,'').toLowerCase()+decodeURIComponent(parsed.pathname).replace(/\/$/,'').toLowerCase();}
+test('CSV import retains all unique project records, without duplicate websites or titles',()=>{
+ assert.equal(data.length+review.length,76);
+ const seenUrl=new Map(),seenTitles=new Set();
+ for(const p of [...data,...review]){
+  const title=p.title.trim().toLowerCase();assert(!seenTitles.has(title),`Duplicate title: ${p.title}`);seenTitles.add(title);
+  const u=norm(p.url);if(u){assert(!seenUrl.has(u),`Duplicate website URL ${p.title}, ${seenUrl.get(u)}`);seenUrl.set(u,p.title);}
+  assert(p.sourceId&&p.sourceNote,p.title+' missing provenance/verification');
  }
+ assert.match(csv,/PRJ-076/);
 });
-test('all supplied 25 websites are retained as service or selected site links',()=>{
- const urls = ['hollywood-associates.com','greatergaingroup.com','artandindustryinc.com','sxspartsusa.com','williamhthielen.com','tikuyatravels.com','oemachinecompany.com','reagsreviews.com','deviantappleinc.com','schoolofimagination.org','uwflorence.org','eliedesignfl.com','bostoncustomsigns.com','cambiar.ae','swankypros.com','nolanwells-studios.com','greenbergpsychology.com','rnlrealty.com','kaanthaa.com','adornmarmor.com','lisaeven.com','smartlifefoundation.org','tenfoldbrand.com','srny.webflow.io','pleasepaulostopcappin.com'];
- const combined=['wordpress','shopify','webflow','wix','other-cms','selected-sites'].map(p=>fs.readFileSync(path.join(root,p,'index.html'),'utf8')).join('\n');
- for(const domain of urls) assert(combined.includes(domain),`Missing owner site ${domain}`);
+test('all owner-supplied live websites appear once, with URL retained',()=>{
+ const domains=['hollywood-associates.com','greatergaingroup.com','artandindustryinc.com','sxspartsusa.com','williamhthielen.com','tikuyatravels.com','oemachinecompany.com','reagsreviews.com','deviantappleinc.com','schoolofimagination.org','uwflorence.org','eliedesignfl.com','bostoncustomsigns.com','cambiar.ae','swankypros.com','nolanwells-studios.com','greenbergpsychology.com','rnlrealty.com','kaanthaa.com','adornmarmor.com','lisaeven.com','smartlifefoundation.org','tenfoldbrand.com','srny.webflow.io','pleasepaulostopcappin.com'];
+ const urls=data.map(p=>norm(p.url));for(const host of domains)assert.equal(urls.filter(u=>u.startsWith(host)).length,1,`Missing / repeated ${host}`);
 });

@@ -1,0 +1,13 @@
+/* Requested homepage flow. Keep the existing Onest typography and rose/charcoal tokens. */
+html{scroll-behavior:smooth}html:has(.doors__pin){scroll-behavior:auto}
+#intro,#expertise,#projects,#skills,#contact-footer{scroll-margin-top:86px}
+.ms-skills{background:var(--surface,#ded8d4);color:var(--foreground);padding:clamp(70px,8vw,118px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.ms-skills__inner{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(35px,6vw,105px);align-items:start}
+.ms-skills__heading h2{font:500 clamp(43px,5.5vw,82px)/1.04 'Onest',sans-serif;letter-spacing:-.069em;margin:19px 0 26px;max-width:680px}
+.ms-skills__heading h2 em{font-family:Georgia,serif;font-weight:400;color:var(--accent)}.ms-skills__heading p{font-size:clamp(15px,1.6vw,19px);line-height:1.65;color:var(--muted);max-width:520px}
+.ms-skills__groups{display:grid;gap:27px}.ms-skills__group{padding-bottom:26px;border-bottom:1px solid var(--line)}.ms-skills__group:last-child{border:0}.ms-skills__group h3{font:500 21px/1.2 'Onest',sans-serif;letter-spacing:-.028em;margin:0 0 16px}.ms-skills__group div{display:flex;flex-wrap:wrap;gap:9px}.ms-skills__group span{padding:10px 14px;border:1px solid var(--line);border-radius:80px;font:500 13px/1.35 'Onest',sans-serif;background:var(--background)}
+.ms-skills .ms-kicker{color:var(--accent)}
+.ms-cms-noscript{padding:40px;text-align:center}
+@media(max-width:860px){.ms-skills__inner{grid-template-columns:1fr;gap:40px}.ms-skills__groups{gap:20px}.ms-skills__heading h2{font-size:clamp(40px,8vw,65px)}}
+@media(max-width:540px){.ms-skills{padding:65px 0}.ms-skills__heading h2{font-size:43px}.ms-skills__group span{font-size:12px;padding:9px 12px}}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto!important}}

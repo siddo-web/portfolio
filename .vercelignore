@@ -16,3 +16,12 @@ QA_VNEXT.json
 
 # Do not deploy remnants of the removed login interface.
 admin/
+
+# Project import and pending-verification notes: do not serve as static files.
+content/project-source.csv
+content/review-queue.json
+
+# Historical QA / media maps (not frontend dependencies).
+PROJECT_IMAGE_MAP.json
+PROJECT_MEDIA_STATUS.json
+QA_*.json

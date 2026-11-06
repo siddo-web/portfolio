@@ -1,100 +1,156 @@
-/* Muhammad Siddique: publicly published projects only; Edit published JSON directly in the repository. */
+/* Portfolio explorer. One shared project catalog powers the homepage and all service pages.
+   Website references and component showcases are intentionally presented separately. */
 (()=>{
   'use strict';
   const script=document.currentScript;
   if(!script)return;
-  const cmsBase=new URL('./',script.src),siteBase=new URL('../',cmsBase);
-  const chosen=script.dataset.category||'';
-  const categories={"wordpress":"WordPress Development","shopify":"Shopify Development","webflow":"Webflow Development","wix":"Wix Development","other-cms":"Other CMS & Integrations","wordpress-development": "WordPress Development", "shopify-development": "Shopify Development", "webflow-wix-development": "Webflow Development", "cms-migration-integration": "Wix Development", "cms-support-optimization": "Other CMS & Integrations", "web-development": "Web Development", "web-design": "Web Design", "design-brand": "Design & Brand", "app-development": "App Development", "digital-marketing": "Digital Marketing"};
-  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('public.css',cmsBase);document.head.append(css);
-  const section=document.createElement('section');section.className='ms-cms-section';section.id='selected-projects';
-  section.setAttribute('aria-label','Selected portfolio projects');section.hidden=true;
-  const create=(tag,cls,text)=>{const el=document.createElement(tag);if(cls)el.className=cls;if(text!==undefined)el.textContent=String(text);return el;};
-  const linkSafe=url=>{try{const u=new URL(url);return ['http:','https:'].includes(u.protocol)?u.href:null;}catch{return null;}};
-  // Public project media live in two known, local folders (including named placeholders).
-  // Do not accept absolute URLs, traversal or arbitrary uploads from project data.
-  const validImage=/^(?:assets\/uploads\/[a-zA-Z0-9_.-]+|assets\/images\/project-screenshots\/(?:placeholders\/)?[a-zA-Z0-9_.-]+)\.(?:jpe?g|png|webp)$/i;
-  const imgSafe=s=>typeof s==='string'&&validImage.test(s)?new URL(s,siteBase).href:null;
-  function placeholderImage(title){
-    const name=String(title||'Project preview').slice(0,58);
-    const escapeXml=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]));
-    const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1000" viewBox="0 0 1600 1000"><rect width="1600" height="1000" fill="#e7dfd4"/><rect x="56" y="56" width="1488" height="888" rx="28" fill="#f8f5ef" stroke="#c9b7a3" stroke-width="3"/><text x="800" y="452" font-family="Arial,sans-serif" font-size="27" font-weight="600" fill="#a28b72" text-anchor="middle" letter-spacing="6">PROJECT PREVIEW</text><text x="800" y="535" font-family="Arial,sans-serif" font-size="49" font-weight="700" fill="#292522" text-anchor="middle">${escapeXml(name)}</text><text x="800" y="605" font-family="Arial,sans-serif" font-size="23" fill="#807268" text-anchor="middle">Replace with your website screenshot</text></svg>`;
-    return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg);
+  const root=new URL('../',script.src);
+  const selected=script.dataset.category||'';
+  const labels={wordpress:'WordPress Development',shopify:'Shopify Development',webflow:'Webflow Development',wix:'Wix Development','other-cms':'Other CMS & Integrations',unverified:'Platform to verify'};
+  const isHome=!selected;
+  const css=document.createElement('link');css.rel='stylesheet';css.href=new URL('public.css',script.src);document.head.append(css);
+  const elem=(tag,cls,content)=>{const e=document.createElement(tag);if(cls)e.className=cls;if(content!==undefined)e.textContent=content;return e;};
+  const validImage=/^(?:assets\/uploads\/[a-z0-9_.-]+|assets\/images\/project-screenshots\/[a-z0-9_.-]+)\.(?:png|webp|jpe?g)$/i;
+  const safeImage=s=>typeof s==='string'&&validImage.test(s)?new URL(s,root).href:'';
+  const safeUrl=s=>{try{const u=new URL(s);return /^https?:$/.test(u.protocol)?u.href:'';}catch{return '';}};
+  const reduceMotion=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const gallery=elem('section','ms-cms-section');gallery.id='projects';gallery.setAttribute('aria-labelledby','portfolioHeading');
+  gallery.hidden=true;
+  const shell=elem('div','ms-cms-shell');gallery.append(shell);
+  const top=elem('div','ms-cms-top');shell.append(top);
+  const introduction=elem('div','ms-cms-intro');
+  introduction.append(elem('span','ms-cms-eyebrow',selected==='unverified'?'UNVERIFIED PLATFORM / SEPARATE ARCHIVE':'A SELECTION OF DIGITAL WORK'));
+  const heading=elem('h2');heading.id='portfolioHeading';
+  heading.append(document.createTextNode(selected==='unverified'?'Platform to ':selected?'Projects & ':'Selected '),elem('em','',selected==='unverified'?'confirm.':selected?'work.':'projects.'));
+  introduction.append(heading);
+  introduction.append(elem('p','',selected==='unverified'
+    ?'These website references are kept separate until their CMS platform and project contribution are confirmed.'
+    :selected?'Website references and personal projects are separated from component examples. Every project appears only once.'
+    :'Explore website references by platform. A separate collection holds websites whose CMS has not been confirmed.'));
+  top.append(introduction);
+  const controls=elem('div','ms-cms-controls');top.append(controls);
+  const filters=elem('div','ms-cms-filters');filters.setAttribute('role','group');filters.setAttribute('aria-label','Filter projects by platform');controls.append(filters);
+  const srch=elem('label','ms-cms-search');
+  const srLabel=elem('span','sr-only','Search projects');srch.append(srLabel);
+  const search=elem('input');search.type='search';search.placeholder='Search projects';search.setAttribute('aria-label','Search projects by name or keyword');search.autocomplete='off';srch.append(search);controls.append(srch);
+  const count=elem('p','ms-cms-count');count.setAttribute('role','status');count.setAttribute('aria-live','polite');shell.append(count);
+  const grid=elem('div','ms-cms-grid');shell.append(grid);
+  const more=elem('button','ms-cms-more','Show more projects ↓');more.type='button';more.hidden=true;shell.append(more);
+  const components=elem('section','ms-cms-components');components.setAttribute('aria-labelledby','componentsTitle');components.hidden=true;shell.append(components);
+  const aside=elem('p','ms-cms-archive-link');
+  if(isHome){const a=elem('a','','View websites awaiting platform verification ↗');a.href=new URL('selected-sites/',root).pathname;aside.append(a);shell.append(aside);}
+  const modal=elem('dialog','ms-cms-dialog');modal.setAttribute('aria-label','Project information');document.body.append(modal);
+  let lastFocus=null;
+  modal.addEventListener('click',e=>{if(e.target===modal)modal.close();});
+  modal.addEventListener('close',()=>{modal.replaceChildren();lastFocus?.focus({preventScroll:true});});
+  let records=[],active=selected||'all',shown=9;
+
+  function openDetails(p){
+    lastFocus=document.activeElement;
+    modal.replaceChildren();
+    const x=elem('button','ms-cms-close','×');x.type='button';x.setAttribute('aria-label','Close project details');x.addEventListener('click',()=>modal.close());modal.append(x);
+    const img=safeImage(p.image);
+    if(img){const cover=elem('img','ms-cms-large');cover.src=img;cover.alt=p.title+' project preview';cover.loading='lazy';modal.append(cover);}
+    const body=elem('div','ms-cms-dialogbody');
+    const state=p.verification==='platform-unconfirmed'?'Platform not confirmed':p.kind==='personal'?'Personal project':'Website reference';
+    body.append(elem('span','ms-cms-eyebrow',p.category==='unverified'?state:labels[p.category]+' · '+state));
+    body.append(elem('h2','',p.title));
+    if(p.tags)body.append(elem('p','ms-cms-meta',p.tags));
+    if(p.summary)body.append(elem('p','ms-cms-summary',p.summary));
+    if(p.description&&p.description!==p.summary)body.append(elem('p','ms-cms-desc',p.description));
+    if(p.verification==='platform-unconfirmed'||p.verification==='scope-unverified'){
+      body.append(elem('p','ms-cms-verification',p.verification==='platform-unconfirmed'
+        ?'CMS platform and scope of work have not yet been verified.'
+        :'Website reference. Exact contribution is subject to confirmation.'));
+    }
+    const pictures=(Array.isArray(p.gallery)?p.gallery:[]).map(safeImage).filter(Boolean);
+    if(pictures.length){const gal=elem('div','ms-cms-gallery');pictures.forEach(src=>{const pic=elem('img');pic.src=src;pic.alt=p.title+' additional project screenshot';pic.loading='lazy';gal.append(pic);});body.append(gal);}
+    const link=safeUrl(p.url);
+    if(link){const a=elem('a','ms-cms-visit','Visit website ↗');a.href=link;a.target='_blank';a.rel='noopener noreferrer';body.append(a);}
+    modal.append(body);if(typeof modal.showModal==='function')modal.showModal();
   }
-  function assignImage(el,path,title){
-    const src=imgSafe(path);
-    el.onerror=()=>{el.onerror=null;el.src=placeholderImage(title);};
-    el.src=src||placeholderImage(title);
-    return Boolean(src);
+  function card(p,i){
+    const article=elem('article','ms-cms-card');
+    const cover=elem('button','ms-cms-cover');cover.type='button';cover.setAttribute('aria-label','View '+p.title+' project details');
+    const src=safeImage(p.image);
+    if(src){const img=elem('img');img.src=src;img.alt='';img.loading=i<2?'eager':'lazy';img.decoding='async';
+      img.addEventListener('error',()=>{img.remove();cover.classList.add('ms-cms-cover--plain');cover.prepend(elem('span','ms-cms-monogram',p.title));},{once:true});cover.append(img);
+    }else {cover.classList.add('ms-cms-cover--plain');cover.append(elem('span','ms-cms-monogram',p.title));}
+    cover.append(elem('span','ms-cms-open','View project details ↗'));cover.addEventListener('click',()=>openDetails(p));article.append(cover);
+    const info=elem('div','ms-cms-info');
+    const badge=p.verification==='platform-unconfirmed'?'Platform unconfirmed':p.kind==='personal'?'Personal project':labels[p.category];
+    info.append(elem('span','ms-cms-cat',badge));
+    const title=elem('button','ms-cms-title',p.title);title.type='button';title.addEventListener('click',()=>openDetails(p));info.append(title);
+    if(p.summary)info.append(elem('p','ms-cms-description',p.summary));
+    const link=safeUrl(p.url);
+    if(link){const a=elem('a','ms-cms-inline-link','View website ↗');a.href=link;a.target='_blank';a.rel='noopener noreferrer';info.append(a);}
+    article.append(info);return article;
   }
-  let all=[],active=chosen;
-  const shell=create('div','ms-cms-shell');section.append(shell);
-  const top=create('div','ms-cms-top');shell.append(top);
-  const intro=create('div','');intro.append(create('span','ms-cms-eyebrow','PROJECT ARCHIVE / CURATED WORK'));
-  const title=create('h2','','Selected ');title.append(create('em','','work.'));intro.append(title);
-  intro.append(create('p','','Selected projects and related work from across CMS development and digital experiences.'));top.append(intro);
-  const filter=create('div','ms-cms-filters');top.append(filter);
-  const grid=create('div','ms-cms-grid');shell.append(grid);
-  const detail=create('dialog','ms-cms-dialog');detail.setAttribute('aria-label','Project details');document.body.append(detail);
-  detail.addEventListener('click',ev=>{if(ev.target===detail)detail.close();});
-  detail.addEventListener('close',()=>detail.replaceChildren());
-  function openProject(p){
-    detail.replaceChildren();
-    const close=create('button','ms-cms-close','×');close.type='button';close.setAttribute('aria-label','Close project');close.addEventListener('click',()=>detail.close());detail.append(close);
-    if(imgSafe(p.image)){const hero=create('img','ms-cms-large');hero.alt=p.title;assignImage(hero,p.image,p.title);detail.append(hero);}
-    const body=create('div','ms-cms-dialogbody');body.append(create('span','ms-cms-eyebrow',categories[p.category]||'Portfolio'));
-    body.append(create('h2','',p.title));
-    const meta=create('p','ms-cms-meta',p.year||'');if(p.tags)meta.textContent+=(meta.textContent?'  ·  ':'')+p.tags;body.append(meta);
-    if(p.summary)body.append(create('p','ms-cms-summary',p.summary));
-    if(p.description){const desc=create('div','ms-cms-desc',p.description);desc.style.whiteSpace='pre-line';body.append(desc);}
-    if(Array.isArray(p.gallery)&&p.gallery.length){const gal=create('div','ms-cms-gallery');p.gallery.forEach(f=>{
-      if(imgSafe(f)){const img=create('img');img.alt=p.title+' gallery image';img.loading='lazy';assignImage(img,f,p.title);gal.append(img);}
-    });body.append(gal);}
-    const url=linkSafe(p.url);if(url){const a=create('a','ms-cms-visit','Visit project ↗');a.href=url;a.target='_blank';a.rel='noopener noreferrer';body.append(a);}
-    detail.append(body);detail.showModal?.();
+  function listComponents(){
+    if(isHome||selected==='unverified'){components.hidden=true;return;}
+    const list=records.filter(p=>p.category===selected&&['component','workflow'].includes(p.kind));
+    components.hidden=!list.length;
+    if(!list.length)return;
+    components.replaceChildren();
+    const heading=elem('h3','', 'Components & workflows');heading.id='componentsTitle';components.append(heading);
+    components.append(elem('p','ms-cms-components-desc','Technical features and workflow examples — shown separately from completed website projects.'));
+    const ul=elem('div','ms-cms-component-grid');
+    list.forEach(p=>{const row=elem('article','ms-cms-component');row.append(elem('span','',p.kind==='workflow'?'WORKFLOW':'COMPONENT'),elem('h4','',p.title),elem('p','',p.summary||p.description));ul.append(row);});
+    components.append(ul);
   }
-  function syncLegacy(){
-    if(!chosen)return;
-    const hide=all.some(p=>p.category===chosen&&p.replaceLegacy===true);
-    const legacy=document.querySelector(chosen==='design-brand'?'#worlds':'#stack');
-    if(legacy){legacy.hidden=hide;legacy.classList.toggle('ms-cms-replaced',hide);}
-  }
+  const websites=()=>records.filter(p=>['website','personal'].includes(p.kind)&&(selected?p.category===selected:p.category!=='unverified'));
+  function matches(p){return (active==='all'||p.category===active)&&[p.title,p.summary,p.tags].join(' ').toLowerCase().includes(search.value.trim().toLowerCase());}
   function render(){
-    grid.replaceChildren();const filtered=all.filter(p=>!active||p.category===active);
-    section.hidden=!filtered.length;syncLegacy();if(!filtered.length)return;
-    filtered.forEach((p,i)=>{
-      const card=create('article','ms-cms-card'+(p.featured?' ms-cms-featured':''));
-      const cover=create('button','ms-cms-cover');cover.type='button';cover.setAttribute('aria-label','Open '+p.title+' project details');
-      if(imgSafe(p.image)){const image=create('img');image.alt='';image.loading='lazy';assignImage(image,p.image,p.title);cover.append(image);}
-      else cover.append(create('span','ms-cms-placeholder','MS / '+String(i+1).padStart(2,'0')));
-      if(p.featured){const featured=create('span','ms-cms-feature-label','Featured');cover.append(featured);}
-      cover.append(create('span','ms-cms-open','View case study ↗'));cover.addEventListener('click',()=>openProject(p));card.append(cover);
-      const info=create('div','ms-cms-info');info.append(create('span','ms-cms-cat',categories[p.category]||'Portfolio'));
-      const name=create('button','ms-cms-title',p.title);name.type='button';name.addEventListener('click',()=>openProject(p));info.append(name);
-      if(p.summary)info.append(create('p','ms-cms-description',p.summary));card.append(info);grid.append(card);
+    const results=websites().filter(matches);
+    count.textContent=results.length+' website'+(results.length===1?'':'s')+(active!=='all'?' in '+labels[active]:'');
+    grid.replaceChildren();
+    if(!results.length){grid.append(elem('p','ms-cms-empty','No matching websites. Try another category or keyword.'));}
+    else {const fragment=document.createDocumentFragment();results.slice(0,shown).forEach((p,i)=>fragment.append(card(p,i)));grid.append(fragment);}
+    more.hidden=results.length<=shown;more.textContent='Show more projects ('+(results.length-shown)+' remaining) ↓';
+    listComponents();
+  }
+  function setupFilters(){
+    filters.replaceChildren();
+    if(selected){filters.hidden=true;return;}
+    filters.hidden=false;
+    [['all','All websites'],...Object.entries(labels).filter(([slug])=>slug!=='unverified')].forEach(([key,label])=>{
+      const btn=elem('button','',label);btn.type='button';btn.setAttribute('aria-pressed',String(active===key));if(active===key)btn.classList.add('active');
+      btn.addEventListener('click',()=>{
+        active=key;shown=9;filters.querySelectorAll('button').forEach(b=>{b.classList.remove('active');b.setAttribute('aria-pressed','false');});
+        btn.classList.add('active');btn.setAttribute('aria-pressed','true');render();
+      });filters.append(btn);
     });
   }
-  function filters(){
-    if(chosen){filter.hidden=true;return;}
-    filter.replaceChildren();[['','All'],...Object.entries(categories).filter(([key])=>all.some(p=>p.category===key))].forEach(([key,label])=>{
-      const b=create('button',active===key?'active':'',label);b.type='button';b.setAttribute('aria-pressed',String(active===key));
-      b.addEventListener('click',()=>{active=key;filter.querySelectorAll('button').forEach(x=>{
-        x.classList.remove('active');x.setAttribute('aria-pressed','false');
-      });b.classList.add('active');b.setAttribute('aria-pressed','true');render();});filter.append(b);
-    });
+  search.addEventListener('input',()=>{shown=9;render();});
+  more.addEventListener('click',()=>{shown+=9;render();});
+  // Before moving to the deep interactive sections, visitors see their projects in a conventional, accessible grid.
+  if(isHome){const after=document.getElementById('expertise');
+    if(after)after.after(gallery);else document.querySelector('main')?.append(gallery);
+  }else{const intro=document.querySelector('main .intro');
+    if(intro)intro.after(gallery);else document.querySelector('main')?.append(gallery);
   }
-  function mount(){
-    const target=document.querySelector('.ms-faq');
-    if(target)target.before(section);
-    else if(document.querySelector('main'))document.querySelector('main').append(section);
-    else if(document.querySelector('#root'))document.querySelector('#root').append(section);
-    else document.body.append(section);
-  }
-  mount();
-  fetch(new URL('api/projects',siteBase),{headers:{'Accept':'application/json'},cache:'no-cache'})
-    .then(r=>r.ok?r.json():Promise.reject(new Error('CMS endpoint unavailable')))
-    .then(d=>{all=(Array.isArray(d.projects)?d.projects:[]).filter(p=>p&&p.published===true&&categories[p.category])
-      .sort((a,b)=>Number(b.featured===true)-Number(a.featured===true)||String(b.updatedAt||'').localeCompare(String(b.updatedAt||'')));
-      filters();render();})
-    .catch(()=>{section.hidden=true;});
+  const endpoints=[new URL('api/projects',root),new URL('content/projects.json',root)];
+  (async()=>{
+    let data=null;
+    for(const url of endpoints){try{const response=await fetch(url,{headers:{Accept:'application/json'}});if(response.ok){data=await response.json();break;}}catch(_e){/* Static local server uses the JSON fallback. */}}
+    if(!data||!Array.isArray(data.projects))throw Error('No project data');
+    records=data.projects.filter(p=>p&&p.published===true&&labels[p.category])
+      .sort((a,b)=>Number(b.featured===true)-Number(a.featured===true)||a.title.localeCompare(b.title));
+    gallery.hidden=false;setupFilters();render();
+    // The homepage project section is injected after fetch, so a direct #projects
+    // link from a service page needs to scroll *after* the section exists.
+    if(isHome && typeof window!=='undefined' && window.__portfolioRequestedSection){
+      const target=window.__portfolioRequestedSection;
+      const scrollToEntry=()=>{
+        const el=document.getElementById(target);
+        if(el&&typeof el.scrollIntoView==='function')el.scrollIntoView({block:'start',behavior:'auto'});
+      };
+      if(document.body.classList.contains('ready'))requestAnimationFrame(scrollToEntry);
+      else window.addEventListener('intro:ready',()=>requestAnimationFrame(scrollToEntry),{once:true});
+    }
+  })().catch(()=>{
+    gallery.hidden=false;
+    count.textContent='Portfolio data is unavailable.';
+    grid.append(elem('p','ms-cms-empty','The project catalog could not be loaded. Please refresh the page.'));
+  });
 })();

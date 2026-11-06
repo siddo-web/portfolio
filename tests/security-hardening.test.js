@@ -30,12 +30,14 @@ test('inline scripts on every page match deployed CSP allowlist',()=>{
  }}
  walk(root);
 });
-test('public CMS fetches only filtered API, not raw unpublished project list',()=>{
+test('public CMS has published-only API plus static fallback, with unpublished review files excluded',()=>{
  const src=fs.readFileSync(path.join(root,'cms/public.js'),'utf8');
  assert(src.includes("'api/projects'"));
- assert(!src.includes("'content/projects.json'"));
+ assert(src.includes("'content/projects.json'"));
  const ig=fs.readFileSync(path.join(root,'.vercelignore'),'utf8');
  assert(ig.includes('tests/')&&ig.includes('scripts/')&&ig.includes('.env.example'));
+ assert(ig.includes('content/review-queue.json'));
+ assert(require('../content/projects.json').projects.every(p=>p.published===true));
 });
 test('SEO origins are not formed from untrusted Host headers',()=>{
  const {siteUrl}=require('../api/seo-utils');

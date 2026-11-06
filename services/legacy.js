@@ -1,5 +1,4 @@
-/* Keep the original service-page layout, media and case studies untouched.
-   Dynamically sync editable service copy and menu labels with the CMS. */
+/* Synchronize service-page editorial copy and menu labels from the read-only catalog. */
 (()=>{
   'use strict';
   const script=document.currentScript;
@@ -8,7 +7,6 @@
   const ROOT=new URL('../',script.src);
   const ids=['wordpress','shopify','webflow','wix','other-cms'];
   const routes=['wordpress/','shopify/','webflow/','wix/','other-cms/'];
-  const context=["WordPress website builds and galleries.", "Shopify storefronts and Liquid sections.", "One live Webflow site and clearly marked sample briefs.", "Wix website references and clearly marked sample briefs.", "Custom CMS, migrations and other content systems."];
   const update=(services)=>{
     if(!Array.isArray(services)||services.length!==5)return;
     const active=services.find(x=>x.slug===slug);

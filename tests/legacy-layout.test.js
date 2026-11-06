@@ -1,12 +1,18 @@
+'use strict';
 const {test}=require('node:test'),assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path');
-const root=path.resolve(__dirname,'..'), read=p=>fs.readFileSync(path.join(root,p),'utf8');
-const keys=['wordpress','shopify','webflow','wix','other-cms'];
-test('all five canonical services preserve original scroll-driven portfolio presentation',()=>{
- for(const slug of keys){const s=read(slug+'/index.html');assert(s.includes('<section class="intro">'),slug);assert(s.includes('https://siddique-profile.vercel.app/'+slug+'/') && /rel="canonical"/.test(s),slug);assert(s.includes('ms-services-dd'),slug);}
- for(const slug of keys.filter(x=>x!=='webflow'))assert(read(slug+'/index.html').includes('class="card'),slug);
- const web=read('webflow/index.html');assert(web.includes('id="worlds"') && web.includes('const WORLDS'));assert(web.includes('vnext-work__card'));assert(!web.includes('Steph Saffer'));assert(!web.includes('Heroes of Tomorrow Africa'));
+const root=path.resolve(__dirname,'..');const read=x=>fs.readFileSync(path.join(root,x),'utf8');
+const categories=['wordpress','shopify','webflow','wix','other-cms'];
+test('five service pages retain branded navigation and use one shared dynamic project renderer',()=>{
+ for(const slug of categories){const page=read(slug+'/index.html');
+  assert(page.includes('<section class="intro">'),slug);assert(page.includes('https://siddique-profile.vercel.app/'+slug+'/'),slug);
+  assert(page.includes('ms-services-dd'),slug);assert(page.includes('src="../cms/public.js"'),slug);
+  assert(page.includes('data-category="'+slug+'"'),slug);
+  assert(!page.includes('const PROJECTS ='),`${slug} still embeds duplicated project data`);
+  assert(!page.includes('Wix — Services Website'),`${slug} still displays a demo brief as client work`);
+ }
 });
-test('homepage animated doors and footer route to distinct clean canonical URLs',()=>{
- const s=read('index.html');for(const slug of keys){assert(s.includes("'./"+slug+"/'"),slug);assert(s.includes('href="'+slug+'/"'),slug);}
- const cfg=JSON.parse(read('vercel.json'));assert(cfg.redirects.find(x=>x.source==='/graphic/'&&x.destination==='/webflow/'&&x.permanent===true));
+test('homepage animated service doors and footer retain five clean service destinations',()=>{
+ const s=read('index.html');for(const cat of categories)assert(s.includes(cat+'/'),cat);
+ assert(s.includes('doors__row'));assert(s.includes('data-go="projects"'));
+ assert(s.includes('id="skills"'));assert(s.includes('id="intro"'));
 });
